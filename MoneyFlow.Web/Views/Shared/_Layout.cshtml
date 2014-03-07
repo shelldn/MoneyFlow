@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="@ViewBag.AngularApp">
+<head>
+    <title>MoneyFlow - @ViewBag.Title</title>
+    @Styles.Render("~/client/css/style")
+</head>
+<body>
+    <header id="header" role="banner">
+        <div class="content">
+            <nav class="navbar navbar-default" role="navigation">
+                <a href="#" class="navbar-brand">MoneyFlow</a>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+        <div id="body" class="container" ng-controller="MainCtrl" role="main">
+            @RenderBody()
+        </div>
+        <footer id="footer" role="contentinfo"></footer>
+    </div>
+    
+    @Scripts.Render("~/bundle/underscore")
+    @Scripts.Render("~/bundle/angular")
+    @Scripts.Render("~/bundle/app")
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

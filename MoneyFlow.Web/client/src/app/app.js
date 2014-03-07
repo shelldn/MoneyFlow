@@ -1,0 +1,1 @@
+angular.module('mf.app', ['mf.data', 'mf.components']);

@@ -1,0 +1,12 @@
+{
+  "name": "MoneyFlow",
+  "version": "0.0.1",
+  "authors": [
+    "Yevgeny Shirin <yevgeny.shirin@gmail.com>"
+  ],
+  "dependencies": {
+    "angular": "~1.2.13",
+    "angular-resource": "~1.2.13",
+    "underscore": "~1.6.0"
+  }
+}

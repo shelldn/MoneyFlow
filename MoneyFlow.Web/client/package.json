@@ -1,0 +1,10 @@
+{
+  "name": "MoneyFlow",
+  "version": "0.0.1",
+  "description": "Consumptions tracking software",
+  "author": "Yevgeny Shirin <yevgeny.shirin@gmail.com>",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}
