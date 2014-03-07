@@ -132,6 +132,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="client\css\style.css" />
+    <Content Include="client\css\vendor\normalize.css" />
+    <Content Include="client\Gruntfile.js" />
     <Content Include="client\js\app.js" />
     <Content Include="client\js\components.js" />
     <Content Include="client\js\data.js" />
@@ -142,16 +145,13 @@
     <Content Include="client\js\vendor\angular\angular.min.js" />
     <Content Include="client\js\vendor\underscore\.gitignore" />
     <Content Include="client\js\vendor\underscore\underscore.js" />
+    <Content Include="client\src\app\app.js" />
+    <Content Include="client\src\components\app.js" />
+    <Content Include="client\src\components\directives.js" />
+    <Content Include="client\src\data\app.js" />
+    <Content Include="client\src\data\services.js" />
     <Content Include="Global.asax" />
-    <Content Include="js\app.js" />
-    <Content Include="js\controllers.js" />
-    <Content Include="js\services.js" />
-    <Content Include="js\vendor\angular-resource.js" />
-    <Content Include="js\vendor\angular.js" />
-    <Content Include="js\vendor\underscore.js" />
     <Content Include="packages.config" />
-    <Content Include="js\vendor\ui-bootstrap-0.9.0.js" />
-    <Content Include="js\vendor\ui-bootstrap-tpls-0.9.0.js" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -172,6 +172,9 @@
     <Content Include="client\js\vendor\underscore\LICENSE" />
     <Content Include="client\js\vendor\underscore\package.json" />
     <Content Include="client\js\vendor\underscore\README.md" />
+    <Content Include="client\css\app\layout.less" />
+    <Content Include="client\css\app\variables.less" />
+    <Content Include="client\css\style.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -200,7 +203,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="client\css\" />
+    <Folder Include="client\css\components\" />
+    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoneyFlow.Data\MoneyFlow.Data.csproj">
