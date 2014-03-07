@@ -1,0 +1,4 @@
+MoneyFlow
+=========
+
+Consumptions tracking software
