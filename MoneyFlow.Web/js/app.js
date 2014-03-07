@@ -1,1 +1,0 @@
-﻿angular.module('mfApp', ['ngResource', 'ui.bootstrap']);
