@@ -1,8 +1,9 @@
 ﻿using System.Web.Http;
 using Microsoft.Owin;
+using MoneyFlow.Web;
 using Owin;
 
-[assembly: OwinStartup(typeof(MoneyFlow.Web.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace MoneyFlow.Web
 {
