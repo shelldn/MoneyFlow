@@ -207,6 +207,7 @@
     <Content Include="client\css\app\typography.less" />
     <Content Include="Views\Shared\_LayoutNull.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Account\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
