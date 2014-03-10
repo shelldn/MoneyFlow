@@ -2,6 +2,30 @@
   height: 35px;
   line-height: 35px;
 }
+.screen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+.screen:before {
+  content: "";
+  height: 100%;
+}
+.screen:before,
+.screen .dialog {
+  display: inline-block;
+  vertical-align: middle;
+}
+.dialog {
+  padding: 20px;
+  border: 1px solid #3399dd;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .right {
   float: right;
 }
@@ -29,6 +53,10 @@ a:hover,
 .link:hover {
   color: #207ebd;
   text-decoration: underline;
+}
+html,
+body {
+  height: 100%;
 }
 .content {
   margin: 0 auto;
