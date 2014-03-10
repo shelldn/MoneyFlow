@@ -1,0 +1,39 @@
+// ------------------------------
+// MoneyFlow Grid
+// ------------------------------
+
+.columns (@count) {
+  @col-width: 100% / @count;
+
+  .col (@id) when (@id =< @count) {            // process
+    .col-@{id} {
+      width: @col-width * @id;
+    }
+
+    .col(@id + 1);
+  }
+
+  .col(1);                                     // go
+}
+
+.row {
+  display: block;
+  width: 100%;
+  .clearfix;
+}
+
+.col {
+  float: left;
+  min-height: 1px;                             // not collapse column if no content
+  .box-sizing(border-box);
+
+  &:not(:first-child) {
+    padding-left: @spacing-small;
+  }
+
+  &:not(:last-child) {
+    padding-right: @spacing-small;
+  }
+}
+
+.columns(12);

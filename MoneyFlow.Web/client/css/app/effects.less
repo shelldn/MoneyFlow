@@ -1,0 +1,19 @@
+// ------------------------------
+// MoneyFlow Effects
+// ------------------------------
+
+.clearfix () {
+  &:after {
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    content: " ";
+  }
+}
+
+.box-sizing (@sizing-option) {
+  -webkit-box-sizing: @sizing-option;
+  -moz-box-sizing: @sizing-option;
+  box-sizing: @sizing-option;
+}
