@@ -211,6 +211,7 @@
     <Content Include="client\css\app\effects.less" />
     <Content Include="client\css\app\grid.less" />
     <Content Include="client\css\components\dialog.less" />
+    <Content Include="client\css\app\forms.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
