@@ -1,0 +1,33 @@
+// ------------------------------
+// MoneyFlow Typography
+// ------------------------------
+
+.float (@side) {
+  .@{side} {
+    float: @side;
+  }
+}
+
+.float(right);
+.float(left);
+
+.text (@side) {
+  .text-@{side} {
+    text-align: @side;
+  }
+}
+
+.text(right);
+.text(left);
+.text(center);
+.text(justify);
+
+a, .link {
+  color: @color-base;
+  text-decoration: none;
+
+  &:hover {
+    color: darken(@color-base, 10%);
+    text-decoration: underline;
+  }
+}

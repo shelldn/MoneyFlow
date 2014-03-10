@@ -7,14 +7,25 @@
 </head>
 <body>
     <header id="header" role="banner">
-        <div class="content">
-            <nav class="navbar navbar-default" role="navigation">
-                <a href="#" class="navbar-brand">MoneyFlow</a>
-            </nav>
-        </div>
+        <nav class="menubar" role="navigation">
+            <div class="content text-center">
+                <a href="#">MF</a>
+                <div id="account" class="right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @:Authenticated
+                    }
+                    else
+                    {
+                        <a href="#">Register</a>
+                        <a href="#">Sign In</a>
+                    }
+                </div>
+            </div>
+        </nav>
     </header>
     <div class="content">
-        <div id="body" class="container" ng-controller="MainCtrl" role="main">
+        <div id="body" ng-controller="MainCtrl" role="main">
             @RenderBody()
         </div>
         <footer id="footer" role="contentinfo"></footer>
