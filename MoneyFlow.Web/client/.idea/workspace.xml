@@ -26,16 +26,25 @@
       <file leaf-file-name="style.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="33" selection-start="0" selection-end="91" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="425">
+            <state line="2" column="33" selection-start="0" selection-end="91" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="442">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dialog.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="forms.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/app/forms.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="18" selection-start="282" selection-end="282" vertical-scroll-proportion="0.6319703" vertical-offset="0" max-vertical-offset="538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialog.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/components/dialog.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="20" selection-start="187" selection-end="187" vertical-scroll-proportion="0.31598514" vertical-offset="0" max-vertical-offset="561">
+            <state line="26" column="18" selection-start="414" selection-end="414" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="578">
               <folding />
             </state>
           </provider>
@@ -80,9 +89,10 @@
         <option value="$PROJECT_DIR$/css/app/effects.less" />
         <option value="$PROJECT_DIR$/css/app/variables.less" />
         <option value="$PROJECT_DIR$/css/app/grid.less" />
-        <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/css/app/layout.less" />
         <option value="$PROJECT_DIR$/css/components/dialog.less" />
+        <option value="$PROJECT_DIR$/css/style.less" />
+        <option value="$PROJECT_DIR$/css/app/forms.less" />
       </list>
     </option>
   </component>
@@ -495,9 +505,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.less">
+    <entry file="file://$PROJECT_DIR$/css/components/dialog.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="33" selection-start="0" selection-end="91" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="425">
+        <state line="26" column="18" selection-start="414" selection-end="414" vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="578">
           <folding />
         </state>
       </provider>
@@ -509,9 +519,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/components/dialog.less">
+    <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="20" selection-start="187" selection-end="187" vertical-scroll-proportion="0.31598514" vertical-offset="0" max-vertical-offset="561">
+        <state line="2" column="33" selection-start="0" selection-end="91" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app/forms.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="18" selection-start="282" selection-end="282" vertical-scroll-proportion="0.6319703" vertical-offset="0" max-vertical-offset="538">
           <folding />
         </state>
       </provider>

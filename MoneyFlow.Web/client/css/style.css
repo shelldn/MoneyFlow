@@ -22,6 +22,7 @@
 .dialog {
   padding: 20px;
   border: 1px solid #3399dd;
+  text-align: left;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -64,6 +65,33 @@ body {
 }
 #account {
   font-size: 0.85em;
+}
+.data-row {
+  display: block;
+  width: 100%;
+}
+.data-row:after {
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  content: " ";
+}
+.data-row + .data-row {
+  margin-top: 10px;
+}
+input,
+label {
+  line-height: 25px;
+}
+input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
 }
 .row {
   display: block;
