@@ -208,6 +208,8 @@
     <Content Include="Views\Shared\_LayoutNull.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\_ViewStart.cshtml" />
+    <Content Include="client\css\app\effects.less" />
+    <Content Include="client\css\app\grid.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

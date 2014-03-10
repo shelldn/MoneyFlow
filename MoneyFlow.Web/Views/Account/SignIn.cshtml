@@ -6,5 +6,23 @@
 
 @using (Html.BeginForm())
 {
+    @* UserName *@
+    <div class="row">
+        <div class="col col-4">
+            @Html.LabelFor(m => m.UserName)
+        </div>
+        <div class="col col-8">
+            @Html.EditorFor(m => m.UserName)
+        </div>
+    </div>
     
+    @* Password *@
+    <div class="row">
+        <div class="col col-4">
+            @Html.LabelFor(m => m.Password)
+        </div>
+        <div class="col col-8">
+            @Html.EditorFor(m => m.Password)
+        </div>
+    </div>
 }

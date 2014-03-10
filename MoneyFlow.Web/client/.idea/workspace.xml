@@ -23,10 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="typography.less" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="typography.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/app/typography.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="1" selection-start="146" selection-end="146" vertical-scroll-proportion="0.05204461" vertical-offset="108" max-vertical-offset="646">
+            <state line="8" column="1" selection-start="146" selection-end="146" vertical-scroll-proportion="-1.0769231" vertical-offset="108" max-vertical-offset="646">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="grid.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/app/grid.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.2843866" vertical-offset="0" max-vertical-offset="748">
               <folding />
             </state>
           </provider>
@@ -462,13 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/app/grid.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="12" selection-start="382" selection-end="382" vertical-scroll-proportion="0.49418604" vertical-offset="187" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="19" selection-start="171" selection-end="171" vertical-scroll-proportion="-0.5975177" vertical-offset="575" max-vertical-offset="1802">
@@ -485,7 +487,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/app/typography.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="1" selection-start="146" selection-end="146" vertical-scroll-proportion="0.05204461" vertical-offset="108" max-vertical-offset="646">
+        <state line="8" column="1" selection-start="146" selection-end="146" vertical-scroll-proportion="-1.0769231" vertical-offset="108" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app/grid.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.2843866" vertical-offset="0" max-vertical-offset="748">
           <folding />
         </state>
       </provider>
