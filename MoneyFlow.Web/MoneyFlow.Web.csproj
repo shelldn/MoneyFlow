@@ -193,6 +193,9 @@
     <Content Include="client\css\app\layout.less" />
     <Content Include="client\css\app\variables.less" />
     <Content Include="client\css\style.less" />
+    <Content Include="client\css\components\menubar.less" />
+    <Content Include="client\css\app\debug.less" />
+    <Content Include="client\css\app\typography.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,9 +224,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="client\css\components\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MoneyFlow.Data\MoneyFlow.Data.csproj">
       <Project>{66C0DB7A-BB1E-4A3E-9C3E-3D617D1D30DB}</Project>
