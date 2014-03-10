@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using MoneyFlow.Web.ViewModels;
 
 namespace MoneyFlow.Web.Controllers
 {
@@ -6,7 +8,15 @@ namespace MoneyFlow.Web.Controllers
     {
         public ActionResult SignIn(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignIn(LoginViewModel model, string returnUrl)
+        {
+            throw new NotImplementedException();
         }
     }
 }
