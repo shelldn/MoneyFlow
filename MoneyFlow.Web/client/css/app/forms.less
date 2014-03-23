@@ -1,0 +1,37 @@
+// ------------------------------
+// MoneyFlow Forms
+// ------------------------------
+
+form label {
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.data-row {
+  .row;
+}
+
+.data-row + .data-row {
+  margin-top: @spacing-small;
+}
+
+input, label {
+  line-height: @line-height-large;
+  color: @color-gray;
+}
+
+input {
+  outline: 0;
+  .box-sizing(border-box);
+
+  &[type="text"],
+  &[type="password"] {
+    padding: 0 2px;
+    width: 100%;
+    border: 1px solid @color-light-gray;
+
+    &:focus {
+      border-color: @color-base;
+    }
+  }
+}
