@@ -19,7 +19,7 @@ namespace MoneyFlow.Data.SampleData
 
             };
 
-            new List<Consumption>
+            var consumptions = new List<Consumption>
             {
                 new Consumption() { Date = DateTime.Parse("2013-01-01T13:44:51"), Category = categories[0], Amount = 10.25m },
                 new Consumption() { Date = DateTime.Parse("2013-01-25T20:51:21"), Category = categories[1], Amount = 125.50m },
@@ -30,8 +30,9 @@ namespace MoneyFlow.Data.SampleData
                 new Consumption() { Date = DateTime.Parse("2014-01-04T10:15:10"), Category = categories[1], Amount = 75.40m },
                 new Consumption() { Date = DateTime.Parse("2014-01-06T09:55:01"), Category = categories[0], Amount = 88.50m }
             
-            }.ForEach(c => context.Consumptions.Add(c));
+            };
 
+            context.Consumptions.AddRange(consumptions);
             context.SaveChanges();
         }
     }
