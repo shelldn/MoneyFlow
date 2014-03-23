@@ -9,7 +9,7 @@ using MoneyFlow.Data;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
-namespace MoneyFlow.Web.Controllers.Api
+namespace MoneyFlow.Web.ApiControllers
 {
     public class ConsumptionsController : ApiControllerBase
     {

@@ -231,9 +231,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.WebApi.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Api\ApiControllerBase.cs" />
-    <Compile Include="Controllers\Api\CategoriesController.cs" />
-    <Compile Include="Controllers\Api\ConsumptionsController.cs" />
+    <Compile Include="ApiControllers\ApiControllerBase.cs" />
+    <Compile Include="ApiControllers\CategoriesController.cs" />
+    <Compile Include="ApiControllers\ConsumptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,7 +265,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>26968</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

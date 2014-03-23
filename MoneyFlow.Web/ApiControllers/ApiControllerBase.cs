@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using MoneyFlow.Data.Contracts;
 
-namespace MoneyFlow.Web.Controllers.Api
+namespace MoneyFlow.Web.ApiControllers
 {
     public class ApiControllerBase : ApiController
     {
