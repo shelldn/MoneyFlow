@@ -1,3 +1,6 @@
+using MoneyFlow.Data;
+using MoneyFlow.Data.Contracts;
+
 [assembly: WebActivator.PreApplicationStartMethod(typeof(MoneyFlow.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(MoneyFlow.Web.App_Start.NinjectWebCommon), "Stop")]
 
@@ -53,6 +56,7 @@ namespace MoneyFlow.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IMoneyFlowUow>().To<MoneyFlowUow>();
         }        
     }
 }
