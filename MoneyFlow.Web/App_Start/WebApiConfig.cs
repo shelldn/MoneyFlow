@@ -34,6 +34,7 @@ namespace MoneyFlow.Web
         {
             ConfigureFormatters(config);
             RegisterRoutes(config);
+            IocConfig.Register(config);
         }
     }
 }
