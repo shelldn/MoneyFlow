@@ -11,8 +11,8 @@ namespace MoneyFlow.Model
 
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
-
-        [ForeignKey("CategoryId")]
+        public int CategoryId { get; set; }
+        
         public Category Category { get; set; }
     }
 }
