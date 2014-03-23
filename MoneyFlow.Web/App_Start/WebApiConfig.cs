@@ -1,10 +1,9 @@
 ﻿using System.Web.Http;
 using Newtonsoft.Json.Serialization;
-using Owin;
 
 namespace MoneyFlow.Web
 {
-    public partial class Startup
+    public class WebApiConfig
     {
         private static void ConfigureFormatters(HttpConfiguration config)
         {
@@ -31,15 +30,10 @@ namespace MoneyFlow.Web
             );
         }
 
-        private static void ConfigureWebApi(IAppBuilder app)
+        public static void Register(HttpConfiguration config)
         {
-            var config = new HttpConfiguration();
-
             ConfigureFormatters(config);
             RegisterRoutes(config);
-            IocConfig.RegisterIoc(config);
-
-            app.UseWebApi(config);
         }
     }
 }

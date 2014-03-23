@@ -11,7 +11,6 @@ namespace MoneyFlow.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            ConfigureWebApi(app);
         }
     }
 }
