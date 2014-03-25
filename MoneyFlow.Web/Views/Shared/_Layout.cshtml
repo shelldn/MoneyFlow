@@ -7,22 +7,7 @@
 </head>
 <body>
     <header id="header" role="banner">
-        <nav class="menubar" role="navigation">
-            <div class="content text-center">
-                <a href="#">MF</a>
-                <div id="account" class="right">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        @:Authenticated
-                    }
-                    else
-                    {
-                        <a href="#">Register</a>
-                        @Html.ActionLink("Sign In", "SignIn", "Account")
-                    }
-                </div>
-            </div>
-        </nav>
+        <a id="logo" href="@Url.Action("Index", "Home")"></a>
     </header>
     <div class="content">
         <div id="body" ng-controller="MainCtrl" role="main">
