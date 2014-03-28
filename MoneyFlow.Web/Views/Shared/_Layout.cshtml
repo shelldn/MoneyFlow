@@ -6,20 +6,20 @@
     @Styles.Render("~/client/css/style")
 </head>
 <body>
-    <header id="header" role="banner">
-        <a id="logo" href="@Url.Action("Index", "Home")"></a>
-    </header>
     <div class="content">
-        <div id="body" ng-controller="MainCtrl" role="main">
+        <header id="header" role="banner">
+            <a id="logo" href="@Url.Action("Index", "Home")"></a>
+        </header>
+        <div id="body" ng-controller="@ViewBag.MainController" role="main">
             @RenderBody()
         </div>
         <footer id="footer" role="contentinfo"></footer>
     </div>
-    
+
     @Scripts.Render("~/bundle/underscore")
     @Scripts.Render("~/bundle/angular")
     @Scripts.Render("~/bundle/app")
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
