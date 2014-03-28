@@ -148,12 +148,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="client\css\images\logo.png" />
     <Content Include="client\css\style.css" />
     <Content Include="client\css\vendor\normalize.css" />
     <Content Include="client\Gruntfile.js" />
-    <Content Include="client\js\app.js" />
     <Content Include="client\js\components.js" />
     <Content Include="client\js\data.js" />
+    <Content Include="client\js\tracker.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js" />
     <Content Include="client\js\vendor\angular\angular-csp.css" />

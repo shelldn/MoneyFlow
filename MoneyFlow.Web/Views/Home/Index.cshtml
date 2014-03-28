@@ -1,10 +1,16 @@
-﻿@{
+﻿@model Consumption
+
+@{
     ViewBag.Title = "Consumptions tracker";
     ViewBag.AngularApp = "mf.tracker";
     ViewBag.MainController = "MainCtrl";
 }
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus.
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(m => m.Amount)
+    @Html.EditorFor(m => m.Category)
+}
 
 @section scripts {
     <script src="~/client/js/tracker.js"></script>
