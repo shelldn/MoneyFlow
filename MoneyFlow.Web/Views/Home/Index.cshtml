@@ -6,10 +6,15 @@
     ViewBag.MainController = "MainCtrl";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Home", null, FormMethod.Post, 
+    new { name = "cns-data", ng_submit = "commit()" }))
 {
-    @Html.EditorFor(m => m.Amount)
-    @Html.EditorFor(m => m.Category)
+    <div class="col col-4">
+        @Html.TextBoxFor(m => m.Amount, new { id = "amt", ng_model = "cns.amt" })
+    </div>
+    <div class="col col-8">
+        @Html.TextBoxFor(m => m.Category, new { id = "cat", ng_model = "cns.cat", placeholder = "e.g. Car, home or study" })
+    </div>
 }
 
 @section scripts {

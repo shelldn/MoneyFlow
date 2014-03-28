@@ -17,3 +17,18 @@
   -moz-box-sizing: @sizing-option;
   box-sizing: @sizing-option;
 }
+
+.smooth-corners (@corner-radius) {
+  -webkit-border-radius: @corner-radius;
+  -moz-border-radius: @corner-radius;
+  border-radius: @corner-radius;
+}
+
+//
+// Shadow
+
+.inner-shadow (@options) {
+  -webkit-box-shadow: inset @options;
+  -moz-box-shadow: inset @options;
+  box-shadow: inset @options;
+}

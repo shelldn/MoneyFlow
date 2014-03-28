@@ -7,16 +7,7 @@ form label {
   font-size: 0.85em;
 }
 
-.data-row {
-  .row;
-}
-
-.data-row + .data-row {
-  margin-top: @spacing-small;
-}
-
 input, label {
-  line-height: @line-height-large;
   color: @color-gray;
 }
 
@@ -26,9 +17,10 @@ input {
 
   &[type="text"],
   &[type="password"] {
-    padding: 0 2px;
+    padding: 0 .4em;
     width: 100%;
     border: 1px solid @color-light-gray;
+    .smooth-corners(@corner-radius-base);
 
     &:focus {
       border-color: @color-base;
