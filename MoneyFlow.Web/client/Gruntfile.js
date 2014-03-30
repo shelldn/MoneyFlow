@@ -10,7 +10,7 @@ module.exports = function(grunt) {
                 dest: 'js/data.js'
             },
             components: {
-                src: ['src/components/app.js', 'src/components/*.js'],
+                src: ['src/components/app.js', 'src/components/**/*.js'],
                 dest: 'js/components.js'
             },
             tracker: {

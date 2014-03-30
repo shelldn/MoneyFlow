@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Consumptions tracker";
     ViewBag.AngularApp = "mf.tracker";
-    ViewBag.MainController = "MainCtrl";
 }
 
 @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, 
@@ -13,7 +12,7 @@
         @Html.TextBoxFor(m => m.Amount, new { id = "amt", name = "amt", ng_model = "cns.amt" })
     </div>
     <div class="col col-8">
-        <input id="cat" name="cat" type="lookup" ng-model="cns.cat" placeholder="e.g. Car, home or study" />
+        <input id="cat" name="cat" type="lookup" mf-options="cat as cat.name in categories" ng-model="cns.cat" placeholder="e.g. Car, home or study" />
     </div>
 }
 
