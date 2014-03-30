@@ -11,19 +11,23 @@ input, label {
   color: @color-gray;
 }
 
+.text-box () {
+  padding: 0 .4em;
+  width: 100%;
+  border: 1px solid @color-light-gray;
+  .smooth-corners(@corner-radius-base);
+
+  &:focus {
+    border-color: @color-base;
+  }
+}
+
 input {
   outline: 0;
   .box-sizing(border-box);
 
   &[type="text"],
   &[type="password"] {
-    padding: 0 .4em;
-    width: 100%;
-    border: 1px solid @color-light-gray;
-    .smooth-corners(@corner-radius-base);
-
-    &:focus {
-      border-color: @color-base;
-    }
+    .text-box;
   }
 }
