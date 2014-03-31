@@ -24,10 +24,8 @@ angular.module('mf.components')
 
                 var names = understand(attrs['mfOptions']);
 
-                scope.$watch(names.set, function(opts) {
-                    _.each(opts, function(opt) {
-                        LookupCtrl.addOption(opt);
-                    });
+                scope.$watchCollection('options', function(options) {
+                    LookupCtrl.options = options;
                 });
             }
         };

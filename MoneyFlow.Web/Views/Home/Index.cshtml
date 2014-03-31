@@ -11,9 +11,10 @@
     <div class="col col-4">
         @Html.TextBoxFor(m => m.Amount, new { id = "amt", name = "amt", ng_model = "cns.amt" })
     </div>
-    <div class="col col-8">
+    <div class="col col-8" ng-init="options = [{ name: 'John' }, { name: 'July' }, { name: 'Basil' }]">
         <input id="cat" name="cat" type="lookup" mf-options="cat as cat.name in categories" ng-model="cns.cat" placeholder="e.g. Car, home or study" />
     </div>
+    <div>{{ cns.cat }}</div>
 }
 
 @section scripts {
