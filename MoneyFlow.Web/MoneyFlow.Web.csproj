@@ -202,6 +202,7 @@
     <Content Include="client\css\app\grid.less" />
     <Content Include="client\css\components\dialog.less" />
     <Content Include="client\css\app\forms.less" />
+    <Content Include="tmpl\lookup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
