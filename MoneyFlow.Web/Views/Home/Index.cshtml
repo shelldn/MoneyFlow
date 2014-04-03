@@ -3,18 +3,21 @@
 @{
     ViewBag.Title = "Consumptions tracker";
     ViewBag.AngularApp = "mf.tracker";
+    ViewBag.MainCtrl = "TrackerCtrl";
 }
 
-@using (Html.BeginForm("Index", "Home", null, FormMethod.Post, 
+@using (Html.BeginForm("Index", "Home", null, FormMethod.Post,
     new { name = "cns-data", ng_submit = "commit()" }))
 {
     <div class="col col-4">
         @Html.TextBoxFor(m => m.Amount, new { id = "amt", name = "amt", ng_model = "cns.amt" })
     </div>
-    <div class="col col-8" ng-init="options = [{ name: 'John' }, { name: 'July' }, { name: 'Basil' }]">
-        <input id="cat" name="cat" type="lookup" mf-options="cat as cat.name in categories" ng-model="cns.cat" placeholder="e.g. Car, home or study" />
+    <div class="col col-8">
+        <mf:lookup mf-options="c as c.description in cats" ng-model="cat">
+            <i ng-bind="c.id"></i>
+            <em ng-bind="c.description"></em>
+        </mf:lookup>
     </div>
-    <div>{{ cns.cat }}</div>
 }
 
 @section scripts {

@@ -10,7 +10,7 @@
         <header id="header" role="banner">
             <a id="logo" href="@Url.Action("Index", "Home")"></a>
         </header>
-        <div id="body" ng-controller="@ViewBag.MainController" role="main">
+        <div id="body" ng-controller="@ViewBag.MainCtrl as vm" role="main">
             @RenderBody()
         </div>
         <footer id="footer" role="contentinfo"></footer>
