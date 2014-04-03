@@ -2,7 +2,7 @@ angular.module('mf.data')
 
     .factory('uow', function($resource) {
         var
-            categories = $resource('/api/categories'),
+            categories = $resource('/api/categories', null),
             consumptions = $resource('api/consumptions', null, {
                 periods: {
                     method: 'GET',

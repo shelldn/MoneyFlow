@@ -1,40 +1,88 @@
+var Query = function(q) {
+    this.q = q;
+};
+
 angular.module('mf.components')
+
+    //
+    // Lookup option
+
+    .directive('mfLookupOption', function() {
+        return {
+            require: '^mfLookup',
+            link: function(scope, element, attrs, LookupCtrl, transclude) {
+                scope[LookupCtrl.item] = scope['o'];
+
+                transclude(scope, function(clone) {
+                    element.empty();
+                    element.append(clone);
+                });
+            }
+        };
+    })
 
     //
     // Lookup
 
-    .directive('input', function($compile) {
+    .directive('mfLookup', function() {
         return {
-            require: 'ngModel',
             restrict: 'E',
+            require: 'ngModel',
+            transclude: true,
             scope: {
-                option: '=ngModel'
+                model: '=ngModel'
             },
-            controller: function() {
+            controller: function($scope) {
                 var self = this;
 
-                self.select = function(option) {
-                    self.option = option;
+                self.select = function(o) {
+                    $scope.model = o;
                 };
+
+                self.isSelected = function(o) {
+                    return self.option == o;
+                };
+
+                self.lookup = function(q) {
+                    self.options = self.repo.query(new Query(q));
+                };
+
+                self.nav = function(e) {
+                    switch (e.keyCode) {
+
+                        // Enter
+                        case 13:
+                            self.select(self.option);
+                            e.preventDefault();
+                            break;
+
+                        // Вниз
+                        case 40:
+                            self.option = self.options[self.options.indexOf(self.option) + 1] || self.option;
+                            e.preventDefault();
+                            break;
+
+                        // Вверх
+                        case 38:
+                            self.option = self.options[self.options.indexOf(self.option) - 1] || self.option;
+                            e.preventDefault();
+                            break;
+                    }
+                };
+
+                $scope.$watch('vm.option', function(o) {
+                    if (!_.isUndefined(o)) {
+                        self.q = o[self.prop];
+                    }
+                });
+
+                $scope.$watchCollection('vm.options', function(options) {
+                    self.option = _.find(options, function(o) {
+                        return self.q == o[self.prop];
+                    });
+                });
             },
             controllerAs: 'vm',
-            link: function(scope, element, attrs) {
-                if (attrs['type'] !== 'lookup') return;
-
-                var ul = $('<ul></ul>'),
-                    li = $('<li ng-repeat="option in vm.options"></li>'),
-
-                    a = $('<a href="javascript:;">{{ option.name }}</a>').attr({
-                            'ng-class': '{ active: vm.option == option }',
-                            'ng-click': 'vm.select(option)'
-                        });
-
-                ul.append(li.append(a));
-
-                // Компилируем шаблон
-                var tmpl = $compile(ul)(scope);
-
-                element.wrap('<div class="lookup"></div>').after(tmpl);
-            }
+            templateUrl: '/tmpl/lookup'
         };
     });
