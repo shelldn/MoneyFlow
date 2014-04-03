@@ -1,10 +1,4 @@
 # ==============================
-# CSS
-# ============================== 
-
-css/style.css
-
-# ==============================
 # Covers JetBrains IDEs: 
 # IntelliJ, RubyMine, 
 # PhpStorm, AppCode, PyCharm
@@ -67,3 +61,11 @@ build/Release
 # Deployed apps should consider commenting this line out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
+
+# ==============================
+# MoneyFlow
+# ============================== 
+
+css/style.css
+/js
+!js/vendor
