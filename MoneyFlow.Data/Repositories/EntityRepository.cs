@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using MoneyFlow.Data.Contracts;
 
 namespace MoneyFlow.Data
@@ -23,6 +24,16 @@ namespace MoneyFlow.Data
         public virtual IQueryable<T> GetAll()
         {
             return DbSet;
+        }
+
+        public virtual IQueryable<T> GetRange(int skipCount, int takeCount)
+        {
+            return DbSet.Skip(skipCount).Take(takeCount);
+        }
+
+        public virtual IQueryable<T> Lookup(Expression<Func<T, bool>> lookupPredicate)
+        {
+            return DbSet.Where(lookupPredicate);
         }
 
         public virtual T GetById(int id)

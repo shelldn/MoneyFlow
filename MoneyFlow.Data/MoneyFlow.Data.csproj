@@ -48,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsumptionsRepository.cs" />
+    <Compile Include="Repositories\ConsumptionsRepository.cs" />
     <Compile Include="Contracts\IMoneyFlowUow.cs" />
     <Compile Include="Contracts\IRepository.cs" />
-    <Compile Include="EntityRepository.cs" />
+    <Compile Include="Repositories\EntityRepository.cs" />
     <Compile Include="MoneyFlowDbContext.cs" />
     <Compile Include="MoneyFlowUow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
