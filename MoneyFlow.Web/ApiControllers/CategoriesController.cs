@@ -12,9 +12,14 @@ namespace MoneyFlow.Web.ApiControllers
         public CategoriesController(IMoneyFlowUow uow)
             : base(uow) { }
 
-        public IQueryable<Category> GetCategories()
+        public IQueryable<Category> GetAll()
         {
             return Uow.Categories.GetAll();
+        }
+
+        public IQueryable<Category> GetByLookupQuery(string q)
+        {
+            return Uow.Categories.Lookup(c => c.Description.Contains(q));
         }
 
         public HttpResponseMessage PostCategory(Category item)

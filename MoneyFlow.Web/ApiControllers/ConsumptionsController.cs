@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,11 +21,9 @@ namespace MoneyFlow.Web.ApiControllers
             return Uow.Consumptions.GetPeriods();
         }
 
-        public IQueryable<Consumption> GetConsumptions(int month, int year)
+        public IQueryable<Consumption> GetByPeriod(DateTime period)
         {
-            return Uow.Consumptions.GetAll()
-                .Where(c => c.Date.Month == month && c.Date.Year == year)
-                .Include(c => c.Category);
+            return Uow.Consumptions.GetByPeriod(period);
         }
 
         private static void CreateTimeStamp(Consumption item)
