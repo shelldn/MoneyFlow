@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using MoneyFlow.Model;
 
-namespace MoneyFlow.Data.SampleData
+using SampleData = MoneyFlow.Seed.Data;
+
+namespace MoneyFlow.Data
 {
     public class MoneyFlowDbInitializer 
         : DropCreateDatabaseAlways<MoneyFlowDbContext>
@@ -16,7 +17,6 @@ namespace MoneyFlow.Data.SampleData
                 new Category() { Description = "Продукты" },
                 new Category() { Description = "Корм для собаки" },
                 new Category() { Description = "Кино" }
-
             };
 
             var consumptions = new List<Consumption>
