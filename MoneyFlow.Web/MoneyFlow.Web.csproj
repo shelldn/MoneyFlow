@@ -148,6 +148,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Categories.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BrowseToURL>~/cats.xml</BrowseToURL>
+    </Content>
     <Content Include="client\css\images\logo.png" />
     <Content Include="client\css\style.css" />
     <Content Include="client\css\vendor\normalize.css" />

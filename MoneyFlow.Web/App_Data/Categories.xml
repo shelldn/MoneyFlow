@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Categories>
+  <Category Description="Чай, кофе, сигареты" />
+  <Category Description="Бензин, обслуживание машины" />
+  <Category Description="Продукты питания, быт. химия" />
+  <Category Description="Средства личной гигиены" />
+  <Category Description="Детское питание" />
+  <Category Description="Корм для кота, собаки" />
+  <Category Description="Кино, театр, развлечения" />
+  <Category Description="Одежда" />
+  <Category Description="Поездки, путешествия" />
+  <Category Description="Дорога на работу" />
+  <Category Description="Покупки" />
+</Categories>
