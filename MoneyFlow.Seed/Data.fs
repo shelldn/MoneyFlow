@@ -16,7 +16,7 @@ module Data =
     let Seed cnsCount (applyFunc : ApplyFunc) =
 
         let data = { 
-            Categories = read "Categories.xml";
+            Categories = read<Category> "Categories.xml";
             Consumptions = [ for i in 0..cnsCount -> Consumption() ]
         }
 
