@@ -9,7 +9,7 @@ namespace MoneyFlow.Data
     {
         protected override void Seed(MoneyFlowDbContext db)
         {
-            SampleData.Seed(25, d => db.Categories.AddRange(d.Categories));
+            SampleData.Seed(25, d => db.Consumptions.AddRange(d.Consumptions));
 
             db.SaveChanges();
         }
