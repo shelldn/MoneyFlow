@@ -15,6 +15,11 @@ namespace MoneyFlow.Web.ApiControllers
         public ConsumptionsController(IMoneyFlowUow uow)
             : base(uow) { }
 
+        public IQueryable<Consumption> GetAll()
+        {
+            return Uow.Consumptions.GetAll();
+        }
+            
         [Route("api/consumptions/periods")]
         public IEnumerable<dynamic> GetPeriods()
         {

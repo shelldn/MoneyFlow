@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using MoneyFlow.Data.SampleData;
 using MoneyFlow.Model;
 
 namespace MoneyFlow.Data

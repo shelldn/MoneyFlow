@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Serialization;
 
 namespace MoneyFlow.Model
 {
@@ -8,6 +9,7 @@ namespace MoneyFlow.Model
         public int Id { get; set; }
 
         [Required]
+        [XmlAttribute]
         public string Description { get; set; }
     }
 }
