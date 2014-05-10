@@ -53,6 +53,9 @@
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <ItemGroup>
     <Compile Include="XmlReader.fs" />
+    <Compile Include="Category.fs" />
+    <Compile Include="Consumption.fs" />
+    <Compile Include="SeedOptions.fs" />
     <Compile Include="Data.fs" />
   </ItemGroup>
   <ItemGroup>
