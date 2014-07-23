@@ -1,0 +1,6 @@
+﻿CREATE TABLE Finance.Costs (
+	Id				INT				NOT NULL	IDENTITY(1, 1)	PRIMARY KEY,
+	CategoryId		INT				NOT NULL	FOREIGN KEY REFERENCES Finance.Categories (Id),
+	[Date]			DATETIME2		NOT NULL,
+	Amount			DECIMAL			NOT NULL
+);
