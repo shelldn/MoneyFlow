@@ -20,6 +20,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MoneyFlow.Seed", "MoneyFlow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFlow.Identity", "MoneyFlow.Identity\MoneyFlow.Identity.csproj", "{F7C7FA8A-A7F5-4380-B5A1-54D923E6CFFB}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MoneyFlow.Database", "MoneyFlow.Database\MoneyFlow.Database.sqlproj", "{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,12 @@ Global
 		{F7C7FA8A-A7F5-4380-B5A1-54D923E6CFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7C7FA8A-A7F5-4380-B5A1-54D923E6CFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7C7FA8A-A7F5-4380-B5A1-54D923E6CFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
