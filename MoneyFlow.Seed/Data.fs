@@ -8,7 +8,7 @@ module Data =
     
     type T = { 
         Categories : Category seq;
-        Consumptions : Consumption seq
+        Consumptions : Cost seq
     }
 
     type ApplyFunc = delegate of T -> unit

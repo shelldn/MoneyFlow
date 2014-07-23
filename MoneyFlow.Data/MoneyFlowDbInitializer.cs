@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using MoneyFlow.Model;
 using MoneyFlow.Seed;
 
 using SampleData = MoneyFlow.Seed.Data;
@@ -7,27 +8,11 @@ using SampleData = MoneyFlow.Seed.Data;
 namespace MoneyFlow.Data
 {
     public class MoneyFlowDbInitializer 
-        : DropCreateDatabaseAlways<MoneyFlowDbContext>
+        : IDatabaseInitializer<MoneyFlowDbContext>
     {
-        public SeedOptions Options { get; private set; }
-
-        public MoneyFlowDbInitializer()
+        public void InitializeDatabase(MoneyFlowDbContext context)
         {
-            Options = new SeedOptions
-            {
-                ConsumptionCount = 25,
-                MinDate = new DateTime(2014, 1, 1),
-                MaxDate = new DateTime(2014, 12, 31),
-                MinAmount = 1,
-                MaxAmount = 500
-            };
-        }
-
-        protected override void Seed(MoneyFlowDbContext db)
-        {
-            SampleData.Seed(Options, d => db.Consumptions.AddRange(d.Consumptions));
-
-            db.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

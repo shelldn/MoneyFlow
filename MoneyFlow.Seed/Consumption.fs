@@ -28,8 +28,8 @@ module Consumption =
         |> decimal
         
     let seed n minDate maxDate minAmount maxAmount = 
-        [ for i in 1..n ->            
-            Consumption(
+        [ for i in 1..n -> 
+            Cost(
                 Category = nextCategory(),
                 Date = nextDate minDate maxDate,
                 Amount = nextAmount minAmount maxAmount

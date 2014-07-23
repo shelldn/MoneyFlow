@@ -10,37 +10,37 @@ using MoneyFlow.Model;
 
 namespace MoneyFlow.Web.ApiControllers
 {
-    public class ConsumptionsController : ApiControllerBase
+    public class CostsController : ApiControllerBase
     {
-        public ConsumptionsController(IMoneyFlowUow uow)
+        public CostsController(IMoneyFlowUow uow)
             : base(uow) { }
 
-        public IQueryable<Consumption> GetAll()
+        public IQueryable<Cost> GetAll()
         {
-            return Uow.Consumptions.GetAll();
+            return Uow.Costs.GetAll();
         }
             
         [Route("api/consumptions/periods")]
         public IEnumerable<dynamic> GetPeriods()
         {
-            return Uow.Consumptions.GetPeriods();
+            return Uow.Costs.GetPeriods();
         }
 
-        public IQueryable<Consumption> GetByPeriod(DateTime period)
+        public IQueryable<Cost> GetByPeriod(DateTime period)
         {
-            return Uow.Consumptions.GetByPeriod(period);
+            return Uow.Costs.GetByPeriod(period);
         }
 
-        private static void CreateTimeStamp(Consumption item)
+        private static void CreateTimeStamp(Cost item)
         {
             item.Date = DateTime.Now;
         }
 
-        public HttpResponseMessage PostConsumption(Consumption item)
+        public HttpResponseMessage PostConsumption(Cost item)
         {
             CreateTimeStamp(item);
 
-            Uow.Consumptions.Add(item);
+            Uow.Costs.Add(item);
             Uow.Commit();
 
             var response = Request.CreateResponse(HttpStatusCode.Created, item);
