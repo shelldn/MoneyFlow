@@ -227,7 +227,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ApiControllers\ApiControllerBase.cs" />
     <Compile Include="ApiControllers\CategoriesController.cs" />
-    <Compile Include="ApiControllers\ConsumptionsController.cs" />
+    <Compile Include="ApiControllers\CostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -9,6 +9,6 @@ namespace MoneyFlow.Data.Contracts
 
         // repos
         IRepository<Category> Categories { get; }
-        IRepository<Consumption> Consumptions { get; }
+        IRepository<Cost> Costs { get; }
     }
 }
