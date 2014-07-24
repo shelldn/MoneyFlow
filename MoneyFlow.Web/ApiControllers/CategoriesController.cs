@@ -19,7 +19,7 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IQueryable<Category> GetByLookupQuery(string q)
         {
-            return Uow.Categories.Lookup(c => c.Description.Contains(q));
+            return Uow.Categories.Lookup(c => c.Words.Contains(q));
         }
 
         public HttpResponseMessage PostCategory(Category item)
