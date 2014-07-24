@@ -6,13 +6,19 @@
     ViewBag.MainCtrl = "TrackerCtrl as vm";
 }
 
-<form name="cost-data" ng-submit="vm.commit()">
+<form name="cost-data" novalidate 
+      ng-submit="this['cost-data'].$valid && vm.commit()">
+    
     <fieldset ng-disabled="vm.isProcessing">
 
         @* Cost amount *@
 
         <div class="col col-4">
-            @Html.TextBoxFor(m => m.Amount, new { ng_model = "vm.cost.amount" })
+            @Html.TextBoxFor(m => m.Amount, new
+            {
+                ng_model = "vm.cost.amount",
+                required = ""
+            })
         </div>
 
         @* Cost cat. *@
@@ -21,13 +27,16 @@
             @Html.TextBoxFor(m => m.Category, new
             {
                 mf_lookup = "c as c.name from uow.cats",
-                ng_model = "vm.cost.category.words"
+                ng_model = "vm.cost.category.words",
+                required = "",
             })
         </div>
+        
+        @* Commit *@
+
         <button type="submit">ENTER</button>
 
     </fieldset>
-
 </form>
 
 @section Scripts {

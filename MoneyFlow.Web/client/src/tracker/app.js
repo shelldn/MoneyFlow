@@ -4,9 +4,7 @@ angular.module('mf.tracker', ['mf.data', 'mf.controls'])
 
     .constant('Cost', function() {
         this.amount = null;
-        this.category = {
-            description: ''
-        };
+        this.category = { words: '' };
     })
 
     // Init
