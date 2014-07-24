@@ -5,6 +5,7 @@
   "author": "Yevgeny Shirin <yevgeny.shirin@gmail.com>",
   "devDependencies": {
     "grunt": "~0.4.2",
+    "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-concat": "~0.3.0"
   }
 }

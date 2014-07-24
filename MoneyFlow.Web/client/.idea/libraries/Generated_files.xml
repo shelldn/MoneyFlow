@@ -12,8 +12,8 @@
       <root url="file://$PROJECT_DIR$/src/tracker/controllers.js" />
       <root url="file://$PROJECT_DIR$/src/components/directives/lookup/controller.js" />
       <root url="file://$PROJECT_DIR$/src/components/directives/lookup/controller.js" />
-      <root url="file://$PROJECT_DIR$/src/components/directives/lookup.js" />
-      <root url="file://$PROJECT_DIR$/src/components/directives/lookup.js" />
+      <root url="file://$PROJECT_DIR$/src/controls/directives/lookup.js" />
+      <root url="file://$PROJECT_DIR$/src/controls/directives/lookup.js" />
       <root url="file://$PROJECT_DIR$/src/tracker/controller.js" />
     </CLASSES>
     <SOURCES />
