@@ -1,1 +1,1 @@
-angular.module('mf.controler', []);
+angular.module('mf.controls', []);

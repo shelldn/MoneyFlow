@@ -27,7 +27,7 @@ namespace MoneyFlow.Web
 
             bundles.Add(new ScriptBundle("~/bundle/app").Include(
                 "~/client/js/data.js",
-                "~/client/js/components.js"
+                "~/client/js/controls.js"
             ));
             #endregion
         }
