@@ -3,23 +3,33 @@
 @{
     ViewBag.Title = "Costs tracker";
     ViewBag.AngularApp = "mf.tracker";
-    ViewBag.MainCtrl = "TrackerCtrl";
+    ViewBag.MainCtrl = "TrackerCtrl as vm";
 }
 
-@using (Html.BeginForm("Index", "Home", null, FormMethod.Post,
-    new { name = "cns-data", ng_submit = "commit()" }))
-{
-    <div class="col col-4">
-        @Html.TextBoxFor(m => m.Amount, new { id = "amt", name = "amt", ng_model = "cns.amt" })
-    </div>
-    <div class="col col-8">
-        <mf:lookup mf-options="c as c.description in cats" ng-model="cat">
-            <i ng-bind="c.id"></i>
-            <em ng-bind="c.description"></em>
-        </mf:lookup>
-    </div>
-}
+<form name="cost-data" ng-submit="vm.commit()">
+    <fieldset ng-disabled="vm.isProcessing">
 
-@section scripts {
+        @* Cost amount *@
+
+        <div class="col col-4">
+            @Html.TextBoxFor(m => m.Amount, new { ng_model = "vm.cost.amount" })
+        </div>
+
+        @* Cost cat. *@
+
+        <div class="col col-8">
+            @Html.TextBoxFor(m => m.Category, new
+            {
+                mf_lookup = "c as c.name from cats",
+                ng_model = "vm.cost.category.words"
+            })
+        </div>
+        <button type="submit">ENTER</button>
+
+    </fieldset>
+
+</form>
+
+@section Scripts {
     <script src="~/client/js/tracker.js"></script>
 }
