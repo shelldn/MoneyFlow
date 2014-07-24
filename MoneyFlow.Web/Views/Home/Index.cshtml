@@ -20,7 +20,7 @@
         <div class="col col-8">
             @Html.TextBoxFor(m => m.Category, new
             {
-                mf_lookup = "c as c.name from cats",
+                mf_lookup = "c as c.name from uow.cats",
                 ng_model = "vm.cost.category.words"
             })
         </div>

@@ -12,5 +12,5 @@ angular.module('mf.tracker', ['mf.data', 'mf.controls'])
     // Init
 
     .run(function($rootScope, uow) {
-        $rootScope.cats = uow['categories'];
+        $rootScope.uow = uow;
     });

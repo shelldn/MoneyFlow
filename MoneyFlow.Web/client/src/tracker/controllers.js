@@ -3,7 +3,7 @@ angular.module('mf.tracker')
     //
     // Tracker
 
-    .controller('TrackerCtrl', function(Cost) {
+    .controller('TrackerCtrl', function(Cost, uow) {
         var self = this;
 
         (self.init = function() {

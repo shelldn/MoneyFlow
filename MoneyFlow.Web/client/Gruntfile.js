@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                 banner: '/* <%= pkg.name %> v.<%= pkg.version %> */\n\n'
             },
             data: {
-                src: ['src/data/app.js', 'src/data/*.js'],
+                src: ['src/data/app.js', 'src/data/**/*.js'],
                 dest: 'js/data.js'
             },
             controls: {
