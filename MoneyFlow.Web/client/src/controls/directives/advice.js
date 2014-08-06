@@ -95,6 +95,39 @@ angular.module('mf.controls')
                     });
 
                     //
+                    // Processing keys
+
+                    element.on('keydown', function(e) {
+
+                        var sib = function(arr, it, inc) {
+                            return arr[arr.indexOf(it) + inc] || it;
+
+                        // Bind fn to resolve the
+                        // options array sibling
+                        }.bind(null,
+                            scope.options,
+                            scope.val
+                        );
+
+                        // Process key pressed
+                        (function proc(key, fn) {
+
+                            if (!fn[key]) return;
+
+                            e.preventDefault();
+
+                            select(fn[key]());
+                            scope.$apply();
+
+                        })(e.keyCode, {
+
+                            38: sib.bind(null, -1),   // up = prev
+                            40: sib.bind(null, +1)    // down = next
+                        });
+
+                    });
+
+                    //
                     // Options match
 
                     scope.$watchCollection('options', function(opts) {
