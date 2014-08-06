@@ -1,0 +1,8 @@
+﻿<ul class="advice" ng-show="has()">
+    <li ng-repeat="o in options">
+        <a class="option" href="javascript:;"
+           ng-class="{ active: isIt(o) }"
+           ng-click="select(o); close();"
+           ng-bind="viewOf(o)"></a>
+    </li>
+</ul>

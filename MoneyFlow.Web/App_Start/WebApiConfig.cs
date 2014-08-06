@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace MoneyFlow.Web
@@ -17,6 +18,10 @@ namespace MoneyFlow.Web
             var jsonFormatter = formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
+
+            // ignore self references
+            jsonFormatter.SerializerSettings.ReferenceLoopHandling = 
+                ReferenceLoopHandling.Ignore;
         }
 
         private static void RegisterRoutes(HttpConfiguration config)

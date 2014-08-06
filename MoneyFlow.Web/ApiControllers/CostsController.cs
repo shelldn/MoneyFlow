@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using MoneyFlow.Data;
 using MoneyFlow.Data.Contracts;
@@ -20,7 +18,7 @@ namespace MoneyFlow.Web.ApiControllers
             return Uow.Costs.GetAll();
         }
             
-        [Route("api/consumptions/periods")]
+        [Route("api/costs/periods")]
         public IEnumerable<dynamic> GetPeriods()
         {
             return Uow.Costs.GetPeriods();
@@ -31,24 +29,22 @@ namespace MoneyFlow.Web.ApiControllers
             return Uow.Costs.GetByPeriod(period);
         }
 
-        private static void CreateTimeStamp(Cost item)
+        private static void CreateTimeStamp(Cost model)
         {
-            item.Date = DateTime.Now;
+            model.Date = DateTime.Now;
         }
 
-        public HttpResponseMessage PostConsumption(Cost item)
-        {
-            CreateTimeStamp(item);
+        //
+        // POST: /api/costs
 
-            Uow.Costs.Add(item);
+        public IHttpActionResult Post(Cost model)
+        {
+            CreateTimeStamp(model);
+
+            Uow.Costs.Add(model);
             Uow.Commit();
 
-            var response = Request.CreateResponse(HttpStatusCode.Created, item);
-            var uri = Url.Link("DefaultApi", new { id = item.Id });
-            
-            response.Headers.Location = new Uri(uri);
-
-            return response;
+            return CreatedAtRoute("DefaultApi", new { id = model.Id }, model);
         }
     }
 }
