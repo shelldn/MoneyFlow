@@ -49,6 +49,11 @@ angular.module('mf.controls')
                     //
                     // Controller
 
+                    var init =
+                        scope.init = function() {
+                            scope.options = [];
+                        };
+
                     var viewOf =
                         scope.viewOf = function(o) {
                             return o[propName];
@@ -65,16 +70,13 @@ angular.module('mf.controls')
                                 viewOf(scope.val);
                         };
 
-                    scope.has = function() {
-                        return (function(opts) {
-                            return !!(opts && opts.length);
+                    var has =
+                        scope.has = function() {
+                            return (function(opts) {
+                                return !!(opts && opts.length);
 
-                        })(scope.options);
-                    };
-
-                    scope.close = function() {
-                        scope.options = [];
-                    };
+                            })(scope.options);
+                        };
 
                     //
                     // Model view
@@ -100,7 +102,7 @@ angular.module('mf.controls')
                     element.on('keydown', function(e) {
 
                         var sib = function(arr, it, inc) {
-                            return arr[arr.indexOf(it) + inc] || it;
+                            select(arr[arr.indexOf(it) + inc] || it);
 
                         // Bind fn to resolve the
                         // options array sibling
@@ -110,17 +112,16 @@ angular.module('mf.controls')
                         );
 
                         // Process key pressed
-                        (function proc(key, fn) {
-
-                            if (!fn[key]) return;
-
-                            e.preventDefault();
-
-                            select(fn[key]());
-                            scope.$apply();
+                        (function(key, fn) {
+                            if (has() && fn[key]) {
+                                e.preventDefault();
+                                scope.$apply(function() {
+                                    fn[key]();
+                                });
+                            }
 
                         })(e.keyCode, {
-
+                            13: init,
                             38: sib.bind(null, -1),   // up = prev
                             40: sib.bind(null, +1)    // down = next
                         });
