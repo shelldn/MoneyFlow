@@ -1,4 +1,4 @@
-﻿<table class="full-width">
+﻿<table id="table-costs" class="full-width">
     <tr ng-repeat="c in costs | orderBy: 'date': true">
         <td ng-bind="c.date | date"></td>
         <td ng-bind="c.category.words"></td>

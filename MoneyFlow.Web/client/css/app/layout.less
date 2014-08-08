@@ -34,11 +34,17 @@ html, body {
   }
 }
 
-#amt, #cat {
-  height: @line-height-large;
-  font-size: @font-size-large;
-}
+//
+// Costs table
 
-#amt {
+#table-costs {
+  border-width: 3px;
 
+  &, td {
+    border: solid @color-gray;
+  }
+
+  td {
+    border-width: 1px;
+  }
 }
