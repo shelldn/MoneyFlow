@@ -7,18 +7,29 @@ form label {
   font-size: 0.85em;
 }
 
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 input, label {
-  color: @color-gray;
+  color: @color-base;
 }
 
 .text-box () {
   padding: 0 .4em;
   width: 100%;
-  border: 1px solid @color-light-gray;
-  .smooth-corners(@corner-radius-base);
+  border: 1px solid @color-base;
 
   &:focus {
-    border-color: @color-base;
+    color: @color-aux;
+  }
+
+  &.text-box-large {
+    height: @line-height-large;
+    border-width: 3px;
+    font-size: @font-size-large;
   }
 }
 

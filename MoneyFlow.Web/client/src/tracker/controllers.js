@@ -3,7 +3,7 @@ angular.module('mf.tracker')
     //
     // Tracker
 
-    .controller('TrackerCtrl', function(Cost, uow) {
+    .controller('TrackerCtrl', function(Cost, $scope, uow) {
         var self = this;
 
         //
@@ -24,8 +24,9 @@ angular.module('mf.tracker')
 
             createAsync(self.cost)
 
-                .then(function() {
+                .then(function(c) {
                     self.init();
+                    $scope.costs.push(c);
                 })
 
                 ['finally'](function() {

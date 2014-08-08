@@ -207,6 +207,7 @@
     <Content Include="client\css\components\dialog.less" />
     <Content Include="client\css\app\forms.less" />
     <Content Include="tmpl\controls\advice.cshtml" />
+    <Content Include="Views\Home\_List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

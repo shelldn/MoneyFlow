@@ -16,6 +16,9 @@
         <div class="col col-4">
             @Html.TextBoxFor(m => m.Amount, new
             {
+                @class = "text-box-large text-right",
+                autofocus = "",
+                placeholder = "$",
                 ng_model = "vm.cost.amount",
                 required = ""
             })
@@ -26,18 +29,26 @@
         <div class="col col-8 rel">
             @Html.TextBoxFor(m => m.Category, new
             {
+                @class = "text-box-large",
+                placeholder = "Category",
                 mf_advice = "c as c.words from uow['cats']",
                 ng_model = "vm.cost.category",
-                required = "",
+                required = ""
             })
         </div>
         
         @* Commit *@
 
-        <button type="submit">ENTER</button>
+        <button class="invisible" type="submit">ENTER</button>
 
     </fieldset>
 </form>
+
+<br />
+
+@* Costs list *@
+
+@Html.Partial("_List")
 
 @section Scripts {
     <script src="~/client/js/tracker.js"></script>

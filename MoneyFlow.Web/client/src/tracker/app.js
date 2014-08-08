@@ -11,4 +11,5 @@ angular.module('mf.tracker', ['mf.data', 'mf.controls'])
 
     .run(function($rootScope, uow) {
         $rootScope.uow = uow;
+        $rootScope.costs = uow['costs'].query();
     });
