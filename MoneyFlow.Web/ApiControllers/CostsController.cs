@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 using MoneyFlow.Data;
@@ -15,18 +16,8 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IQueryable<Cost> GetAll()
         {
-            return Uow.Costs.GetAll();
-        }
-            
-        [Route("api/costs/periods")]
-        public IEnumerable<dynamic> GetPeriods()
-        {
-            return Uow.Costs.GetPeriods();
-        }
-
-        public IQueryable<Cost> GetByPeriod(DateTime period)
-        {
-            return Uow.Costs.GetByPeriod(period);
+            return Uow.Costs.GetAll()
+                .Include(c => c.Category);
         }
 
         private static void CreateTimeStamp(Cost model)

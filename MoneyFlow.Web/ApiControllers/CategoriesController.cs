@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -19,7 +20,8 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IQueryable<Category> GetByLookupQuery(string q)
         {
-            return Uow.Categories.Lookup(c => c.Words.Contains(q));
+            return Uow.Categories
+                .Lookup(c => c.Words.Contains(q));
         }
 
         public HttpResponseMessage PostCategory(Category item)
