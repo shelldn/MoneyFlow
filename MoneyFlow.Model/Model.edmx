@@ -90,7 +90,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MoneyFlowDbContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MoneyFlowDbContext" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Costs" EntityType="Self.Cost" />
           <EntitySet Name="Accounts" EntityType="Self.Account" />
