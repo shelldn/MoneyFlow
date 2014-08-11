@@ -20,11 +20,19 @@ module.exports = function(grunt) {
                 src: ['src/tracker/app.js', 'src/tracker/*.js'],
                 dest: 'js/tracker.js'
             }
+        },
+
+        watch: {
+            src: {
+                files: ['src/**/*.js'],
+                tasks: ['default']
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['clean', 'concat'])
 };
