@@ -9,7 +9,7 @@ namespace MoneyFlow.Data
             = new MoneyFlowDbContext();
 
         public IRepository<Category> Categories{ get { return CreateRepository<Category>(); } }
-        public IRepository<Consumption> Consumptions { get { return CreateRepository<Consumption>(); } }
+        public IRepository<Cost> Costs { get { return new CostsRepository(DbContext); } }
 
         // factory method
         public IRepository<T> CreateRepository<T>() where T : class

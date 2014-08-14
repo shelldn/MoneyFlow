@@ -1,12 +1,30 @@
-﻿using System.Net.Http.Formatting;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace MoneyFlow.Web
 {
-    public static class WebApiConfig
+    public class WebApiConfig
     {
-        public static void RegisterRoutes(HttpConfiguration config)
+        private static void ConfigureFormatters(HttpConfiguration config)
+        {
+            var formatters = config.Formatters;
+
+            // remove xml formatter
+            var xmlFormatter = formatters.XmlFormatter;
+            formatters.Remove(xmlFormatter);
+
+            // configure json camelCasing
+            var jsonFormatter = formatters.JsonFormatter;
+            jsonFormatter.SerializerSettings.ContractResolver =
+                new CamelCasePropertyNamesContractResolver();
+
+            // ignore self references
+            jsonFormatter.SerializerSettings.ReferenceLoopHandling = 
+                ReferenceLoopHandling.Ignore;
+        }
+
+        private static void RegisterRoutes(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
 
@@ -17,16 +35,11 @@ namespace MoneyFlow.Web
             );
         }
 
-        public static void ConfigureFormatters(MediaTypeFormatterCollection formatters)
+        public static void Register(HttpConfiguration config)
         {
-            // remove xml formatter
-            var xmlFormatter = formatters.XmlFormatter;
-            formatters.Remove(xmlFormatter);
-
-            // configure json camelCasing
-            var jsonFormatter = formatters.JsonFormatter;
-            jsonFormatter.SerializerSettings.ContractResolver =
-                new CamelCasePropertyNamesContractResolver();
+            ConfigureFormatters(config);
+            RegisterRoutes(config);
+            IocConfig.Register(config);
         }
     }
 }

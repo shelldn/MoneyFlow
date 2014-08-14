@@ -1,0 +1,53 @@
+// ------------------------------
+// MoneyFlow Effects
+// ------------------------------
+
+//
+// Display
+
+.abs {
+  position: absolute;
+}
+
+.rel {
+  position: relative;
+}
+
+.excluded {
+  display: none !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.clearfix () {
+  &:after {
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    content: " ";
+  }
+}
+
+.box-sizing (@sizing-option) {
+  -webkit-box-sizing: @sizing-option;
+  -moz-box-sizing: @sizing-option;
+  box-sizing: @sizing-option;
+}
+
+.smooth-corners (@corner-radius) {
+  -webkit-border-radius: @corner-radius;
+  -moz-border-radius: @corner-radius;
+  border-radius: @corner-radius;
+}
+
+//
+// Shadow
+
+.inner-shadow (@options) {
+  -webkit-box-shadow: inset @options;
+  -moz-box-shadow: inset @options;
+  box-shadow: inset @options;
+}

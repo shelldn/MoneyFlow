@@ -2,7 +2,51 @@
 // MoneyFlow Layout
 // ------------------------------
 
+html, body {
+  height: 100%;
+}
+
 .content {
   margin: 0 auto;
   width: @content-width;
+}
+
+#header {
+  position: relative;
+  height: @header-height;
+}
+
+#logo {
+  position: absolute;
+  display: block;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  height: 48px;
+  background-image: url(images/logo.png);
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+//
+// Costs table
+
+#table-costs {
+  border-width: 3px;
+  line-height: @line-height-base;
+  color: @color-aux;
+
+  &, td {
+    border: solid @color-gray;
+  }
+
+  td {
+    border-width: 1px;
+  }
 }

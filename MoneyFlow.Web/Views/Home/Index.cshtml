@@ -1,50 +1,55 @@
-﻿@{
-    ViewBag.Title = "Главная";
-    ViewBag.AngularApp = "mf.app";
+﻿@model Cost
+
+@{
+    ViewBag.Title = "Costs tracker";
+    ViewBag.AngularApp = "mf.tracker";
+    ViewBag.MainCtrl = "TrackerCtrl as vm";
 }
 
-<div class="row">
-    <div class="col-md-4">
-        <form name="data" class="form-inline" ng-submit="append()" role="form">
-            <div class="form-group">
-                <label class="sr-only" for="description">Consumption description</label>
-                <input id="description" class="form-control" type="text" autofocus placeholder="Описание покупки"
-                       ng-model="cns.category" mf-category
-                       typeahead="cat as cat.description for cat in categories | filter:$viewValue | limitTo:8" />
-            </div>
-            <div class="form-group">
-                <label class="sr-only">Consumption amount</label>
-                <input id="amount" class="form-control" type="text" placeholder="Сумма"
-                       ng-model="cns.amount" />
-            </div>
-            <input class="sr-only" type="submit" value="Submit" />
-        </form>
-    </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-4">
-        <div class="btn-group">
-            <button class="btn btn-default dropdown-toggle" type="button">
-                {{ month | date:'MMMM yyyy' }}
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="month in months | orderBy:identity:true">
-                    <a href="javascript:;" ng-click="change(month)">{{ month | date:'MMMM yyyy' }}</a>
-                </li>
-            </ul>
-        </div>
-        Всего: {{ sum }}
-        <table class="table table-striped table-hover">
-            <tr ng-repeat="consumption in consumptions | orderBy:'-date'">
-                <td>{{ consumption.date | date:'dd.MM' }}</td>
-                <td>{{ consumption.category.description }}</td>
-                <td>{{ consumption.amount }}</td>
-            </tr>
-        </table>
-    </div>
-</div>
+<form name="cost-data" novalidate 
+      ng-submit="this['cost-data'].$valid && vm.commit()">
+    
+    <fieldset ng-disabled="vm.isProcessing">
 
-@section scripts {
-    <script src="~/client/js/app.js"></script>
+        @* Cost amount *@
+
+        <div class="col col-4">
+            @Html.TextBoxFor(m => m.Amount, new
+            {
+                @class = "text-box-large text-right",
+                autofocus = "",
+                placeholder = "$",
+                ng_model = "vm.cost.amount",
+                required = ""
+            })
+        </div>
+
+        @* Cost cat. *@
+
+        <div class="col col-8 rel">
+            @Html.TextBoxFor(m => m.Category, new
+            {
+                @class = "text-box-large",
+                placeholder = "Category",
+                mf_advice = "c as c.words from uow['cats']",
+                ng_model = "vm.cost.category",
+                required = ""
+            })
+        </div>
+        
+        @* Commit *@
+
+        <button class="excluded" type="submit">ENTER</button>
+
+    </fieldset>
+</form>
+
+<br />
+
+@* Costs list *@
+
+@Html.Partial("_List")
+
+@section Scripts {
+    <script src="~/client/js/tracker.js"></script>
 }

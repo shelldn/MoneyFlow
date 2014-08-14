@@ -20,6 +20,8 @@
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,12 +50,28 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.2.0.2\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -62,16 +80,17 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.1\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -86,16 +105,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.1\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.0.0\lib\net45\System.Web.Http.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.1\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -132,9 +148,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="client\js\app.js" />
+    <Content Include="App_Data\Categories.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BrowseToURL>~/cats.xml</BrowseToURL>
+    </Content>
+    <Content Include="client\css\images\logo.png" />
+    <Content Include="client\css\style.css" />
+    <Content Include="client\css\vendor\normalize.css" />
+    <Content Include="client\Gruntfile.js" />
     <Content Include="client\js\components.js" />
     <Content Include="client\js\data.js" />
+    <Content Include="client\js\tracker.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js" />
     <Content Include="client\js\vendor\angular\angular-csp.css" />
@@ -142,16 +166,13 @@
     <Content Include="client\js\vendor\angular\angular.min.js" />
     <Content Include="client\js\vendor\underscore\.gitignore" />
     <Content Include="client\js\vendor\underscore\underscore.js" />
+    <Content Include="client\src\app\app.js" />
+    <Content Include="client\src\components\app.js" />
+    <Content Include="client\src\components\directives.js" />
+    <Content Include="client\src\data\app.js" />
+    <Content Include="client\src\data\services.js" />
     <Content Include="Global.asax" />
-    <Content Include="js\app.js" />
-    <Content Include="js\controllers.js" />
-    <Content Include="js\services.js" />
-    <Content Include="js\vendor\angular-resource.js" />
-    <Content Include="js\vendor\angular.js" />
-    <Content Include="js\vendor\underscore.js" />
     <Content Include="packages.config" />
-    <Content Include="js\vendor\ui-bootstrap-0.9.0.js" />
-    <Content Include="js\vendor\ui-bootstrap-tpls-0.9.0.js" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -172,6 +193,21 @@
     <Content Include="client\js\vendor\underscore\LICENSE" />
     <Content Include="client\js\vendor\underscore\package.json" />
     <Content Include="client\js\vendor\underscore\README.md" />
+    <Content Include="client\css\app\layout.less" />
+    <Content Include="client\css\app\variables.less" />
+    <Content Include="client\css\style.less" />
+    <Content Include="client\css\components\menubar.less" />
+    <Content Include="client\css\app\debug.less" />
+    <Content Include="client\css\app\typography.less" />
+    <Content Include="Views\Shared\_LayoutNull.cshtml" />
+    <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Account\_ViewStart.cshtml" />
+    <Content Include="client\css\app\effects.less" />
+    <Content Include="client\css\app\grid.less" />
+    <Content Include="client\css\components\dialog.less" />
+    <Content Include="client\css\app\forms.less" />
+    <Content Include="tmpl\controls\advice.cshtml" />
+    <Content Include="Views\Home\_List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,13 +219,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IocConfig.cs" />
-    <Compile Include="App_Start\NinjectDependencyResolver.cs" />
-    <Compile Include="App_Start\NinjectDependencyScope.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Controllers\Api\ApiControllerBase.cs" />
-    <Compile Include="Controllers\Api\CategoriesController.cs" />
-    <Compile Include="Controllers\Api\ConsumptionsController.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\NinjectHttpModules.cs" />
+    <Compile Include="App_Start\NinjectHttpResolver.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="ApiControllers\ApiControllerBase.cs" />
+    <Compile Include="ApiControllers\CategoriesController.cs" />
+    <Compile Include="ApiControllers\CostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,11 +236,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="client\css\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MoneyFlow.Data\MoneyFlow.Data.csproj">
       <Project>{66C0DB7A-BB1E-4A3E-9C3E-3D617D1D30DB}</Project>
@@ -223,7 +260,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>26968</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -237,6 +274,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

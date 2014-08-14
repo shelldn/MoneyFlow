@@ -6,24 +6,21 @@
     @Styles.Render("~/client/css/style")
 </head>
 <body>
-    <header id="header" role="banner">
-        <div class="content">
-            <nav class="navbar navbar-default" role="navigation">
-                <a href="#" class="navbar-brand">MoneyFlow</a>
-            </nav>
-        </div>
-    </header>
     <div class="content">
-        <div id="body" class="container" ng-controller="MainCtrl" role="main">
+        <header id="header" role="banner">
+            <a id="logo" href="@Url.Action("Index", "Home")"></a>
+        </header>
+        <div id="body" ng-controller="@ViewBag.MainCtrl" role="main">
             @RenderBody()
         </div>
         <footer id="footer" role="contentinfo"></footer>
     </div>
-    
+
     @Scripts.Render("~/bundle/underscore")
+    @Scripts.Render("~/bundle/jquery")
     @Scripts.Render("~/bundle/angular")
     @Scripts.Render("~/bundle/app")
-    
-    @RenderSection("scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
