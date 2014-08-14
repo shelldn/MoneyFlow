@@ -1,5 +1,5 @@
 ﻿<table id="table-costs" class="full-width">
-    <tr ng-repeat="c in costs | orderBy: 'date': true">
+    <tr ng-repeat="c in costs | orderBy: '-date'">
         <td ng-bind="c.date | date"></td>
         <td ng-bind="c.category.words"></td>
         <td ng-bind="c.amount"></td>
