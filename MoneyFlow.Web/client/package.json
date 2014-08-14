@@ -1,6 +1,6 @@
 {
   "name": "MoneyFlow",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Consumptions tracking software",
   "author": "Yevgeny Shirin <yevgeny.shirin@gmail.com>",
   "devDependencies": {
