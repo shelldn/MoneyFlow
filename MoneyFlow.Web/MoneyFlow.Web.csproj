@@ -155,59 +155,31 @@
     <Content Include="client\css\images\logo.png" />
     <Content Include="client\css\style.css" />
     <Content Include="client\css\vendor\normalize.css" />
-    <Content Include="client\Gruntfile.js" />
-    <Content Include="client\js\components.js" />
+    <Content Include="client\js\controls.js" />
     <Content Include="client\js\data.js" />
     <Content Include="client\js\tracker.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js" />
-    <Content Include="client\js\vendor\angular\angular-csp.css" />
+    <Content Include="client\js\vendor\angular-resource\angular-resource.min.js.map" />
     <Content Include="client\js\vendor\angular\angular.js" />
     <Content Include="client\js\vendor\angular\angular.min.js" />
-    <Content Include="client\js\vendor\underscore\.gitignore" />
+    <Content Include="client\js\vendor\angular\angular.min.js.map" />
+    <Content Include="client\js\vendor\jquery\dist\jquery.js" />
+    <Content Include="client\js\vendor\jquery\dist\jquery.min.js" />
     <Content Include="client\js\vendor\underscore\underscore.js" />
-    <Content Include="client\src\app\app.js" />
-    <Content Include="client\src\components\app.js" />
-    <Content Include="client\src\components\directives.js" />
-    <Content Include="client\src\data\app.js" />
-    <Content Include="client\src\data\services.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="client\js\vendor\angular-resource\.bower.json" />
-    <Content Include="client\js\vendor\angular-resource\angular-resource.min.js.map" />
-    <Content Include="client\js\vendor\angular-resource\bower.json" />
-    <Content Include="client\js\vendor\angular-resource\README.md" />
-    <Content Include="client\js\vendor\angular\.bower.json" />
-    <Content Include="client\js\vendor\angular\angular.min.js.gzip" />
-    <Content Include="client\js\vendor\angular\angular.min.js.map" />
-    <Content Include="client\js\vendor\angular\bower.json" />
-    <Content Include="client\js\vendor\angular\README.md" />
-    <Content Include="client\js\vendor\underscore\.bower.json" />
-    <Content Include="client\js\vendor\underscore\.editorconfig" />
-    <Content Include="client\js\vendor\underscore\bower.json" />
-    <Content Include="client\js\vendor\underscore\component.json" />
-    <Content Include="client\js\vendor\underscore\LICENSE" />
-    <Content Include="client\js\vendor\underscore\package.json" />
-    <Content Include="client\js\vendor\underscore\README.md" />
-    <Content Include="client\css\app\layout.less" />
-    <Content Include="client\css\app\variables.less" />
-    <Content Include="client\css\style.less" />
-    <Content Include="client\css\components\menubar.less" />
-    <Content Include="client\css\app\debug.less" />
-    <Content Include="client\css\app\typography.less" />
     <Content Include="Views\Shared\_LayoutNull.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\_ViewStart.cshtml" />
-    <Content Include="client\css\app\effects.less" />
-    <Content Include="client\css\app\grid.less" />
-    <Content Include="client\css\components\dialog.less" />
-    <Content Include="client\css\app\forms.less" />
     <Content Include="tmpl\controls\advice.cshtml" />
     <Content Include="Views\Home\_List.cshtml" />
+    <Content Include="client\js\vendor\jquery\dist\jquery.min.map" />
+    <None Include="Properties\PublishProfiles\mf_home.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -216,7 +188,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

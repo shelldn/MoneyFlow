@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MoneyFlow.Database.publish.xml" />
+    <None Include="mf_home.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="MoneyFlow.Database.refactorlog" />

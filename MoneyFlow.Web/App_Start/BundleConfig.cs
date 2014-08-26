@@ -17,15 +17,15 @@ namespace MoneyFlow.Web
             bundles.Add(new ScriptBundle("~/bundle/underscore")
                 .Include("~/client/js/vendor/underscore/underscore.js"));
 
-            bundles.Add(new ScriptBundle("~/bundle/jquery")
+            bundles.Add(new Bundle("~/bundle/jquery")
                 .Include("~/client/js/vendor/jquery/dist/jquery.js"));
 
-            bundles.Add(new ScriptBundle("~/bundle/angular").Include(
+            bundles.Add(new Bundle("~/bundle/angular").Include(
                 "~/client/js/vendor/angular/angular.js",
                 "~/client/js/vendor/angular-resource/angular-resource.js"
             ));
 
-            bundles.Add(new ScriptBundle("~/bundle/app").Include(
+            bundles.Add(new Bundle("~/bundle/app").Include(
                 "~/client/js/data.js",
                 "~/client/js/controls.js"
             ));
