@@ -152,7 +152,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <BrowseToURL>~/cats.xml</BrowseToURL>
     </Content>
-    <Content Include="client\css\images\logo.png" />
     <Content Include="client\css\style.css" />
     <Content Include="client\css\vendor\normalize.css" />
     <Content Include="client\js\controls.js" />
@@ -166,6 +165,7 @@
     <Content Include="client\js\vendor\angular\angular.min.js.map" />
     <Content Include="client\js\vendor\jquery\dist\jquery.js" />
     <Content Include="client\js\vendor\jquery\dist\jquery.min.js" />
+    <Content Include="client\js\vendor\jquery\dist\jquery.min.map" />
     <Content Include="client\js\vendor\underscore\underscore.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
@@ -178,7 +178,6 @@
     <Content Include="Views\Account\_ViewStart.cshtml" />
     <Content Include="tmpl\controls\advice.cshtml" />
     <Content Include="Views\Home\_List.cshtml" />
-    <Content Include="client\js\vendor\jquery\dist\jquery.min.map" />
     <None Include="Properties\PublishProfiles\mf_home.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
