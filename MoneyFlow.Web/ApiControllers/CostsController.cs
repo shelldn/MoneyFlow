@@ -20,18 +20,11 @@ namespace MoneyFlow.Web.ApiControllers
                 .Include(c => c.Category);
         }
 
-        private static void CreateTimeStamp(Cost model)
-        {
-            model.Date = DateTime.Now;
-        }
-
         //
         // POST: /api/costs
 
         public IHttpActionResult Post(Cost model)
         {
-            CreateTimeStamp(model);
-
             Uow.Costs.Add(model);
             Uow.Commit();
 

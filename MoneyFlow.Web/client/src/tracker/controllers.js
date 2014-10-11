@@ -10,23 +10,26 @@ angular.module('mf.tracker')
         // Save cost
 
         function createAsync(c) {
-
             return uow['costs'].save(c)
                 .$promise;
         }
 
         (self.init = function() {
-            self.cost = new Cost();
+            self.amt = null;
+            self.cat = {};
+
         })();
 
         self.commit = function() {
             self.isProcessing = true;
 
-            createAsync(self.cost)
+            createAsync(new Cost(self.amt, self.cat))
 
                 .then(function(c) {
+                    $scope['costs']
+                        .push(c);
+
                     self.init();
-                    $scope.costs.push(c);
                 })
 
                 ['finally'](function() {

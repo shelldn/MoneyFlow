@@ -2,9 +2,10 @@ angular.module('mf.tracker', ['mf.data', 'mf.controls'])
 
     // Types
 
-    .constant('Cost', function() {
-        this.amount = null;
-        this.category = { words: '' };
+    .constant('Cost', function(amt, cat) {
+        this.amount = amt;
+        this.category = cat;
+        this.date = new Date();
     })
 
     // Init

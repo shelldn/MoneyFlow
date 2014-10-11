@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace MoneyFlow.Web
@@ -10,17 +11,29 @@ namespace MoneyFlow.Web
         {
             var formatters = config.Formatters;
 
+            var xmlFormatter = 
+                formatters.XmlFormatter;
+
+            var jsonSettings =
+
+                formatters.JsonFormatter
+                    .SerializerSettings;
+
             // remove xml formatter
-            var xmlFormatter = formatters.XmlFormatter;
             formatters.Remove(xmlFormatter);
 
+            // use ISO 8601 date format for JSON APIs
+            jsonSettings.Converters.Add(new IsoDateTimeConverter());
+
+            // use local time
+            jsonSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+
             // configure json camelCasing
-            var jsonFormatter = formatters.JsonFormatter;
-            jsonFormatter.SerializerSettings.ContractResolver =
+            jsonSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
 
             // ignore self references
-            jsonFormatter.SerializerSettings.ReferenceLoopHandling = 
+            jsonSettings.ReferenceLoopHandling = 
                 ReferenceLoopHandling.Ignore;
         }
 
