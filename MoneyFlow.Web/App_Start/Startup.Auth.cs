@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
 
 namespace MoneyFlow.Web
@@ -12,10 +13,19 @@ namespace MoneyFlow.Web
             var options = new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/account/signin")
+                LoginPath = new PathString("/account/signin"),
+                CookieName = "mf_auth"
             };
 
             app.UseCookieAuthentication(options);
+
+            app.UseExternalSignInCookie();
+
+            app.UseFacebookAuthentication(new FacebookAuthenticationOptions
+            {
+                AppId = "314296758754120",
+                AppSecret = "f56188159a2577b73c91858bec90fc5e"
+            });
         }
     }
 }

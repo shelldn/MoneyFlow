@@ -1,34 +1,51 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using MoneyFlow.Model;
 
 namespace MoneyFlow.Identity
 {
-    public class MoneyFlowUserStore : IUserStore<IUser>
+    public sealed partial class MoneyFlowUserStore : IUserStore<Account, Int32>
     {
-        public Task CreateAsync(IUser user)
+        private readonly MoneyFlowDbContext _db =
+            new MoneyFlowDbContext();
+
+        #region IUserStore impl.
+
+        public Task CreateAsync(Account user)
+        {
+            _db.Accounts.Add(user);
+
+            return _db
+                .SaveChangesAsync();
+        }
+
+        public Task UpdateAsync(Account user)
+        {
+            _db.Entry(user).State = EntityState.Modified;
+
+            return _db.SaveChangesAsync();
+        }
+
+        public Task DeleteAsync(Account user)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateAsync(IUser user)
+        public Task<Account> FindByIdAsync(int userId)
         {
-            throw new System.NotImplementedException();
+            return _db.Accounts
+                .FindAsync(userId);
         }
 
-        public Task DeleteAsync(IUser user)
+        public Task<Account> FindByNameAsync(string userName)
         {
-            throw new System.NotImplementedException();
+            return _db.Set<Account>()
+                .SingleOrDefaultAsync(a => a.UserName == userName);
         }
 
-        public Task<IUser> FindByIdAsync(string userId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IUser> FindByNameAsync(string userName)
-        {
-            throw new System.NotImplementedException();
-        }
+        #endregion
 
         public void Dispose()
         {

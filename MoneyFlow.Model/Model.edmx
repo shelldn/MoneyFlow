@@ -28,6 +28,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="128" Nullable="false" />
         </EntityType>
+        <EntityType Name="Logins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Consumpti__Categ__1273C1CD">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
@@ -40,13 +49,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Logins__AccountI__398D8EEE">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Logins" Type="Self.Logins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logins">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MoneyFlowModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="Finance" store:Type="Tables" />
           <EntitySet Name="Costs" EntityType="Self.Costs" Schema="Finance" store:Type="Tables" />
           <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="Identity" store:Type="Tables" />
+          <EntitySet Name="Logins" EntityType="Self.Logins" Schema="Identity" store:Type="Tables" />
           <AssociationSet Name="FK__Consumpti__Categ__1273C1CD" Association="Self.FK__Consumpti__Categ__1273C1CD">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Costs" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Logins__AccountI__398D8EEE" Association="Self.FK__Logins__AccountI__398D8EEE">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Logins" EntitySet="Logins" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -77,6 +105,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Logins" Relationship="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" FromRole="Account" ToRole="Login" />
         </EntityType>
         <Association Name="FK__Consumpti__Categ__1273C1CD">
           <End Role="Categories" Type="Self.Category" Multiplicity="1" />
@@ -98,7 +127,36 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
+          <EntitySet Name="Logins" EntityType="MoneyFlow.Model.Login" />
+          <AssociationSet Name="FK__Logins__AccountI__398D8EEE" Association="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" FromRole="Login" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK__Logins__AccountI__398D8EEE">
+          <End Type="MoneyFlow.Model.Account" Role="Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MoneyFlow.Model.Login" Role="Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -128,6 +186,15 @@
               <MappingFragment StoreEntitySet="Accounts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="MoneyFlow.Model.Login">
+              <MappingFragment StoreEntitySet="Logins">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
