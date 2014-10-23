@@ -208,8 +208,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
-    <Compile Include="App_Start\NinjectHttpModules.cs" />
+    <Compile Include="App_Start\NinjectModules.cs" />
     <Compile Include="App_Start\NinjectHttpResolver.cs" />
+    <Compile Include="App_Start\NinjectResolver.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -222,6 +223,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Services\NinjectControllerFactory.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>

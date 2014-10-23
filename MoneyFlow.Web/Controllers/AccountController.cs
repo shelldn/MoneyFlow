@@ -22,35 +22,22 @@ namespace MoneyFlow.Web.Controllers
             get { return HttpContext.GetOwinContext().Authentication; }
         }
 
-        public UserManager<Account, Int32> UserManager
-        {
-            get
-            {
-                var um = new UserManager<Account, int>(new MoneyFlowUserStore());
-
-                um.UserValidator = new UserValidator<Account, Int32>(um)
-                {
-                    AllowOnlyAlphanumericUserNames = false
-                };
-
-                return um;
-            }
-        }
+        public UserManager<Account, Int32> UserManager { get; set; }
 
         public MoneyFlowSignInManager SignInManager
         {
-            get 
-            { 
-                return new MoneyFlowSignInManager(
-                    new UserManager<Account, int>(new MoneyFlowUserStore()), 
-                    AuthManager
-                );
-            }
+            get { return new MoneyFlowSignInManager(UserManager, AuthManager); }
+        }
+
+        public AccountController(UserManager<Account, int> userManager)
+        {
+            UserManager = userManager;
         }
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
+
 
             // set the return Uri for the
             // facebook authentication middleware

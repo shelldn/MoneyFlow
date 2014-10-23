@@ -62,6 +62,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -78,8 +81,11 @@
     <Compile Include="MoneyFlowSignInManager.cs" />
     <Compile Include="MoneyFlowUserLockoutStore.cs" />
     <Compile Include="MoneyFlowUserLoginStore.cs" />
+    <Compile Include="MoneyFlowUserManager.cs" />
     <Compile Include="MoneyFlowUserStore.cs" />
     <Compile Include="MoneyFlowUserTwoFactorStore.cs" />
+    <Compile Include="NinjectUserManagerFactory.cs" />
+    <Compile Include="Ninject\IdentityModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,16 +1,21 @@
 ﻿using MoneyFlow.Data;
 using MoneyFlow.Data.Contracts;
+using MoneyFlow.Identity.Ninject;
 using Ninject.Modules;
 
 namespace MoneyFlow.Web
 {
-    public sealed class NinjectHttpModules
+    public sealed class NinjectModules
     {
         public static INinjectModule[] Modules { get; private set; }
 
-        static NinjectHttpModules()
+        static NinjectModules()
         {
-            Modules = new[] { new MainModule() };
+            Modules = new INinjectModule[]
+            {
+                new MainModule(),
+                new IdentityModule()
+            };
         }
 
         public class MainModule : NinjectModule
