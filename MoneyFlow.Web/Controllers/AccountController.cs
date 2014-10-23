@@ -17,7 +17,7 @@ namespace MoneyFlow.Web.Controllers
     {
         protected string CallbackUri { get; set; }
 
-        public IAuthenticationManager AuthenticationManager
+        public IAuthenticationManager AuthManager
         {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
@@ -43,7 +43,7 @@ namespace MoneyFlow.Web.Controllers
             { 
                 return new MoneyFlowSignInManager(
                     new UserManager<Account, int>(new MoneyFlowUserStore()), 
-                    AuthenticationManager
+                    AuthManager
                 );
             }
         }
@@ -73,7 +73,7 @@ namespace MoneyFlow.Web.Controllers
         [ActionName("sign-out")]
         public ActionResult SignOut()
         {
-            AuthenticationManager.SignOut();
+            AuthManager.SignOut();
 
             return RedirectToAction("Index", "Home");
         }
@@ -121,7 +121,7 @@ namespace MoneyFlow.Web.Controllers
              * 
              */
 
-            var li = await AuthenticationManager.GetExternalLoginInfoAsync();
+            var li = await AuthManager.GetExternalLoginInfoAsync();
             var siResult = await SignInManager.ExternalSignInAsync(li, isPersistent: false);
 
             switch (siResult)
