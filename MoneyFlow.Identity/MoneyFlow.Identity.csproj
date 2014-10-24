@@ -71,6 +71,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,11 +82,8 @@
     <Compile Include="MoneyFlowSignInManager.cs" />
     <Compile Include="MoneyFlowUserLockoutStore.cs" />
     <Compile Include="MoneyFlowUserLoginStore.cs" />
-    <Compile Include="MoneyFlowUserManager.cs" />
     <Compile Include="MoneyFlowUserStore.cs" />
     <Compile Include="MoneyFlowUserTwoFactorStore.cs" />
-    <Compile Include="NinjectUserManagerFactory.cs" />
-    <Compile Include="Ninject\IdentityModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,6 @@ using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using MoneyFlow.Identity;
 using MoneyFlow.Model;
 using MoneyFlow.Web.ViewModels;
 
@@ -17,27 +16,23 @@ namespace MoneyFlow.Web.Controllers
     {
         protected string CallbackUri { get; set; }
 
-        public IAuthenticationManager AuthManager
-        {
-            get { return HttpContext.GetOwinContext().Authentication; }
-        }
-
+        public IAuthenticationManager AuthManager { get; set; }
         public UserManager<Account, Int32> UserManager { get; set; }
+        public SignInManager<Account, Int32> SignInManager { get; set; }
 
-        public MoneyFlowSignInManager SignInManager
+        public AccountController(
+            IAuthenticationManager authManager, 
+            UserManager<Account, Int32> userManager,
+            SignInManager<Account, Int32> signInManager)
         {
-            get { return new MoneyFlowSignInManager(UserManager, AuthManager); }
-        }
-
-        public AccountController(UserManager<Account, int> userManager)
-        {
+            AuthManager = authManager;
             UserManager = userManager;
+            SignInManager = signInManager;
         }
 
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-
 
             // set the return Uri for the
             // facebook authentication middleware
