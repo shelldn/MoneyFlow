@@ -6,11 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="306d0df7ed094f63ad862b3482f76410" Name="Finance">
         <EntityTypeShape EntityType="MoneyFlow.Model.Category" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoneyFlow.Model.Cost" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Cost" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="MoneyFlow.Model.FK__Consumpti__Categ__1273C1CD" ManuallyRouted="false" />
       </Diagram>
       <Diagram DiagramId="8358d5f2cf1f42229c4d0bab6ab6cf21" Name="Identity" >
-        <EntityTypeShape EntityType="MoneyFlow.Model.Account" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Account" Width="1.5" PointX="0.75" PointY="1.125" FillColor="ForestGreen" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Login" Width="1.5" PointX="3" PointY="1.125" FillColor="ForestGreen" IsExpanded="true" />
+        <AssociationConnector Association="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

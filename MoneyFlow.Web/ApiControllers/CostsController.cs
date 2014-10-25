@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
-using MoneyFlow.Data;
+using Microsoft.AspNet.Identity;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
@@ -16,8 +15,11 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IQueryable<Cost> GetAll()
         {
+            var accountId = User.Identity.GetUserId<int>();
+
             return Uow.Costs.GetAll()
-                .Include(c => c.Category);
+                .Include(c => c.Category)
+                .Where(c => c.AccountId == accountId);
         }
 
         //
@@ -25,6 +27,10 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IHttpActionResult Post(Cost model)
         {
+            var accountId = User.Identity.GetUserId<int>();
+
+            model.AccountId = model.Category.AccountId = accountId;
+
             Uow.Costs.Add(model);
             Uow.Commit();
 

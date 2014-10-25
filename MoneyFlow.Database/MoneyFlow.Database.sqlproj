@@ -68,10 +68,12 @@
     <Build Include="Finance\Tables\Costs.sql" />
     <Build Include="Identity\Identity.sql" />
     <Build Include="Identity\Tables\Accounts.sql" />
+    <Build Include="Identity\Tables\Logins.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MoneyFlow.Database.publish.xml" />
     <None Include="mf_home.publish.xml" />
+    <None Include="MoneyFlow.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="MoneyFlow.Database.refactorlog" />

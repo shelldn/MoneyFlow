@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
 using Ninject;
-using Ninject.Modules;
 
 namespace MoneyFlow.Web
 {
@@ -10,9 +9,9 @@ namespace MoneyFlow.Web
     {
         private readonly IKernel _kernel;
 
-        public NinjectHttpResolver(params INinjectModule[] modules)
+        public NinjectHttpResolver(IKernel kernel)
         {
-            _kernel = new StandardKernel(modules);
+            _kernel = kernel;
         }
 
         public object GetService(Type serviceType)
