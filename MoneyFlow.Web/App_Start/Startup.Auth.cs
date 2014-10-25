@@ -19,7 +19,7 @@ namespace MoneyFlow.Web
 
             app.UseCookieAuthentication(options);
 
-            app.UseExternalSignInCookie();
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             app.UseFacebookAuthentication(new FacebookAuthenticationOptions
             {
