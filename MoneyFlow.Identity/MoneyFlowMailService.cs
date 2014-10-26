@@ -11,7 +11,7 @@ namespace MoneyFlow.Identity
 
         public MoneyFlowMailService()
         {
-            var id = new NetworkCredential("nuka.lorenzo@gmail.com", "~2T[-+rJ^Q\f6T4");
+            var id = new NetworkCredential("nuka.lorenzo@gmail.com", @"~2T[-+rJ^Q\f6T4");
 
             MailClient = new SmtpClient("smtp.gmail.com", 587)
             {
@@ -22,7 +22,7 @@ namespace MoneyFlow.Identity
 
         public Task SendAsync(IdentityMessage message)
         {
-            var mail = new MailMessage("admin@mf.net",
+            var mail = new MailMessage("nuka.lorenzo@gmail.com",
                 to: message.Destination,
                 subject: message.Subject,
                 body: message.Body

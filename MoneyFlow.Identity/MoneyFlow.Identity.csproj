@@ -79,9 +79,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MoneyFlowMailService.cs" />
     <Compile Include="MoneyFlowSignInManager.cs" />
+    <Compile Include="MoneyFlowUserEmailStore.cs" />
     <Compile Include="MoneyFlowUserLockoutStore.cs" />
     <Compile Include="MoneyFlowUserLoginStore.cs" />
+    <Compile Include="MoneyFlowUserPasswordStore.cs" />
+    <Compile Include="MoneyFlowUserSecurityStampStore.cs" />
     <Compile Include="MoneyFlowUserStore.cs" />
     <Compile Include="MoneyFlowUserTwoFactorStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,16 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.TextBoxFor(m => m.Email, new { placeholder = "your email", @class = "text-box-large" })
+    @Html.PasswordFor(m => m.Password, new { placeholder = "your pass", @class = "text-box-large" })
+    @Html.PasswordFor(m => m.PasswordConfirm, new { placeholder = "confirm your password", @class = "text-box-large" })
+    
+    <button type="submit">Register</button>
+}

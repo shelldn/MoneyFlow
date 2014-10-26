@@ -45,6 +45,7 @@ namespace MoneyFlow.Web
 
                     var mgr = new UserManager<Account, Int32>(store)
                     {
+                        UserTokenProvider = new EmailTokenProvider<Account, int>(),
                         EmailService = new MoneyFlowMailService()
                     };
 

@@ -15,7 +15,7 @@
     <AssemblyName>MoneyFlow.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
@@ -188,11 +188,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\_LayoutNull.cshtml" />
-    <Content Include="Views\Account\SignIn.cshtml" />
-    <Content Include="Views\Account\_ViewStart.cshtml" />
+    <Content Include="Views\Account\sign-in.cshtml" />
     <Content Include="tmpl\controls\advice.cshtml" />
     <Content Include="Views\Home\_List.cshtml" />
     <None Include="Properties\PublishProfiles\mf_home.pubxml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Confirm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,6 +227,7 @@
     <Compile Include="Services\NinjectControllerFactory.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
