@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -39,6 +40,7 @@ namespace MoneyFlow.Web.Controllers
             CallbackUri = Url.Action("SignInExternalCallback");
         }
 
+        [ActionName("sign-in")]
         public ActionResult SignIn(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -46,10 +48,61 @@ namespace MoneyFlow.Web.Controllers
         }
 
         [HttpPost]
+        [ActionName("sign-in")]
         [ValidateAntiForgeryToken]
-        public ActionResult SignIn(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> SignIn(LoginViewModel vm, string returnUrl)
         {
-            throw new NotImplementedException();
+            var account = await UserManager
+                .FindAsync(vm.UserName, vm.Password);
+
+            if (account != null)
+            {
+                if (await UserManager.IsEmailConfirmedAsync(account.Id))
+                {
+                    var id = await UserManager.CreateIdentityAsync(account, DefaultAuthenticationTypes.ApplicationCookie);
+                    var cfg = new AuthenticationProperties { IsPersistent = true };
+
+                    AuthManager.SignIn(cfg, id);
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel vm)
+        {
+            var account = new Account(vm.Email);
+
+            var result = await UserManager
+                .CreateAsync(account, vm.Password);
+
+            var id = account.Id;
+            var code = await UserManager.GenerateEmailConfirmationTokenAsync(id);
+            var mail = Url.Action("Confirm", new { id, code });
+
+            if (result.Succeeded)
+                await UserManager.SendEmailAsync(account.Id, "email confirmation", mail);
+
+            return View();
+        }
+
+        [Route("register/confirm")]
+        public async Task<ActionResult> Confirm(int id, string code)
+        {
+            var result = await UserManager
+                .ConfirmEmailAsync(userId: id, token: code);
+
+            if (result.Succeeded)
+                return View();
+
+            return RedirectToAction("Index", "Home");
         }
 
         [ActionName("sign-out")]

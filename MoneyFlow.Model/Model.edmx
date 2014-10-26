@@ -29,6 +29,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Logins">
           <Key>
@@ -39,7 +42,7 @@
           <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="AccountId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Categorie__Accou__4CA06362">
+        <Association Name="FK__Categorie__Accou__5DCAEF64">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
           <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
           <ReferentialConstraint>
@@ -51,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Costs__AccountId__4BAC3F29">
+        <Association Name="FK__Costs__AccountId__5EBF139D">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
           <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -75,7 +78,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Logins__AccountI__398D8EEE">
+        <Association Name="FK__Logins__AccountI__5CD6CB2B">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -94,11 +97,11 @@
           <EntitySet Name="Costs" EntityType="Self.Costs" Schema="Finance" store:Type="Tables" />
           <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="Identity" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="Identity" store:Type="Tables" />
-          <AssociationSet Name="FK__Categorie__Accou__4CA06362" Association="Self.FK__Categorie__Accou__4CA06362">
+          <AssociationSet Name="FK__Categorie__Accou__5DCAEF64" Association="Self.FK__Categorie__Accou__5DCAEF64">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Categories" EntitySet="Categories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Costs__AccountId__4BAC3F29" Association="Self.FK__Costs__AccountId__4BAC3F29">
+          <AssociationSet Name="FK__Costs__AccountId__5EBF139D" Association="Self.FK__Costs__AccountId__5EBF139D">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
@@ -106,7 +109,7 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Logins__AccountI__398D8EEE" Association="Self.FK__Logins__AccountI__398D8EEE">
+          <AssociationSet Name="FK__Logins__AccountI__5CD6CB2B" Association="Self.FK__Logins__AccountI__5CD6CB2B">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Logins" EntitySet="Logins" />
           </AssociationSet>
@@ -146,6 +149,9 @@
           <NavigationProperty Name="Logins" Relationship="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" FromRole="Account" ToRole="Login" />
           <NavigationProperty Name="Categories" Relationship="MoneyFlow.Model.FK__Categorie__Accou__4CA06362" FromRole="Account" ToRole="Category" />
           <NavigationProperty Name="Costs" Relationship="MoneyFlow.Model.FK__Costs__AccountId__4BAC3F29" FromRole="Account" ToRole="Cost" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Consumpti__Categ__1273C1CD">
           <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
@@ -258,6 +264,9 @@
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="MoneyFlow.Model.Account">
               <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>

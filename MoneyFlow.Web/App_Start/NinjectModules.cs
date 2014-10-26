@@ -43,7 +43,11 @@ namespace MoneyFlow.Web
                     var store = context.Kernel
                         .Get<IUserStore<Account, Int32>>();
 
-                    var mgr = new UserManager<Account, Int32>(store);
+                    var mgr = new UserManager<Account, Int32>(store)
+                    {
+                        UserTokenProvider = new EmailTokenProvider<Account, int>(),
+                        EmailService = new MoneyFlowMailService()
+                    };
 
                     mgr.UserValidator = new UserValidator<Account, Int32>(mgr)
                     {
