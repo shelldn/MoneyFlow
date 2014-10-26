@@ -52,14 +52,18 @@ namespace MoneyFlow.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SignIn(LoginViewModel vm, string returnUrl)
         {
-            var account = await UserManager.FindAsync(vm.UserName, vm.Password);
+            var account = await UserManager
+                .FindAsync(vm.UserName, vm.Password);
 
             if (account != null)
             {
-                var id = await UserManager.CreateIdentityAsync(account, DefaultAuthenticationTypes.ApplicationCookie);
-                var cfg = new AuthenticationProperties { IsPersistent = true };
+                if (await UserManager.IsEmailConfirmedAsync(account.Id))
+                {
+                    var id = await UserManager.CreateIdentityAsync(account, DefaultAuthenticationTypes.ApplicationCookie);
+                    var cfg = new AuthenticationProperties { IsPersistent = true };
 
-                AuthManager.SignIn(cfg, id);
+                    AuthManager.SignIn(cfg, id);
+                }
             }
 
             return RedirectToAction("Index", "Home");
