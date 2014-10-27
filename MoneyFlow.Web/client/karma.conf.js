@@ -17,11 +17,12 @@ module.exports = function(config) {
     files: [
 
       // vendor
+      'js/vendor/jquery/dist/jquery.js',
       'js/vendor/angular/angular.js',
       'js/vendor/angular-mocks/angular-mocks.js',
 
       // app
-      'src/**/*.js',
+      'js/*.js',
       'test/unit/**/*Spec.js'
     ],
 
