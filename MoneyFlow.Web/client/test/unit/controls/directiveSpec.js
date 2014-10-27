@@ -17,7 +17,7 @@ describe('directive: mf-expand', function() {
     });
     
     it('Should transclude the element\'s contents', function() {
-        expect(x.children('div[ng-transclude]').html()).toBe('Contents');
+        expect(x.children('div[ng-transclude]').html()).toBe('<span class="ng-scope">Contents</span>');
     }); 
 
     it('Should toggle isExpanded when tglExpand() is called', function() {
