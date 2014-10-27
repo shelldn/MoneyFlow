@@ -4,12 +4,13 @@
   "description": "Consumptions tracking software",
   "author": "Yevgeny Shirin <yevgeny.shirin@gmail.com>",
   "devDependencies": {
+    "coffee-script": "^1.8.0",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-watch": "^0.6.1",
     "karma": "^0.12.24",
     "karma-jasmine": "^0.1.5",
-    "karma-chrome-launcher": "^0.1.5"
+    "karma-phantomjs-launcher": "^0.1.4"
   }
 }
