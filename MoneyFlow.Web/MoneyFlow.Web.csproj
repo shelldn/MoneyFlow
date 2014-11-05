@@ -188,7 +188,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\_LayoutNull.cshtml" />
-    <Content Include="Views\Account\sign-in.cshtml" />
+    <Content Include="Views\Shared\_SignInPartial.cshtml" />
     <Content Include="tmpl\controls\advice.cshtml" />
     <Content Include="Views\Home\_List.cshtml" />
     <None Include="Properties\PublishProfiles\mf_home.pubxml" />

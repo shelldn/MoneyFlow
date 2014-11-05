@@ -1,0 +1,22 @@
+﻿@model LoginViewModel
+
+@using (Html.BeginForm("sign-in", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @* UserName *@
+    <div class="row">
+        @Html.TextBoxFor(m => m.UserName, new { placeholder = "email", @class = "text-center" })
+    </div>
+    
+    @* Password *@
+    <div class="row">
+        @Html.PasswordFor(m => m.Password, new { placeholder = "your pass", @class = "text-center" })
+    </div>
+    
+    <button class="full-width">Sign In</button>
+    <hr />
+    <div class="row">
+        @Html.ActionLink("signin via facebook", "SignInExternal", "Account")
+    </div>
+}

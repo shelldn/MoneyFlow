@@ -9,8 +9,8 @@
     <div class="content">
         <header id="header" role="banner">
             <a id="logo" href="@Url.Action("Index", "Home")"></a>
-            
-            <div class="right">
+
+            <div id="account" class="right">
                 @if (Request.IsAuthenticated)
                 {
                     <span>@User.Identity.Name</span>
@@ -19,7 +19,9 @@
 
                 else
                 {
-                    @Html.ActionLink("sign in", "sign-in", "Account")@:&nbsp;
+                    <span id="sign-in" mf-expand="sign in">
+                        @Html.Partial("_SignInPartial")
+                    </span>
                     @Html.ActionLink("register", "Register", "Account")
                 }
             </div>
