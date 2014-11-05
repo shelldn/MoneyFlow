@@ -194,6 +194,7 @@
     <None Include="Properties\PublishProfiles\mf_home.pubxml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
+    <Content Include="tmpl\controls\expand.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

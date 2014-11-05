@@ -11,9 +11,8 @@ angular.module('mf.controls')
                     scope.isExpanded = !scope.isExpanded;
                 };
             },
-            template: function(_, attrs) {
-                return '<a href="javascript:;" ng-click="tglExpanded()">' + attrs['mfExpand'] + '</a>' +
-                    '<div ng-show="isExpanded" ng-transclude></div>';
+            templateUrl: function(_, attrs) {
+                return "/tmpl/controls/expand?caption=" + attrs['mfExpand'];
             }
         };
     });

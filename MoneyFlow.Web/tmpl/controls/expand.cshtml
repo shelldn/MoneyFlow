@@ -1,0 +1,15 @@
+﻿
+@* Link *@
+
+<a class="expand-link" href="javascript:;"
+   ng-class="{ expanded: isExpanded }"
+   ng-click="tglExpand()">
+    
+    @Request["caption"]
+</a>
+
+@* Content *@
+
+<div class="expand-content"
+     ng-show="isExpanded"
+     ng-transclude></div>
