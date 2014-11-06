@@ -46,6 +46,12 @@
 //
 // Shadow
 
+.shadow (@options) {
+  -webkit-box-shadow+: @options;
+  -moz-box-shadow+: @options;
+  box-shadow+: @options;
+}
+
 .inner-shadow (@options) {
   -webkit-box-shadow: inset @options;
   -moz-box-shadow: inset @options;
