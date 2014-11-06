@@ -3,11 +3,14 @@ describe('directive: mf-expand', function() {
 
     beforeEach(module('mf.controls'));
 
-    beforeEach(inject(function($rootScope, $compile) {
-        $scope = $rootScope.$new();
+    // loading templates
+    beforeEach(module('mf.tmpl'));
 
+    beforeEach(inject(function($rootScope, $compile) {
         x = '<div mf-expand="Expand me">Contents</div>';
-        x = $compile(x)($scope);
+        x = $compile(x)($rootScope);
+
+        $scope = x.scope();
 
         $scope.$digest();
     }));
