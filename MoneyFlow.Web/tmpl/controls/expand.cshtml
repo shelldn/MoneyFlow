@@ -3,13 +3,13 @@
 
 <a class="expand-link" href="javascript:;"
    ng-class="{ expanded: isExpanded }"
-   ng-click="tglExpand()">
-    
-    @Request["caption"]
+   ng-click="tglExpand()"
+   ng-bind="cap">
 </a>
 
 @* Content *@
 
 <div class="expand-content"
      ng-show="isExpanded"
-     ng-transclude></div>
+     ng-transclude>
+</div>
