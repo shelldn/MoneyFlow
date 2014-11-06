@@ -4,19 +4,13 @@
 {
     @Html.AntiForgeryToken()
 
-    @* UserName *@
-    <div class="row">
-        @Html.TextBoxFor(m => m.UserName, new { placeholder = "email", @class = "text-center" })
-    </div>
+    @Html.TextBoxFor(m => m.UserName, new { placeholder = "email", @class = "top text-center" })
+    @Html.PasswordFor(m => m.Password, new { placeholder = "your pass", @class = "top text-center" })
     
-    @* Password *@
-    <div class="row">
-        @Html.PasswordFor(m => m.Password, new { placeholder = "your pass", @class = "text-center" })
-    </div>
+    <button class="full-width top btn btn-go">Sign In</button>
     
-    <button class="full-width">Sign In</button>
     <hr />
     <div class="row">
-        @Html.ActionLink("signin via facebook", "SignInExternal", "Account")
+        @Html.ActionLink("signin via facebook", "SignInExternal", "Account", null,  new { @class = "full-width bottom btn" })
     </div>
 }

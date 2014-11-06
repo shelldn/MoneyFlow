@@ -40,21 +40,21 @@ html, body {
 
 #sign-in {
   .expand-link {
-    padding: @spacing-base;
+    padding: @spacing-small;
 
     &.expanded {
       position: relative;
-      .shadow(0 0 9px @color-gray);
+      .shadow(@shadow-base);
 
       &:before {
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -@spacing-small;
         background: @color-white;
         width: 100%;
-        height: 15px;
+        height: @spacing-small * 2;
         content: '';
-        z-index: 1000;
+        z-index: 1001;
       }
     }
   }
@@ -64,10 +64,9 @@ html, body {
     padding: @spacing-base;
     background: @color-white;
     width: @sign-in-width;
-    line-height: @line-height-base;
     z-index: 999;
 
-    .shadow(0 0 10px @color-gray);
+    .shadow(@shadow-base);
   }
 }
 

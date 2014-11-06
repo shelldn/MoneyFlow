@@ -1,0 +1,29 @@
+// ------------------------------
+// MoneyFlow Button
+// ------------------------------
+
+.btn {
+  display: inline-block;
+
+  padding: 0;
+  margin: 0;
+
+  background: @color-base;
+  border: 1px solid @color-base;
+
+  height: @line-height-base;
+  line-height: @line-height-base;
+
+  font-size: @font-size-base;
+  font-weight: bold;
+
+  color: @color-white;
+
+  text-align: center;
+  text-shadow: 0 0 15px fadeout(@color-white, 60%);
+
+  &.btn-go {
+    background: @color-go;
+    border-color: darken(@color-go, 10%);
+  }
+}
