@@ -4,14 +4,11 @@
 module.exports = function(config) {
   config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+    preprocessors: {
+      "../**/*.cshtml": ['ng-html2js']
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -21,22 +18,19 @@ module.exports = function(config) {
       'js/vendor/angular/angular.js',
       'js/vendor/angular-mocks/angular-mocks.js',
 
+      // templates
+      '../tmpl/**/*.cshtml',
+
       // app
       'js/*.js',
       'test/unit/**/*Spec.js'
     ],
 
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
+    ngHtml2JsPreprocessor: {
+      stripPrefix: '.*/MoneyFlow.Web',
+      stripSufix: '.cshtml',
+      moduleName: 'mf.tmpl'
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -62,7 +56,6 @@ module.exports = function(config) {
 
 
     // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
 
 
