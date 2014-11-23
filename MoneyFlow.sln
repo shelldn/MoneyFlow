@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFlow.Web", "MoneyFlow.Web\MoneyFlow.Web.csproj", "{B2A42506-2126-45C7-A71B-EBC105A507CA}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFlow.Identity", "MoneyFlow.Identity\MoneyFlow.Identity.csproj", "{F7C7FA8A-A7F5-4380-B5A1-54D923E6CFFB}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MoneyFlow.Database", "MoneyFlow.Database\MoneyFlow.Database.sqlproj", "{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFlow.Test", "MoneyFlow.Test\MoneyFlow.Test.csproj", "{607DC3E8-35FC-47A7-9B22-6A2D694C9B28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{400B98A3-853C-44CB-AD7F-BD9B86E75DB4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{607DC3E8-35FC-47A7-9B22-6A2D694C9B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607DC3E8-35FC-47A7-9B22-6A2D694C9B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607DC3E8-35FC-47A7-9B22-6A2D694C9B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607DC3E8-35FC-47A7-9B22-6A2D694C9B28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

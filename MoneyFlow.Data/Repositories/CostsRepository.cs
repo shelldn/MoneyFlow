@@ -5,7 +5,7 @@ namespace MoneyFlow.Data
 {
     public class CostsRepository : EntityRepository<Cost>
     {
-        public CostsRepository(DbContext dbContext) 
+        public CostsRepository(DbContext dbContext)
             : base(dbContext) { }
 
         public override void Add(Cost entity)
