@@ -11,6 +11,14 @@
     
     <hr />
     <div class="row">
-        @Html.ActionLink("signin via facebook", "SignInExternal", "Account", null,  new { @class = "full-width bottom btn" })
+        @Html.ActionLink("Connect with Facebook", "SignInExternal", "Account", null,  new
+        {
+            @class = "full-width bottom btn"
+        })
+        
+        <a href="javascript:;"
+           onclick="window.open('@Url.Action("SignInExternal", "Account")', 'Connect with Facebook', 'width=450, height=300')">
+            Connect with Facebook
+        </a>
     </div>
 }
