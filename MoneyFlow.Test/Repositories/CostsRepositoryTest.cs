@@ -27,6 +27,12 @@ namespace MoneyFlow.Test.Repositories
         }
 
         [Test, Category("GetPeriods")]
+        public void Should_provide_values_in_ascending_order()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test, Category("GetPeriods")]
         public void Should_provide_only_the_costly_periods()
         {
             throw new NotImplementedException();
