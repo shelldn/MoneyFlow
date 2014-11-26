@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using MoneyFlow.Model;
 
 namespace MoneyFlow.Data
@@ -17,6 +19,13 @@ namespace MoneyFlow.Data
             if (entity.Category.Id > 0)
                 DbContext.Entry(entity.Category).State = 
                     EntityState.Unchanged;
+        }
+
+        public IQueryable<DateTime> GetPeriods()
+        {
+            return from c in DbSet
+                   group c by new { c.Date.Year, c.Date.Month } into p
+                   select new DateTime(p.Key.Year, p.Key.Month, 1);
         }
     }
 }
