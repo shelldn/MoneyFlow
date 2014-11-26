@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using MoneyFlow.Model;
@@ -21,7 +22,7 @@ namespace MoneyFlow.Data
                     EntityState.Unchanged;
         }
 
-        public IQueryable<DateTime> GetPeriods()
+        public IEnumerable<DateTime> GetPeriods()
         {
             return from c in DbSet
                    group c by new { c.Date.Year, c.Date.Month } into p
