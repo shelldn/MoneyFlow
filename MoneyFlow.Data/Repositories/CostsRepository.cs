@@ -24,9 +24,10 @@ namespace MoneyFlow.Data
 
         public IEnumerable<DateTime> GetPeriods()
         {
-            return from c in DbSet
-                   group c by new { c.Date.Year, c.Date.Month } into p
-                   select new DateTime(p.Key.Year, p.Key.Month, 1);
+            return DbSet
+                .GroupBy(c => new DateTime(c.Date.Year, c.Date.Month, 1))
+                .Select(c => c.Key)
+                .OrderBy(c => c);
         }
     }
 }

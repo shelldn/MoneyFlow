@@ -13,6 +13,7 @@
 x64/
 build/
 [Bb]in/
+[Dd]bg/
 [Oo]bj/
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
@@ -96,7 +97,6 @@ publish/
 *.Publish.xml
 
 # NuGet Packages Directory
-## TODO: If you have NuGet Package Restore enabled, uncomment the next line
 packages/
 
 # Windows Azure Build Output

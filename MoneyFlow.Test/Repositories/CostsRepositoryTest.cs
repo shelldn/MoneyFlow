@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using MoneyFlow.Data;
 using MoneyFlow.Model;
+using MoneyFlow.Seed;
 using Moq;
 using NUnit.Framework;
 
 namespace MoneyFlow.Test.Repositories
 {
     [TestFixture]
-    public class CostsRepositoryTest
+    public partial class CostsRepositoryTest
     {
         private DbSet<Cost> m_costs;
         private DbContext m_db;
@@ -45,40 +47,21 @@ namespace MoneyFlow.Test.Repositories
 
         #endregion
 
-        #region Helpers
-
-        private static void ImplementQueryable<T>(Mock<IQueryable<T>> mock, IQueryable<T> q)
-        {
-            mock.Setup(c => c.Provider).Returns(q.Provider);
-            mock.Setup(c => c.Expression).Returns(q.Expression);
-            mock.Setup(c => c.ElementType).Returns(q.ElementType);
-
-            // enumerator
-
-            mock.Setup(c => c.GetEnumerator()).Returns(q.GetEnumerator);
-        }
-
-        #endregion
-
         #region GetPeriods method spec.
 
         [Test, Category("GetPeriods")]
         public void Should_return_DateTime_collection()
         {
             // arrange
-
-            var q = new[]
-            {
-                new Cost { Date = DateTime.Parse("2014-01-14T13:24:07.123") },
-                new Cost { Date = DateTime.Parse("2014-02-06T23:17:15.425") },
-                new Cost { Date = DateTime.Parse("2014-02-23T05:10:45.999") }
-
-            }.AsQueryable();
-
-            var costsMock = Mock
-                .Get(m_costs).As<IQueryable<Cost>>();
             
-            ImplementQueryable(costsMock, q);
+            var costs = new[]
+            {
+                new Cost { Date = DataProvider.GetDate("2014-01-01", "2014-12-31") },
+                new Cost { Date = DataProvider.GetDate("2014-01-01", "2014-12-31") },
+                new Cost { Date = DataProvider.GetDate("2014-01-01", "2014-12-31") }
+            };
+
+            Mock.Get(m_costs).ImplementQueryable(proto: costs);
 
             // act
 
@@ -92,33 +75,116 @@ namespace MoneyFlow.Test.Repositories
         [Test, Category("GetPeriods")]
         public void Should_provide_all_the_values_with_1st_day_and_zero_time()
         {
-            throw new NotImplementedException();
+            #region arrange
+
+            List<Cost> costs = new List<Cost>();
+
+            for (var i = 0; i < 10; i++)
+            {
+                costs.Add(new Cost { Date = DataProvider.GetDate("2014-01-01", "2014-12-31") });
+            }
+
+            Mock.Get(m_costs).ImplementQueryable(proto: costs);
+
+            #endregion
+
+            // act
+
+            IEnumerable<DateTime> ret = m_repo.GetPeriods();
+
+            // assert
+
+            Assert.IsTrue(ret.All(p => p.Day == 1 && p.TimeOfDay == TimeSpan.Zero));
         }
 
         [Test, Category("GetPeriods")]
         public void Should_provide_the_values_distinct_by_month_and_year()
         {
-            throw new NotImplementedException();
+            #region arrange
+
+            var costs = new[]
+            {
+                // 2014-01
+                DataProvider.GetDate("2014-01-01", "2014-01-31").Spend(),
+                DataProvider.GetDate("2014-01-01", "2014-01-31").Spend(),
+                DataProvider.GetDate("2014-01-01", "2014-01-31").Spend(),
+
+                // 2014-07
+                DataProvider.GetDate("2014-07-01", "2014-07-31").Spend(),
+                DataProvider.GetDate("2014-07-01", "2014-07-31").Spend(),
+
+                // 2014-11
+                DataProvider.GetDate("2014-11-01", "2014-11-30").Spend(),
+                DataProvider.GetDate("2014-11-01", "2014-11-30").Spend()
+            };
+
+            const int uc = 3;   // unique costs count
+
+            Mock.Get(m_costs).ImplementQueryable(proto: costs);
+
+            #endregion
+
+            // act
+
+            IEnumerable<DateTime> ret = m_repo.GetPeriods();
+
+            // assert
+
+            Assert.That(ret.Count(), Is.EqualTo(uc));
         }
 
         [Test, Category("GetPeriods")]
-        public void Should_provide_values_in_ascending_order()
+        [TestCaseSource(typeof(UnorderedCosts))]
+        public void Should_provide_values_in_ascending_order(Cost[] costs)
         {
-            throw new NotImplementedException();
+            #region arrange
+
+            Mock.Get(m_costs).ImplementQueryable(proto: costs);
+
+            #endregion
+
+            // act
+
+            IEnumerable<DateTime> ret = m_repo.GetPeriods();
+
+            // assert
+
+            Assert.That(ret, Is.Ordered);   // ascending order
         }
 
         [Test, Category("GetPeriods")]
-        public void Should_provide_only_the_costly_periods()
+        [TestCaseSource("GetCostsOfTheYear")]
+        public void Should_provide_only_the_costly_periods(Cost[] costs)
         {
-            throw new NotImplementedException();
+            #region arrange
+
+            DateTime[] exp =
+            {
+                DateTime.Parse("2014-01"),
+                DateTime.Parse("2014-03"),
+                DateTime.Parse("2014-05"),
+                DateTime.Parse("2014-12")
+            };
+
+            Mock.Get(m_costs).ImplementQueryable(proto: costs);
+
+            #endregion
+
+            // act
+
+            IEnumerable<DateTime> ret = m_repo.GetPeriods();
+
+            // assert
+
+            CollectionAssert.AreEqual(ret, exp);
         }
 
-        [TestCase]  // 1. 1 month + 1 cost = 1 period.
-        [TestCase]  // 2. 1 month + M costs = 1 period.
-        [TestCase]  // 3. N months + 1 cost at month = N periods.
-        [TestCase]  // 4. N months + M costs at month = N periods.
+        // 1. 1 month + 1 cost = 1 period.
+        // 2. 1 month + M costs = 1 period.
+        // 3. N months + 1 cost at month = N periods.
+        // 4. N months + M costs at month = N periods.
 
-        [Category("GetPeriods")]
+        [Test, Category("GetPeriods")]
         public void Should_translate_costs_to_corresponding_periods()
         {
             throw new NotImplementedException();
