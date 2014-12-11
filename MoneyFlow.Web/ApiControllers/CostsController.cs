@@ -1,17 +1,26 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using MoneyFlow.Data;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
 namespace MoneyFlow.Web.ApiControllers
 {
+    [RoutePrefix("api/costs")]
     public class CostsController : ApiControllerBase
     {
         public CostsController(IMoneyFlowUow uow)
             : base(uow) { }
+
+        [Route("periods")]
+        public IEnumerable<DateTime> GetPeriods()
+        {
+            return Uow.Costs.GetPeriods();
+        }
 
         public IQueryable<Cost> GetAll()
         {

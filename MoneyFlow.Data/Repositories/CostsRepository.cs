@@ -1,11 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Linq;
+using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
 namespace MoneyFlow.Data
 {
+    #region Extensions
+
+    public static class CostsRepositoryExtensions
+    {
+        public static IEnumerable<DateTime> GetPeriods(this IRepository<Cost> repo)
+        {
+            // group and select key
+            var raw = repo.GetAll()
+                .GroupBy(c => new { c.Date.Year, c.Date.Month })
+                .Select(x => x.Key)
+
+                .ToList();  // materialize
+
+            // cast to date and order
+            // by ascending
+            return raw
+                .Select(x => new DateTime(x.Year, x.Month, 1))
+                .Order();
+        }
+    }
+
+    #endregion
+
     public class CostsRepository : EntityRepository<Cost>
     {
         public CostsRepository(DbContext dbContext)
@@ -20,14 +45,6 @@ namespace MoneyFlow.Data
             if (entity.Category.Id > 0)
                 DbContext.Entry(entity.Category).State = 
                     EntityState.Unchanged;
-        }
-
-        public IEnumerable<DateTime> GetPeriods()
-        {
-            return DbSet
-                .GroupBy(c => new DateTime(c.Date.Year, c.Date.Month, 1))
-                .Select(c => c.Key)
-                .OrderBy(c => c);
         }
     }
 }
