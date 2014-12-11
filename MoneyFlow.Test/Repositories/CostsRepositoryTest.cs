@@ -179,16 +179,11 @@ namespace MoneyFlow.Test.Repositories
             CollectionAssert.AreEqual(ret, exp);
         }
 
+        // Test:
         // 1. 1 month + 1 cost = 1 period.
         // 2. 1 month + M costs = 1 period.
         // 3. N months + 1 cost at month = N periods.
         // 4. N months + M costs at month = N periods.
-
-        [Test, Category("GetPeriods")]
-        public void Should_translate_costs_to_corresponding_periods()
-        {
-            throw new NotImplementedException();
-        }
 
         #endregion
     }
