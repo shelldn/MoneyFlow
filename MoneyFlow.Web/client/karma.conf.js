@@ -23,7 +23,7 @@ module.exports = function(config) {
 
       // app
       'js/*.js',
-      'test/unit/**/*Spec.js'
+      'test/**/*Spec.js'
     ],
 
     ngHtml2JsPreprocessor: {
