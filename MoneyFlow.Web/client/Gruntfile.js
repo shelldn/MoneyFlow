@@ -43,6 +43,13 @@ module.exports = function(grunt) {
                 files: ['src/**/*.js'],
                 tasks: ['default']
             }
+        },
+
+        karma: {
+            test: {
+                configFile: 'karma.conf.js',
+                singleRun: true
+            }
         }
     });
 
@@ -50,6 +57,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('default', ['clean:dest', 'coffee', 'concat', 'clean:src']);
 };
