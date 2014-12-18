@@ -38,17 +38,18 @@ module.exports = function(grunt) {
             }
         },
 
-        watch: {
-            src: {
-                files: ['src/**/*.js'],
-                tasks: ['default']
-            }
-        },
-
         karma: {
             test: {
                 configFile: 'karma.conf.js',
-                singleRun: true
+                background: true,
+                singleRun: false
+            }
+        },
+
+        watch: {
+            karma: {
+                files: ['src/**/*', 'test/**/*Spec.js'],
+                tasks: ['default', 'karma:test:run']
             }
         }
     });
@@ -60,4 +61,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('default', ['clean:dest', 'coffee', 'concat', 'clean:src']);
+    grunt.registerTask('develop', ['karma:test:start', 'watch:karma']);
 };

@@ -6,6 +6,8 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
 
+    autoWatch: false,
+
     preprocessors: {
       "../**/*.cshtml": ['ng-html2js']
     },
@@ -39,7 +41,7 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 9876,
+    port: 8765,
 
 
     // enable / disable colors in the output (reporters and logs)
@@ -51,16 +53,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
 
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-
     // start these browsers
-    browsers: ['PhantomJS'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    browsers: ['PhantomJS']
   });
 };
