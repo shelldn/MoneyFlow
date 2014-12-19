@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using MoneyFlow.Data;
@@ -34,10 +35,11 @@ namespace MoneyFlow.Web.ApiControllers
         //
         // GET: /api/costs/2014-05
 
+        [Route("{period:DateTime}")]
         public IQueryable<Cost> GetByPeriod(DateTime period)
         {
             return Uow.Costs.GetAll()
-                .Where(c => c.Date.MonthEquals(period));
+                .Where(c => c.Date.Month == period.Month && c.Date.Year == period.Year);
         }
 
         //
