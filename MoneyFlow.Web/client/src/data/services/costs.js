@@ -10,6 +10,11 @@ angular.module('mf.data')
                 isArray: true,
                 url: '/api/costs/periods'
             },
+            filter: {
+                method: 'GET',
+                isArray: true,
+                url: '/api/costs/:period'
+            },
             query: {
                 method: 'GET',
                 isArray: true,

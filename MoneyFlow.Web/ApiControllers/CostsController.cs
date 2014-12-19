@@ -38,7 +38,7 @@ namespace MoneyFlow.Web.ApiControllers
         [Route("{period:DateTime}")]
         public IQueryable<Cost> GetByPeriod(DateTime period)
         {
-            return Uow.Costs.GetAll()
+            return GetAll()
                 .Where(c => c.Date.Month == period.Month && c.Date.Year == period.Year);
         }
 
