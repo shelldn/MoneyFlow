@@ -36,4 +36,11 @@ angular.module('mf.tracker')
                     self.isProcessing = false;
                 });
         };
+    })
+
+    //
+    // Period
+
+    .controller('PeriodCtrl', function() {
+
     });

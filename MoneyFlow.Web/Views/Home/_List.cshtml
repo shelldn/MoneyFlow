@@ -1,4 +1,13 @@
-﻿<table id="table-costs" class="full-width">
+﻿<table>
+    <tr ng-repeat="p in periods"
+        ng-controller="PeriodCtrl as pd"
+        ng-init="pd.init(p)">
+        
+        <td>{{ p | date:'MMM y' }}</td>
+    </tr>
+</table>
+
+<table id="table-costs" class="full-width">
     <tr ng-repeat="c in costs | orderBy: '-date'">
         <td ng-bind="c.date | date"></td>
         <td ng-bind="c.category.words"></td>

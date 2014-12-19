@@ -58,6 +58,7 @@
     <Compile Include="MoneyFlowUow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoneyFlowDbInitializer.cs" />
+    <Compile Include="_Helpers\DateTimeExtensions.cs" />
     <Compile Include="_Helpers\EnumerableExtensions.cs" />
   </ItemGroup>
   <ItemGroup />

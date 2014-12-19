@@ -32,6 +32,15 @@ namespace MoneyFlow.Web.ApiControllers
         }
 
         //
+        // GET: /api/costs/2014-05
+
+        public IQueryable<Cost> GetByPeriod(DateTime period)
+        {
+            return Uow.Costs.GetAll()
+                .Where(c => c.Date.MonthEquals(period));
+        }
+
+        //
         // POST: /api/costs
 
         public IHttpActionResult Post(Cost model)
