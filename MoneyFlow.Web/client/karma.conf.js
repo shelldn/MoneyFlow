@@ -18,6 +18,7 @@ module.exports = function(config) {
       // vendor
       'js/vendor/jquery/dist/jquery.js',
       'js/vendor/angular/angular.js',
+      'js/vendor/angular-resource/angular-resource.js',
       'js/vendor/angular-mocks/angular-mocks.js',
 
       // templates
@@ -25,6 +26,7 @@ module.exports = function(config) {
 
       // app
       'js/*.js',
+      'test/_mocks/*.js',
       'test/**/*Spec.js'
     ],
 

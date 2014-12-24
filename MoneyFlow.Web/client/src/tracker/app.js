@@ -12,5 +12,7 @@ angular.module('mf.tracker', ['mf.data', 'mf.controls'])
 
     .run(function($rootScope, uow) {
         $rootScope.uow = uow;
-        $rootScope.periods = uow['costs'].periods();
+
+        // TODO: move periods initialization to TrackerCtrl
+        // $rootScope.periods = uow['costs'].periods();
     });
