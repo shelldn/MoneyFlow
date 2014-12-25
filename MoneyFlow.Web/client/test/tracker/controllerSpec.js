@@ -3,15 +3,15 @@ describe('controller: PeriodCtrl', function() {
 
     beforeEach(function() {
         module('mf.tracker', function($provide) {
-            $provide.value('costsStore', new CostStoreMock());
+            $provide.value('costStore', new CostStoreMock());
         });
     });
 
-    beforeEach(inject(function($controller, $rootScope) {
+    beforeEach(inject(function($rootScope, $controller, costStore) {
         $scope = $rootScope.$new();
 
         // Instantiate controller
-        ctrl = $controller('PeriodCtrl as pd', { $scope: $scope });
+        ctrl = $controller('PeriodCtrl as pd', { $scope: $scope, costStore: costStore });
 
         // Fire
         $scope.$digest();

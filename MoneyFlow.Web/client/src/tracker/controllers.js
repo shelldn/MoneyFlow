@@ -41,11 +41,11 @@ angular.module('mf.tracker')
     //
     // Period
 
-    .controller('PeriodCtrl', function(costsStore) {
+    .controller('PeriodCtrl', function(costStore) {
         var self = this;
 
         self.init = function(period) {
-            self.costs = costsStore
+            self.costs = costStore
                 .getByPeriod(period);
         };
     });
