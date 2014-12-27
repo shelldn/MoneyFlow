@@ -15,6 +15,17 @@ describe('store-for: Cost', function() {
         $httpBackend.verifyNoOutstandingRequest();
     });
 
+    it('should translate period to year-month pair', function() {
+        var pair = '2014-07',
+            period = pair + '-01T00:00:00';
+
+        $httpBackend.expectGET('/api/costs/' + pair);
+
+        // act
+        costStore.getByPeriod(period);
+        $httpBackend.flush();
+    }); 
+    
     it('should load all the costs for specified period', function() {
         var period = '2014-07-01T00:00:00';
 
