@@ -14,6 +14,10 @@ window.CostStoreMock = (function() {
         return new Mock.GetByPeriodResult(period);
     };
 
+    Mock.prototype.create = function() {
+
+    };
+
     return Mock;
 
 })();

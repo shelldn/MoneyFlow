@@ -23,6 +23,16 @@ angular.module('mf.tracker')
 
         })();
 
+        self.commit = function() {
+            self.isProcessing = true;
+
+            costStore.create()
+
+                .then(function() {
+                    self.isProcessing = false;
+                });
+        };
+
         /*self.commit = function() {
             self.isProcessing = true;
 

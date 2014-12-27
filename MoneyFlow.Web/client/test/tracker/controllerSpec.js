@@ -1,5 +1,7 @@
 describe('controller: TrackerCtrl', function() {
-    var ctrl, costStore;
+    var $scope,
+        ctrl, costStore,
+        deferredCreate;
 
     beforeEach(function() {
         module('mf.tracker', function($provide) {
@@ -7,9 +9,17 @@ describe('controller: TrackerCtrl', function() {
         });
     });
 
-    beforeEach(inject(function($rootScope, $controller, _costStore_) {
-        var $scope = $rootScope.$new();
+    beforeEach(inject(function(costStore, $q) {
+        function fakeCreate() {
+            return (deferredCreate = $q.defer()).promise;
+        }
 
+        spyOn(costStore, 'create')
+            .and.callFake(fakeCreate);
+    }));
+
+    beforeEach(inject(function($rootScope, $controller, _costStore_) {
+        $scope = $rootScope.$new();
         costStore = _costStore_;
 
         // Instantiate controller
@@ -50,7 +60,22 @@ describe('controller: TrackerCtrl', function() {
         expect(ctrl.amount).toBeDefined();
         expect(ctrl.category).toEqual(jasmine.any(Object));
         expect(ctrl.category).not.toBeNull();
-    }); 
+    });
+
+    it('should indicate the beginning and the end of commit process', function() {
+        var isProcessingBefore, isProcessingAfter;
+
+        // act
+        ctrl.commit();
+        isProcessingBefore = ctrl.isProcessing;
+        deferredCreate.resolve();
+        $scope.$digest();
+        isProcessingAfter = ctrl.isProcessing;
+
+        // assert
+        expect(isProcessingBefore).toBeTruthy();
+        expect(isProcessingAfter).toBeFalsy();
+    });
 });
 
 describe('controller: PeriodCtrl', function() {
