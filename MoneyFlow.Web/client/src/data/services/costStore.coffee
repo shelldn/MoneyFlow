@@ -5,10 +5,17 @@ angular.module 'mf.data'
 
     Cost = $resource '/api/costs', id: '@id',
 
+      getPeriods:
+        method: 'GET'
+        url: '/api/costs/periods'
+        isArray: true
+
       getByPeriod:
         method: 'GET'
         url: '/api/costs/:year-:month'
-        isArray: true,
+        isArray: true
+
+    this.getPeriods = -> Cost.getPeriods()
 
     this.getByPeriod = (period) ->
       Cost.getByPeriod

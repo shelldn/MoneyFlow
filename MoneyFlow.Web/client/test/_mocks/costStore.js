@@ -6,6 +6,10 @@ window.CostStoreMock = (function() {
         this.period = period;
     };
 
+    Mock.prototype.getPeriods = function() {
+
+    };
+
     Mock.prototype.getByPeriod = function(period) {
         return new Mock.GetByPeriodResult(period);
     };

@@ -3,24 +3,28 @@ angular.module('mf.tracker')
     //
     // Tracker
 
-    .controller('TrackerCtrl', function(Cost, $scope, uow) {
+    .controller('TrackerCtrl', function(costStore) {
         var self = this;
 
         //
         // Save cost
 
-        function createAsync(c) {
+        /*function createAsync(c) {
             return uow['costs'].save(c)
                 .$promise;
-        }
+        }*/
 
         (self.init = function() {
-            self.amt = null;
-            self.cat = {};
+            self.periods = costStore.getPeriods();
+
+            /*self.amt = null;
+            self.cat = {};*/
+
+            self._isInitialized = true;
 
         })();
 
-        self.commit = function() {
+        /*self.commit = function() {
             self.isProcessing = true;
 
             createAsync(new Cost(self.amt, self.cat))
@@ -35,7 +39,7 @@ angular.module('mf.tracker')
                 ['finally'](function() {
                     self.isProcessing = false;
                 });
-        };
+        };*/
     })
 
     //

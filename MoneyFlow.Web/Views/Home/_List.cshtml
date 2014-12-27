@@ -1,5 +1,5 @@
 ﻿<ul>
-    <li ng-repeat="p in periods | orderBy:'-'"
+    <li ng-repeat="p in vm.periods | orderBy:'-'"
         ng-controller="PeriodCtrl as pd"
         ng-init="pd.init(p)">
         
