@@ -3,7 +3,7 @@ angular.module('mf.tracker')
     //
     // Tracker
 
-    .controller('TrackerCtrl', function($scope, costStore) {
+    .controller('TrackerCtrl', function($scope, Cost, costStore) {
         var self = this;
 
         //
@@ -26,7 +26,13 @@ angular.module('mf.tracker')
         self.commit = function() {
             self.isProcessing = true;
 
-            costStore.create()
+            var cost = new Cost(
+                self.amount,
+                self.category,
+                new Date()
+            );
+
+            costStore.create(cost)
 
                 .then(function(c) {
                     self.isProcessing = false;

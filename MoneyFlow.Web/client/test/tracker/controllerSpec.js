@@ -24,7 +24,7 @@ describe('controller: TrackerCtrl', function() {
         Cost = _Cost_;
 
         // Instantiate controller
-        ctrl = $controller('TrackerCtrl as vm', { $scope: $scope, costStore: costStore });
+        ctrl = $controller('TrackerCtrl as vm', { $scope: $scope, Cost: Cost, costStore: costStore });
 
         // Go!
         $scope.$digest();
@@ -77,9 +77,23 @@ describe('controller: TrackerCtrl', function() {
         expect(isProcessingBefore).toBeTruthy();
         expect(isProcessingAfter).toBeFalsy();
     });
-    
+
+    it('should create the Cost object with current amount, category and date', function() {
+        ctrl.amount = 25;
+        ctrl.category = { words: 'hello, world' };
+
+        var date = new Date(),
+            cost = new Cost(ctrl.amount, ctrl.category, date);
+
+        // act
+        ctrl.commit();
+
+        // assert
+        expect(costStore.create).toHaveBeenCalledWith(cost);
+    });
+
     it('should notify the descendants on commit completion', function() {
-        var cost = new Cost();
+        var cost = new Cost(25, {}, new Date());
 
         spyOn($scope, '$broadcast');
 
