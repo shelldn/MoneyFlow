@@ -1,6 +1,6 @@
 describe('controller: TrackerCtrl', function() {
     var $scope,
-        ctrl, costStore,
+        ctrl, costStore, Cost,
         deferredCreate;
 
     beforeEach(function() {
@@ -18,9 +18,10 @@ describe('controller: TrackerCtrl', function() {
             .and.callFake(fakeCreate);
     }));
 
-    beforeEach(inject(function($rootScope, $controller, _costStore_) {
+    beforeEach(inject(function($rootScope, $controller, _costStore_, _Cost_) {
         $scope = $rootScope.$new();
         costStore = _costStore_;
+        Cost = _Cost_;
 
         // Instantiate controller
         ctrl = $controller('TrackerCtrl as vm', { $scope: $scope, costStore: costStore });
@@ -76,6 +77,20 @@ describe('controller: TrackerCtrl', function() {
         expect(isProcessingBefore).toBeTruthy();
         expect(isProcessingAfter).toBeFalsy();
     });
+    
+    it('should notify the descendants on commit completion', function() {
+        var cost = new Cost();
+
+        spyOn($scope, '$broadcast');
+
+        // act
+        ctrl.commit();
+        deferredCreate.resolve(cost);
+        $scope.$digest();
+
+        // assert
+        expect($scope.$broadcast).toHaveBeenCalledWith('costCreated', cost);
+    }); 
 });
 
 describe('controller: PeriodCtrl', function() {

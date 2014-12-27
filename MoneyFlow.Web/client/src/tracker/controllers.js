@@ -3,7 +3,7 @@ angular.module('mf.tracker')
     //
     // Tracker
 
-    .controller('TrackerCtrl', function(costStore) {
+    .controller('TrackerCtrl', function($scope, costStore) {
         var self = this;
 
         //
@@ -28,8 +28,9 @@ angular.module('mf.tracker')
 
             costStore.create()
 
-                .then(function() {
+                .then(function(c) {
                     self.isProcessing = false;
+                    $scope.$broadcast('costCreated', c);
                 });
         };
 
