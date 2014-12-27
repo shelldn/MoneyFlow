@@ -40,6 +40,17 @@ describe('controller: TrackerCtrl', function() {
         // assert
         expect(ctrl.periods).toBe(expected);
     });
+    
+    it('should define the amount and category variables on init', function() {
+
+        // act
+        ctrl.init();
+
+        // assert
+        expect(ctrl.amount).toBeDefined();
+        expect(ctrl.category).toEqual(jasmine.any(Object));
+        expect(ctrl.category).not.toBeNull();
+    }); 
 });
 
 describe('controller: PeriodCtrl', function() {

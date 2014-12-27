@@ -16,9 +16,8 @@ angular.module('mf.tracker')
 
         (self.init = function() {
             self.periods = costStore.getPeriods();
-
-            /*self.amt = null;
-            self.cat = {};*/
+            self.amount = null;
+            self.category = {};
 
             self._isInitialized = true;
 
