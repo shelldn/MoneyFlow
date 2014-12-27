@@ -25,7 +25,7 @@ describe('controller: TrackerCtrl', function() {
         expect(ctrl._isInitialized).toBeTruthy();
     });
 
-    it('should load all the periods on init', function() {
+    it('should fetch all the periods on init', function() {
         var expected = [
             '2014-06-01T00:00:00',
             '2014-07-01T00:00:00'
@@ -61,7 +61,7 @@ describe('controller: PeriodCtrl', function() {
         $scope.$digest();
     }));
 
-    it('should load costs filtered by period', function() {
+    it('should fetch costs filtered by period', function() {
         var period = '2014-07-01T00:00:00';
         var expected = new CostStoreMock.GetByPeriodResult(period);
 

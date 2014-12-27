@@ -48,7 +48,7 @@ describe('store-for: Cost', function() {
         $httpBackend.flush();
     }); 
     
-    it('should fetch all the costs for specified period', function() {
+    it('should fetch and return all the costs for specified period', function() {
         var period = '2014-07-01T00:00:00';
 
         // act
