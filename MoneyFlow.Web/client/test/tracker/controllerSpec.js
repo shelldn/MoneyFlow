@@ -270,5 +270,19 @@ describe('controller: PeriodCtrl', function() {
             // assert
             expect(count).toEqual(dayCosts.length);
         });
+
+        it('should handle the case cost being the last element in the sequence', function() {
+            var costs = [
+                new Cost(25, {}, '2014-07-13T14:00:00')
+            ];
+
+            // act
+            costs = link(costs);
+
+            var count = ctrl.sameDay(costs[0]);
+
+            // assert
+            expect(count).toEqual(1);
+        });
     });
 });
