@@ -18,7 +18,7 @@ describe('controller: TrackerCtrl', function() {
             .and.callFake(fakeCreate);
     }));
 
-    beforeEach(inject(function($rootScope, $controller, _costStore_, _Cost_) {
+    beforeEach(inject(function($controller, $rootScope, _costStore_, _Cost_) {
         $scope = $rootScope.$new();
         costStore = _costStore_;
         Cost = _Cost_;
@@ -120,7 +120,8 @@ describe('controller: TrackerCtrl', function() {
 });
 
 describe('controller: PeriodCtrl', function() {
-    var $scope, ctrl;
+    var $rootScope, ctrl,
+        costStore, Cost;
 
     beforeEach(function() {
         module('mf.tracker', function($provide) {
@@ -128,7 +129,12 @@ describe('controller: PeriodCtrl', function() {
         });
     });
 
-    beforeEach(inject(function($rootScope, $controller, costStore) {
+    beforeEach(inject(function($controller, _$rootScope_, _costStore_, _Cost_) {
+        var $scope;
+
+        $rootScope = _$rootScope_;
+        costStore = _costStore_;
+        Cost = _Cost_;
         $scope = $rootScope.$new();
 
         // Instantiate controller
@@ -147,5 +153,43 @@ describe('controller: PeriodCtrl', function() {
 
         // assert
         expect(ctrl.costs).toEqual(expected);
+    });
+    
+    it('should append the newly created cost if periods match', function() {
+        var costs = [
+                new Cost(10, {}, '2014-03-10T14:00:00'),
+                new Cost(20, {}, '2014-04-20T14:00:00')
+            ],
+
+            cost = new Cost(25, {}, '2014-07-13T14:00:00');
+
+        spyOn(costStore, 'getByPeriod')
+            .and.returnValue(costs);
+
+        // act
+        ctrl.init(cost.period);
+        $rootScope.$broadcast('costCreated', cost);
+
+        // assert
+        expect(ctrl.costs).toContain(cost);
+    });
+
+    it('should ignore the newly created cost if periods not match', function() {
+        var costs, cost,
+            nextMonth;
+
+        costs = [];
+        cost = new Cost(25, {}, '2014-06-25T22:00:00');
+        nextMonth = moment(cost.period).add(1, 'M').format();
+
+        spyOn(costStore, 'getByPeriod')
+            .and.returnValue(costs);
+
+        // act
+        ctrl.init(nextMonth);
+        $rootScope.$broadcast('costCreated', cost);
+
+        // assert
+        expect(ctrl.costs).not.toContain(cost);
     });
 });

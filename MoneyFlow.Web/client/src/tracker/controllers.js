@@ -35,8 +35,8 @@ angular.module('mf.tracker')
             costStore.create(cost)
 
                 .then(function(c) {
-                    $scope.$broadcast('costCreated', c);
                     self.init();
+                    $scope.$broadcast('costCreated', c);
                 })
 
                 ['finally'](function() {
@@ -48,11 +48,26 @@ angular.module('mf.tracker')
     //
     // Period
 
-    .controller('PeriodCtrl', function(costStore) {
+    .controller('PeriodCtrl', function($scope, costStore) {
         var self = this;
 
+        function appendIfPeriodsMatch(c) {
+            var periodsMatch =
+                moment(self._period)
+                    .isSame(c.period);
+
+            if (periodsMatch)
+                self.costs.push(c);
+        }
+
         self.init = function(period) {
+            self._period = period;
+
             self.costs = costStore
                 .getByPeriod(period);
         };
+
+        $scope.$on('costCreated', function(e, c) {
+            appendIfPeriodsMatch(c);
+        });
     });
