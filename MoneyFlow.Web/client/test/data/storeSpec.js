@@ -1,13 +1,16 @@
 describe('store-for: Cost', function() {
-    var $httpBackend, costStore;
+    var $httpBackend, costStore,
+        Cost;
 
-    var URL_PERIODS = '/api/costs/periods';
+    var URL_COSTS           = '/api/costs',
+        URL_COSTS_PERIODS   = '/api/costs/periods';
 
     beforeEach(module('mf.data'));
 
-    beforeEach(inject(function(_$httpBackend_, _costStore_) {
+    beforeEach(inject(function(_$httpBackend_, _costStore_, _Cost_) {
         $httpBackend = _$httpBackend_;
         costStore = _costStore_;
+        Cost = _Cost_;
 
         $httpBackend.when('GET', '/api/costs/2014-07')
             .respond(['2014-07-13T14:00:00']);
@@ -24,8 +27,8 @@ describe('store-for: Cost', function() {
             '2014-12-01T00:00:00'
         ];
 
-        $httpBackend.whenGET(URL_PERIODS).respond(periods);
-        $httpBackend.expectGET(URL_PERIODS);
+        $httpBackend.whenGET(URL_COSTS_PERIODS).respond(periods);
+        $httpBackend.expectGET(URL_COSTS_PERIODS);
 
         // act
         var result = costStore
@@ -57,5 +60,25 @@ describe('store-for: Cost', function() {
 
         // assert
         expect(ret).toEqual(['2014-07-13T14:00:00']);
+    });
+
+    it('should create cost and return its server represented instance', function() {
+        var cost = new Cost(25, {}, '2014-07-13T14:00:00'),
+            serverCost = angular.copy(cost);
+
+        serverCost.id = 1;
+
+        var fakeSuccess = jasmine.createSpy('success');
+
+        $httpBackend.whenPOST(URL_COSTS, cost).respond(200, serverCost);
+
+        // act
+        costStore.create(cost).then(fakeSuccess);
+        $httpBackend.flush();
+
+        // assert
+        expect(fakeSuccess).toHaveBeenCalledWith(
+            jasmine.objectContaining(serverCost)
+        );
     });
 });

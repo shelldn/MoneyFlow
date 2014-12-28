@@ -22,4 +22,7 @@ angular.module 'mf.data'
         year: date period, 'yyyy'
         month: date period, 'MM'
 
+    this.create = (cost) ->
+      Cost.save(cost).$promise
+
     return
