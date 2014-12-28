@@ -37,6 +37,7 @@ angular.module('mf.tracker')
                 .then(function(c) {
                     self.isProcessing = false;
                     $scope.$broadcast('costCreated', c);
+                    self.init();
                 });
         };
 

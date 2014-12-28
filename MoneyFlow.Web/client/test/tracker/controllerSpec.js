@@ -105,6 +105,18 @@ describe('controller: TrackerCtrl', function() {
         // assert
         expect($scope.$broadcast).toHaveBeenCalledWith('costCreated', cost);
     }); 
+    
+    it('should reinitialize itself on commit completion', function() {
+        spyOn(ctrl, 'init');
+
+        // act
+        ctrl.commit();
+        deferredCreate.resolve(new Cost());
+        $scope.$digest();
+
+        // assert
+        expect(ctrl.init).toHaveBeenCalled();
+    }); 
 });
 
 describe('controller: PeriodCtrl', function() {
