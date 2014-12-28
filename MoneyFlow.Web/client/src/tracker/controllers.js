@@ -67,6 +67,13 @@ angular.module('mf.tracker')
                 .getByPeriod(period);
         };
 
+        self.isNewDay = function(c) {
+            if (!c.prev) return true;
+
+            return moment(c.prev.date)
+                .isBefore(c.date, 'day');
+        };
+
         $scope.$on('costCreated', function(e, c) {
             appendIfPeriodsMatch(c);
         });

@@ -121,7 +121,8 @@ describe('controller: TrackerCtrl', function() {
 
 describe('controller: PeriodCtrl', function() {
     var $rootScope, ctrl,
-        costStore, Cost;
+        link, costStore,
+        Cost;
 
     beforeEach(function() {
         module('mf.tracker', function($provide) {
@@ -129,13 +130,15 @@ describe('controller: PeriodCtrl', function() {
         });
     });
 
-    beforeEach(inject(function($controller, _$rootScope_, _costStore_, _Cost_) {
+    beforeEach(inject(function($controller, $filter, _$rootScope_, _costStore_, _Cost_) {
         var $scope;
 
-        $rootScope = _$rootScope_;
-        costStore = _costStore_;
-        Cost = _Cost_;
+        $rootScope      = _$rootScope_;
+        costStore       = _costStore_;
+        Cost            = _Cost_;
+
         $scope = $rootScope.$new();
+        link = $filter('link');
 
         // Instantiate controller
         ctrl = $controller('PeriodCtrl as pd', { $scope: $scope, costStore: costStore });
@@ -191,5 +194,47 @@ describe('controller: PeriodCtrl', function() {
 
         // assert
         expect(ctrl.costs).not.toContain(cost);
+    });
+
+    describe('isNewDay(Cost)', function() {
+        it("should return 'true' if there is no previous cost", function() {
+            var cost = new Cost(25, {}, '2014-07-10T14:00:00');
+
+            // act
+            var result = ctrl.isNewDay(cost);
+
+            // assert
+            expect(result).toBeTruthy();
+        });
+
+        it("should return 'true' if the previous cost was spent some days before current", function() {
+            var costs = [
+                new Cost(25, {}, '2014-06-10T14:00:00'),
+                new Cost(25, {}, '2014-06-20T14:00:00')
+            ];
+
+            // act
+            costs = link(costs);
+
+            var result = ctrl.isNewDay(costs[1]);
+
+            // assert
+            expect(result).toBeTruthy();
+        });
+
+        it("should return 'false' if the previous cost was spent at the same day as current", function() {
+            var costs = [
+                new Cost(25, {}, '2014-06-10T16:00:00'),
+                new Cost(25, {}, '2014-06-10T16:00:00')
+            ];
+
+            // act
+            costs = link(costs);
+
+            var result = ctrl.isNewDay(costs[1]);
+
+            // assert
+            expect(result).toBeFalsy();
+        });
     });
 });
