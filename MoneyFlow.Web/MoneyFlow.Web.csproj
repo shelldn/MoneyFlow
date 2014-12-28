@@ -180,6 +180,7 @@
     <Content Include="client\js\vendor\jquery\dist\jquery.js" />
     <Content Include="client\js\vendor\jquery\dist\jquery.min.js" />
     <Content Include="client\js\vendor\jquery\dist\jquery.min.map" />
+    <Content Include="client\js\vendor\moment\moment.js" />
     <Content Include="client\js\vendor\underscore\underscore.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
