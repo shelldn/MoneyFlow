@@ -16,6 +16,7 @@ module.exports = function(config) {
     files: [
 
       // vendor
+      'js/vendor/moment/moment.js',
       'js/vendor/jquery/dist/jquery.js',
       'js/vendor/angular/angular.js',
       'js/vendor/angular-resource/angular-resource.js',
