@@ -74,6 +74,17 @@ angular.module('mf.tracker')
                 .isBefore(c.date, 'day');
         };
 
+        self.sameDay = function(c) {
+            var count = 1;
+
+            while (moment(c.date).isSame(c.next.date, 'day')) {
+                count++;
+                c = c.next;
+            }
+
+            return count;
+        };
+
         $scope.$on('costCreated', function(e, c) {
             appendIfPeriodsMatch(c);
         });

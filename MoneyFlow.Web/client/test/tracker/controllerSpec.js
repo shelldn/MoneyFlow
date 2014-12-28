@@ -197,6 +197,7 @@ describe('controller: PeriodCtrl', function() {
     });
 
     describe('isNewDay(Cost)', function() {
+
         it("should return 'true' if there is no previous cost", function() {
             var cost = new Cost(25, {}, '2014-07-10T14:00:00');
 
@@ -235,6 +236,39 @@ describe('controller: PeriodCtrl', function() {
 
             // assert
             expect(result).toBeFalsy();
+        });
+    });
+
+    describe('sameDay(Cost)', function() {
+
+        it('should count all the costs that will be spend at the same day as (including) current', function() {
+            var costsBefore, costsAfter;
+
+            costsBefore = [
+                new Cost(25, {}, '2014-06-10T12:00:00'),
+                new Cost(25, {}, '2014-07-10T12:00:00')
+            ];
+
+            costsAfter = [
+                new Cost(25, {}, '2014-07-11T12:00:00'),
+                new Cost(25, {}, '2014-07-11T12:00:00')
+            ];
+
+            // Test sample
+            var dayCosts = [
+                new Cost(25, {}, '2014-07-10T14:00:00'),
+                new Cost(25, {}, '2014-07-10T16:00:00'),
+                new Cost(25, {}, '2014-07-10T18:00:00')
+
+            ];  // Count: 3
+
+            // act
+            link(costsBefore.concat(dayCosts).concat(costsAfter));
+
+            var count = ctrl.sameDay(dayCosts[0]);
+
+            // assert
+            expect(count).toEqual(dayCosts.length);
         });
     });
 });
