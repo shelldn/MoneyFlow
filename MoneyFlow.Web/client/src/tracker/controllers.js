@@ -35,28 +35,14 @@ angular.module('mf.tracker')
             costStore.create(cost)
 
                 .then(function(c) {
-                    self.isProcessing = false;
                     $scope.$broadcast('costCreated', c);
-                    self.init();
-                });
-        };
-
-        /*self.commit = function() {
-            self.isProcessing = true;
-
-            createAsync(new Cost(self.amt, self.cat))
-
-                .then(function(c) {
-                    $scope['costs']
-                        .push(c);
-
                     self.init();
                 })
 
                 ['finally'](function() {
                     self.isProcessing = false;
                 });
-        };*/
+        };
     })
 
     //
