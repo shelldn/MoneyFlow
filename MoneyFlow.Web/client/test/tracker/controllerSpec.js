@@ -246,17 +246,17 @@ describe('controller: PeriodCtrl', function() {
 
     describe('sameDay(Cost)', function() {
 
-        it('should count all the costs that will be spend at the same day as (including) current', function() {
+        it('should count all the costs that was spent the same day as (including) current', function() {
             var costsBefore, costsAfter;
 
             costsBefore = [
-                new Cost(25, {}, '2014-06-10T12:00:00'),
-                new Cost(25, {}, '2014-07-10T12:00:00')
+                new Cost(25, {}, '2014-06-20T12:00:00'),
+                new Cost(25, {}, '2014-06-30T12:00:00')
             ];
 
             costsAfter = [
-                new Cost(25, {}, '2014-07-11T12:00:00'),
-                new Cost(25, {}, '2014-07-11T12:00:00')
+                new Cost(25, {}, '2014-07-20T12:00:00'),
+                new Cost(25, {}, '2014-07-30T12:00:00')
             ];
 
             // Test sample
@@ -270,15 +270,16 @@ describe('controller: PeriodCtrl', function() {
             // act
             link(costsBefore.concat(dayCosts).concat(costsAfter));
 
-            var count = ctrl.sameDay(dayCosts[0]);
+            var count = ctrl.sameDay(dayCosts[2]);
 
             // assert
             expect(count).toEqual(dayCosts.length);
         });
 
-        it('should handle the case cost being the last element in the sequence', function() {
+        it('should handle the case cost being the first element in the sequence', function() {
             var costs = [
-                new Cost(25, {}, '2014-07-13T14:00:00')
+                new Cost(25, {}, '2014-07-10T14:00:00'),
+                new Cost(25, {}, '2014-07-10T16:00:00')
             ];
 
             // act

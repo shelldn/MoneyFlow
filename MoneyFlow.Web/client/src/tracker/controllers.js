@@ -77,9 +77,9 @@ angular.module('mf.tracker')
         self.sameDay = function(c) {
             var count = 1;
 
-            while (c.next && moment(c.date).isSame(c.next.date, 'day')) {
+            while (c.prev && moment(c.date).isSame(c.prev.date, 'day')) {
                 count++;
-                c = c.next;
+                c = c.prev;
             }
 
             return count;
