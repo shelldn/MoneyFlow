@@ -7,13 +7,12 @@
             <h1>{{ p | date:'MMM yyyy' }}</h1>
             
             <table class="table-costs full-width">
-                <tr ng-repeat="c in pd.costs | orderBy:'date' | link ">
+                <tr ng-repeat="c in pd.costs | orderBy:'-date' | link:true">
                     
                     <td class="text-center"
-                        rowspan="{{ pd.isNewDay(c) && pd.sameDay(c) }}"
-                        ng-if="pd.isNewDay(c)">
-                        {{ c.date | date:'dd' }}
-                    </td>
+                        rowspan="{{ pd.isYesterday(c) && pd.sameDay(c) }}"
+                        ng-if="pd.isYesterday(c)"
+                        ng-bind="c.date | date:'dd'"></td>
 
                     <td>{{ c.category.words }}</td>
                     <td class="text-right">{{ c.amount }}</td>
