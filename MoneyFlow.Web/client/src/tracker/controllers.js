@@ -67,11 +67,11 @@ angular.module('mf.tracker')
                 .getByPeriod(period);
         };
 
-        self.isNewDay = function(c) {
-            if (!c.prev) return true;
+        self.isYesterday = function(c) {
+            if (!c.next) return true;
 
-            return moment(c.prev.date)
-                .isBefore(c.date, 'day');
+            return moment(c.next.date)
+                .isAfter(c.date, 'day');
         };
 
         self.sameDay = function(c) {

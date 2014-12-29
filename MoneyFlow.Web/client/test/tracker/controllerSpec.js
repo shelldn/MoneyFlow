@@ -196,43 +196,48 @@ describe('controller: PeriodCtrl', function() {
         expect(ctrl.costs).not.toContain(cost);
     });
 
-    describe('isNewDay(Cost)', function() {
+    describe('isYesterday(Cost)', function() {
 
-        it("should return 'true' if there is no previous cost", function() {
-            var cost = new Cost(25, {}, '2014-07-10T14:00:00');
-
-            // act
-            var result = ctrl.isNewDay(cost);
-
-            // assert
-            expect(result).toBeTruthy();
-        });
-
-        it("should return 'true' if the previous cost was spent some days before current", function() {
+        it("should return 'true' if there are no future costs for this period", function() {
             var costs = [
-                new Cost(25, {}, '2014-06-10T14:00:00'),
-                new Cost(25, {}, '2014-06-20T14:00:00')
+                new Cost(25, {}, '2014-07-10T12:00:00'),
+                new Cost(25, {}, '2014-07-10T14:00:00')
             ];
 
             // act
             costs = link(costs);
 
-            var result = ctrl.isNewDay(costs[1]);
+            var result = ctrl.isYesterday(costs[1]);
 
             // assert
             expect(result).toBeTruthy();
         });
 
-        it("should return 'false' if the previous cost was spent at the same day as current", function() {
+        it("should return 'true' if the future cost will be spend some days after current", function() {
             var costs = [
-                new Cost(25, {}, '2014-06-10T16:00:00'),
-                new Cost(25, {}, '2014-06-10T16:00:00')
+                new Cost(25, {}, '2014-07-10T14:00:00'),
+                new Cost(25, {}, '2014-07-11T14:00:00'),
+                new Cost(25, {}, '2014-07-20T14:00:00')
             ];
 
             // act
             costs = link(costs);
 
-            var result = ctrl.isNewDay(costs[1]);
+            // assert
+            expect(ctrl.isYesterday(costs[0])).toBeTruthy();
+            expect(ctrl.isYesterday(costs[1])).toBeTruthy();
+        });
+
+        it("should return 'false' if the future cost will be spend the same day as current", function() {
+            var costs = [
+                new Cost(25, {}, '2014-07-10T14:00:00'),
+                new Cost(25, {}, '2014-07-10T16:00:00')
+            ];
+
+            // act
+            costs = link(costs);
+
+            var result = ctrl.isYesterday(costs[0]);
 
             // assert
             expect(result).toBeFalsy();
