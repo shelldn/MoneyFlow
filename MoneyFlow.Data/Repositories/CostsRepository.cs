@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.SqlServer;
-using System.Linq;
-using MoneyFlow.Data.Contracts;
+﻿using System.Data.Entity;
 using MoneyFlow.Model;
 
 namespace MoneyFlow.Data
@@ -12,21 +7,7 @@ namespace MoneyFlow.Data
 
     public static class CostsRepositoryExtensions
     {
-        public static IEnumerable<DateTime> GetPeriods(this IRepository<Cost> repo)
-        {
-            // group and select key
-            var raw = repo.GetAll()
-                .GroupBy(c => new { c.Date.Year, c.Date.Month })
-                .Select(x => x.Key)
-
-                .ToList();  // materialize
-
-            // cast to date and order
-            // by ascending
-            return raw
-                .Select(x => new DateTime(x.Year, x.Month, 1))
-                .Order();
-        }
+        
     }
 
     #endregion

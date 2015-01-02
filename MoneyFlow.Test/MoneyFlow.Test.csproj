@@ -69,8 +69,6 @@
   <ItemGroup>
     <Compile Include="ApiControllers\CostsControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CostsRepositoryTest.cs" />
-    <Compile Include="Repositories\CostsRepositoryTest.Data.cs" />
     <Compile Include="_Helpers\DateTimeExtensions.cs" />
     <Compile Include="_Helpers\DbSetMockExtensions.cs" />
   </ItemGroup>

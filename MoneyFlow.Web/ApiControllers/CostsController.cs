@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
-using MoneyFlow.Data;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
@@ -20,7 +18,14 @@ namespace MoneyFlow.Web.ApiControllers
         [Route("periods")]
         public IEnumerable<DateTime> GetPeriods()
         {
-            return Uow.Costs.GetPeriods();
+            var dates = GetAll().Select(c => c.Date);
+            var p = dates.Min().GetMonth();
+
+            while (p <= dates.Max())
+            {
+                yield return p;
+                p = p.AddMonths(1);
+            }
         }
 
         public IQueryable<Cost> GetAll()
