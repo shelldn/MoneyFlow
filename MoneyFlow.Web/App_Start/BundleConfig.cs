@@ -14,6 +14,9 @@ namespace MoneyFlow.Web
             #endregion
 
             #region js
+            bundles.Add(new ScriptBundle("~/bundle/moment")
+                .Include("~/client/js/vendor/moment/moment.js"));
+
             bundles.Add(new ScriptBundle("~/bundle/underscore")
                 .Include("~/client/js/vendor/underscore/underscore.js"));
 

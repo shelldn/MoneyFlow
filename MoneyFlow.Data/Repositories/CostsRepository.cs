@@ -3,9 +3,18 @@ using MoneyFlow.Model;
 
 namespace MoneyFlow.Data
 {
+    #region Extensions
+
+    public static class CostsRepositoryExtensions
+    {
+        
+    }
+
+    #endregion
+
     public class CostsRepository : EntityRepository<Cost>
     {
-        public CostsRepository(DbContext dbContext) 
+        public CostsRepository(DbContext dbContext)
             : base(dbContext) { }
 
         public override void Add(Cost entity)

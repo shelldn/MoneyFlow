@@ -55,6 +55,7 @@
     <Compile Include="Cost.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Cost.cs" />
     <Compile Include="Identity\Account.cs" />
     <Compile Include="Login.cs">
       <DependentUpon>Model.tt</DependentUpon>

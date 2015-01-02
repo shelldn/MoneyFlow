@@ -5,6 +5,16 @@ angular.module('mf.data')
 
     .factory('costs', function($resource) {
         return $resource('/api/costs', { id: '@id' }, {
+            periods: {
+                method: 'GET',
+                isArray: true,
+                url: '/api/costs/periods'
+            },
+            filter: {
+                method: 'GET',
+                isArray: true,
+                url: '/api/costs/:period'
+            },
             query: {
                 method: 'GET',
                 isArray: true,

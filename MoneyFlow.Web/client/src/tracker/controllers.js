@@ -3,37 +3,93 @@ angular.module('mf.tracker')
     //
     // Tracker
 
-    .controller('TrackerCtrl', function(Cost, $scope, uow) {
+    .controller('TrackerCtrl', function($scope, Cost, costStore) {
         var self = this;
 
         //
         // Save cost
 
-        function createAsync(c) {
+        /*function createAsync(c) {
             return uow['costs'].save(c)
                 .$promise;
-        }
+        }*/
 
         (self.init = function() {
-            self.amt = null;
-            self.cat = {};
+            self.periods = costStore.getPeriods();
+            self.amount = null;
+            self.category = {};
+
+            self._isInitialized = true;
 
         })();
 
         self.commit = function() {
             self.isProcessing = true;
 
-            createAsync(new Cost(self.amt, self.cat))
+            var cost = new Cost(
+                self.amount,
+                self.category,
+                new Date()
+            );
+
+            costStore.create(cost)
 
                 .then(function(c) {
-                    $scope['costs']
-                        .push(c);
-
                     self.init();
+                    $scope.$broadcast('costCreated', c);
                 })
 
                 ['finally'](function() {
                     self.isProcessing = false;
                 });
         };
+    })
+
+    //
+    // Period
+
+    .controller('PeriodCtrl', function($scope, costStore) {
+        var self = this;
+
+        function appendIfPeriodsMatch(c) {
+            var periodsMatch =
+                moment(self._period)
+                    .isSame(c.period);
+
+            if (periodsMatch)
+                self.costs.push(c);
+        }
+
+        self.init = function(period) {
+            self._period = period;
+
+            self.costs = costStore
+                .getByPeriod(period);
+        };
+
+        self.hasCosts = function() {
+            return !!self.costs.length;
+        };
+
+        self.isYesterday = function(c) {
+            if (!c.next) return true;
+
+            return moment(c.next.date)
+                .isAfter(c.date, 'day');
+        };
+
+        self.sameDay = function(c) {
+            var count = 1;
+
+            while (c.prev && moment(c.date).isSame(c.prev.date, 'day')) {
+                count++;
+                c = c.prev;
+            }
+
+            return count;
+        };
+
+        $scope.$on('costCreated', function(e, c) {
+            appendIfPeriodsMatch(c);
+        });
     });
