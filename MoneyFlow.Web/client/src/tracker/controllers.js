@@ -67,6 +67,10 @@ angular.module('mf.tracker')
                 .getByPeriod(period);
         };
 
+        self.hasCosts = function() {
+            return !!self.costs.length;
+        };
+
         self.isYesterday = function(c) {
             if (!c.next) return true;
 

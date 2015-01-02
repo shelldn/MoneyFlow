@@ -157,7 +157,30 @@ describe('controller: PeriodCtrl', function() {
         // assert
         expect(ctrl.costs).toEqual(expected);
     });
-    
+
+    describe('hasCosts()', function() {
+
+        it("should return 'true' if there is at least one cost for this period", function() {
+            ctrl.costs = [ new Cost(25, {}, '2014-07-10T14:00:00') ];
+
+            // act
+            var hasCosts = ctrl.hasCosts();
+
+            // assert
+            expect(hasCosts).toBeTruthy();
+        });
+
+        it("should return 'false' if there are no costs for this period", function() {
+            ctrl.costs = [];
+
+            // act
+            var hasCosts = ctrl.hasCosts();
+
+            // assert
+            expect(hasCosts).toBeFalsy();
+        });
+    });
+
     it('should append the newly created cost if periods match', function() {
         var costs = [
                 new Cost(10, {}, '2014-03-10T14:00:00'),

@@ -18,6 +18,10 @@
                     <td class="text-right">{{ c.amount }}</td>
                 </tr>
             </table>
+            
+            <i ng-if="!pd.hasCosts()">
+                There are no costs for this period
+            </i>
         </article>
     </li>
 </ul>
