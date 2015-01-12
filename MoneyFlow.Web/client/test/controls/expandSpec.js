@@ -12,7 +12,7 @@ describe('directive: mf-expand', function() {
 
         $scope = x.scope();
 
-        $scope.$digest();
+        $rootScope.$digest();
     }));
 
     it('Should provide a link with the text of mf-expand attribute', function() {
@@ -20,7 +20,7 @@ describe('directive: mf-expand', function() {
     });
     
     it('Should transclude the element\'s contents', function() {
-        expect(x.children('div[ng-transclude]').html()).toBe('<span class="ng-scope">Contents</span>');
+        expect(x.children('div.expand-content').html()).toBe('<span class="ng-scope">Contents</span>');
     }); 
 
     it('Should toggle isExpanded when tglExpand() is called', function() {

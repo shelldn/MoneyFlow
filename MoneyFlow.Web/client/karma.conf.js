@@ -19,6 +19,7 @@ module.exports = function(config) {
       'js/vendor/moment/moment.js',
       'js/vendor/jquery/dist/jquery.js',
       'js/vendor/angular/angular.js',
+      'js/vendor/angular-local-storage/dist/angular-local-storage.js',
       'js/vendor/angular-resource/angular-resource.js',
       'js/vendor/angular-mocks/angular-mocks.js',
 

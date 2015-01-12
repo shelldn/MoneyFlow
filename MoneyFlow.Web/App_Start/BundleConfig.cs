@@ -25,11 +25,13 @@ namespace MoneyFlow.Web
 
             bundles.Add(new Bundle("~/bundle/angular").Include(
                 "~/client/js/vendor/angular/angular.js",
+                "~/client/js/vendor/angular-local-storage/dist/angular-local-storage.js",
                 "~/client/js/vendor/angular-resource/angular-resource.js"
             ));
 
             bundles.Add(new Bundle("~/bundle/app").Include(
                 "~/client/js/data.js",
+                "~/client/js/auth.js",
                 "~/client/js/controls.js"
             ));
             #endregion

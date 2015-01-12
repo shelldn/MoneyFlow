@@ -9,23 +9,7 @@
     <div class="content">
         <header id="header" role="banner">
             <a id="logo" href="@Url.Action("Index", "Home")"></a>
-
-            <div id="account" class="right">
-                @if (Request.IsAuthenticated)
-                {
-                    <span>@User.Identity.Name</span>
-                    @Html.ActionLink("out", "sign-out", "Account")
-                }
-
-                else
-                {
-                    <span id="sign-in" mf-expand="sign in">
-                        @Html.Partial("_SignInPartial")
-                    </span>
-                    @Html.ActionLink("register", "Register", "Account")
-                }
-            </div>
-
+            <div id="account" class="right" ng-include="'/tmpl/account'"></div>
         </header>
         <div id="body" ng-controller="@ViewBag.MainCtrl" role="main">
             @RenderBody()

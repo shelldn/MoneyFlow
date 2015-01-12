@@ -188,13 +188,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Shared\_SignInPartial.cshtml" />
     <Content Include="tmpl\controls\advice.cshtml" />
     <Content Include="Views\Home\_List.cshtml" />
     <None Include="Properties\PublishProfiles\mf_home.pubxml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="tmpl\controls\expand.cshtml" />
+    <Content Include="tmpl\account.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -210,6 +210,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\MoneyFlowAuthorizationServerProvider.cs" />
     <Compile Include="App_Start\NinjectModules.cs" />
     <Compile Include="App_Start\NinjectHttpResolver.cs" />
     <Compile Include="App_Start\NinjectResolver.cs" />

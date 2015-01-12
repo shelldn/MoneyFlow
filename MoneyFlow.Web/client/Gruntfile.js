@@ -32,6 +32,10 @@ module.exports = function(grunt) {
                 src: ['src/controls/app.js', 'src/controls/**/*.js'],
                 dest: 'js/controls.js'
             },
+            auth: {
+                src: ['src/auth/app.js', 'src/auth/*.js'],
+                dest: 'js/auth.js'
+            },
             tracker: {
                 src: ['src/tracker/app.js', 'src/tracker/*.js'],
                 dest: 'js/tracker.js'
