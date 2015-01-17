@@ -1,15 +1,21 @@
 ﻿<form id="sign-in" name="sign-in" novalidate
       ng-submit="signIn()">
 
-    <div mf-expand="sign in">
+    <div mf-expand="sign in" ng-init="data = this['sign-in']">
         <input name="user-name" type="email" ng-model="userName" required />
-        <div class="validation-box" ng-messages="this['sign-in']['user-name'].$error">
+        <div class="validation-box" 
+             ng-show="data['user-name'].$dirty" 
+             ng-messages="data['user-name'].$error">
+            
             <span class="validation-msg" ng-message="email">This is not a valid email</span>
             <span class="validation-msg" ng-message="required">This field is required</span>
         </div>
 
         <input name="password" type="password" ng-model="password" required />
-        <div class="validation-box" ng-messages="this['sign-in']['password'].$error">
+        <div class="validation-box" 
+             ng-show="data['password'].$dirty" 
+             ng-messages="data['password'].$error">
+            
             <span class="validation-msg" ng-message="required">This field is required</span>
         </div>
 
