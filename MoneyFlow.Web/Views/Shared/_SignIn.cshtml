@@ -2,9 +2,11 @@
       ng-submit="signIn()">
 
     <div mf-expand="sign in" ng-init="data = this['sign-in']">
-        <input name="user-name" type="email" required
+        <input name="user-name" type="email"
+               placeholder="email"
                ng-model-options="{ updateOn: 'blur' }"
-               ng-model="userName" />
+               ng-model="userName"
+               required />
 
         <div class="validation-box" 
              ng-show="data['user-name'].$dirty" 
@@ -14,9 +16,11 @@
             <span class="validation-msg" ng-message="required">This field is required</span>
         </div>
 
-        <input name="password" type="password" required
+        <input name="password" type="password"
+               placeholder="password"
                ng-model-options="{ updateOn: 'blur' }"
-               ng-model="password" />
+               ng-model="password"
+               required />
 
         <div class="validation-box" 
              ng-show="data['password'].$dirty" 
