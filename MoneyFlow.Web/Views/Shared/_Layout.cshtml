@@ -9,7 +9,7 @@
     <div class="content">
         <header id="header" role="banner">
             <a id="logo" href="@Url.Action("Index", "Home")"></a>
-            <div id="account" class="right" ng-include="'/tmpl/account'"></div>
+            @Html.Partial("_Account")
         </header>
         <div id="body" ng-controller="@ViewBag.MainCtrl" role="main">
             @RenderBody()

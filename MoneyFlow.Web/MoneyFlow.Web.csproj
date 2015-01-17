@@ -194,7 +194,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="tmpl\controls\expand.cshtml" />
-    <Content Include="tmpl\account.cshtml" />
+    <Content Include="Views\Shared\_Account.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
