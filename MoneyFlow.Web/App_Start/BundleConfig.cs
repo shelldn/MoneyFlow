@@ -25,6 +25,7 @@ namespace MoneyFlow.Web
 
             bundles.Add(new Bundle("~/bundle/angular").Include(
                 "~/client/js/vendor/angular/angular.js",
+                "~/client/js/vendor/angular-animate/angular-animate.js",
                 "~/client/js/vendor/angular-resource/angular-resource.js",
                 "~/client/js/vendor/angular-messages/angular-messages.js",
                 "~/client/js/vendor/angular-local-storage/dist/angular-local-storage.js"

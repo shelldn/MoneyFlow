@@ -1,4 +1,4 @@
-angular.module('mf.tracker', ['ngMessages', 'mf.data', 'mf.auth', 'mf.controls'])
+angular.module('mf.tracker', ['ngAnimate', 'ngMessages', 'mf.data', 'mf.auth', 'mf.controls'])
 
     // Init
 

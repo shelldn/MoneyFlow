@@ -57,3 +57,22 @@
   -moz-box-shadow: inset @options;
   box-shadow: inset @options;
 }
+
+//
+// Animations
+
+.animate (@options) {
+  -webkit-transition: @options;
+  -moz-transition: @options;
+  -ms-transition: @options;
+  -o-transition: @options;
+  transition: @options;
+}
+
+.delay (@dt) {
+  -webkit-transition-delay: @dt;
+  -moz-transition-delay: @dt;
+  -ms-transition-delay: @dt;
+  -o-transition-delay: @dt;
+  transition-delay: @dt;
+}
