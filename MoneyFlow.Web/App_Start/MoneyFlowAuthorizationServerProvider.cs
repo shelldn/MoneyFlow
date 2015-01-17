@@ -14,11 +14,9 @@ namespace MoneyFlow.Web
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var id = new ClaimsIdentity(context.Options.AuthenticationType);
-            
-            id.AddClaim(new Claim("name", context.UserName));
 
-            // context.SetError("invalid_grant", "Bad user name or password");
-            context.Validated(new ClaimsIdentity(context.Options.AuthenticationType));
+            id.AddClaim(new Claim("name", context.UserName));
+            context.Validated(id);
         }
     }
 }
