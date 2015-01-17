@@ -39,6 +39,14 @@ html, body {
 }
 
 #sign-in {
+  input {
+    display: block;
+
+    &:not(:first-child) {
+      margin-top: @spacing-small;
+    }
+  }
+
   .expand-link {
     padding: @spacing-small;
 

@@ -8,12 +8,6 @@
 
     else
     {
-        <form id="sign-in" ng-submit="signIn()">
-            <span mf-expand="sign in">
-                <input name="user-name" type="text" ng-model="userName" />
-                <input name="password" type="password" ng-model="password" />
-                <button class="btn btn-go" type="submit">Go</button>
-            </span>
-        </form>
+        @Html.Partial("_SignIn")
     }
 </div>

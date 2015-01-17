@@ -27,6 +27,10 @@ input, label {
     color: @color-aux;
   }
 
+  &.ng-invalid {
+    border-color: @color-stop;
+  }
+
   &.text-box-large {
     height: @line-height-large;
     border-width: 3px;
@@ -39,7 +43,19 @@ input {
   .box-sizing(border-box);
 
   &[type="text"],
+  &[type="email"],
   &[type="password"] {
     .text-box;
+  }
+}
+
+.validation-box {
+  line-height: normal;
+  font-size: @font-size-base;
+
+  .validation-msg {
+    padding: 0 .4em;
+    background: @color-stop;
+    color: @color-white;
   }
 }

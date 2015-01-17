@@ -5,7 +5,7 @@
 .btn {
   display: inline-block;
 
-  padding: 0;
+  padding: 0 @spacing-small;
   margin: 0;
 
   background: @color-base;
@@ -25,5 +25,11 @@
   &.btn-go {
     background: @color-go;
     border-color: darken(@color-go, 10%);
+  }
+
+  &:disabled {
+    border: 0;
+    background: lighten(@color-gray, 15%);
+    color: @color-white;
   }
 }

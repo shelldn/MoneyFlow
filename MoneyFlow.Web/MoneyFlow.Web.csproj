@@ -171,6 +171,10 @@
     <Content Include="client\js\controls.js" />
     <Content Include="client\js\data.js" />
     <Content Include="client\js\tracker.js" />
+    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.js" />
+    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.min.js" />
+    <Content Include="client\js\vendor\angular-messages\angular-messages.js" />
+    <Content Include="client\js\vendor\angular-messages\angular-messages.min.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js.map" />
@@ -195,6 +199,7 @@
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="tmpl\controls\expand.cshtml" />
     <Content Include="Views\Shared\_Account.cshtml" />
+    <Content Include="Views\Shared\_SignIn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
