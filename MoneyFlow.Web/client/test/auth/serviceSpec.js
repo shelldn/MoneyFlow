@@ -54,3 +54,44 @@ describe('service: authManager', function() {
         }); 
     });
 });
+
+describe('service: authInterceptor', function() {
+    var authInterceptor, ls;
+
+    beforeEach(module('mf.auth'));
+
+    beforeEach(inject(function(_authInterceptor_, localStorageService) {
+        var _storage = {};
+
+        // Suite globals
+        authInterceptor = _authInterceptor_;
+        ls = localStorageService;
+
+        // Service config
+        spyOn(ls, 'set').and.callFake(function(key, val) { _storage[key] = val; });
+        spyOn(ls, 'get').and.callFake(function(key) { return _storage[key]; });
+    }));
+
+    it('should not set the "Authorization" header if there is no stored auth token.', function() {
+        var config = { headers: {} };
+
+        // act
+        config = authInterceptor.request(config);
+
+        // assert
+        expect(config.headers['Authorization']).toBeUndefined();
+    });
+
+    it('should set the "Authorization" header with stored Bearer token', function() {
+        var config = { headers: {} },
+            token = 'AUTH_TOKEN';
+
+        ls.set('access_token', token);
+
+        // act
+        config = authInterceptor.request(config);
+
+        // assert
+        expect(config.headers['Authorization']).toBe('Bearer ' + token);
+    });
+});
