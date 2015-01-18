@@ -8,10 +8,7 @@
                ng-model="userName"
                required />
 
-        <div class="validation-box" 
-             ng-show="data['user-name'].$dirty" 
-             ng-messages="data['user-name'].$error">
-            
+        <div class="validation-box" ng-messages="data['user-name'].$error">
             <span class="validation-msg" ng-message="email">This is not a valid email</span>
             <span class="validation-msg" ng-message="required">This field is required</span>
         </div>
@@ -22,10 +19,7 @@
                ng-model="password"
                required />
 
-        <div class="validation-box" 
-             ng-show="data['password'].$dirty" 
-             ng-messages="data['password'].$error">
-            
+        <div class="validation-box" ng-messages="data['password'].$error">
             <span class="validation-msg" ng-message="required">This field is required</span>
         </div>
 

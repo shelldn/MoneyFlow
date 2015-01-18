@@ -27,6 +27,10 @@ input, label {
     color: @color-aux;
   }
 
+  &.ng-pristine + .validation-box {
+    display: none;
+  }
+
   &.ng-dirty.ng-invalid {
     border-color: @color-stop;
   }
