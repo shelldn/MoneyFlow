@@ -11,7 +11,9 @@ namespace MoneyFlow.Web
         {
             var srvConfig = new OAuthAuthorizationServerOptions
             {
+#if DEBUG
                 AllowInsecureHttp = true,
+#endif
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(4),
                 Provider = new MoneyFlowAuthorizationServerProvider()
