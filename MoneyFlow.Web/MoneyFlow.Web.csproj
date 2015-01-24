@@ -215,6 +215,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\AccountsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\AuthorizationServerProvider.cs" />
@@ -223,7 +224,6 @@
     <Compile Include="App_Start\NinjectResolver.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ApiControllers\ApiControllerBase.cs" />
     <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\CostsController.cs" />
