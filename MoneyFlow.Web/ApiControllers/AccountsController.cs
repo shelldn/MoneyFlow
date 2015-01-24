@@ -16,6 +16,9 @@ namespace MoneyFlow.Web.ApiControllers
         }
 
         [Route("me")]
+        public void HeadCurrent() { }
+
+        [Route("me")]
         public Account GetCurrent()
         {
             var id = User.Identity
