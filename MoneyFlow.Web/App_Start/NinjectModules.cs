@@ -40,8 +40,7 @@ namespace MoneyFlow.Web
             {
                 protected override UserManager<Account, int> CreateInstance(IContext context)
                 {
-                    var store = context.Kernel
-                        .Get<IUserStore<Account, Int32>>();
+                    var store = new MoneyFlowUserStore();
 
                     var mgr = new UserManager<Account, Int32>(store)
                     {
@@ -61,13 +60,6 @@ namespace MoneyFlow.Web
 
             public override void Load()
             {
-                Kernel.Bind<IAuthenticationManager>()
-                    .ToMethod(c => HttpContext.Current.GetOwinContext().Authentication);
-
-                Kernel.Bind<SignInManager<Account, Int32>>().To<MoneyFlowSignInManager>();
-
-                Kernel.Bind<IUserStore<Account, int>>().To<MoneyFlowUserStore>();
-
                 Kernel.Bind<UserManager<Account, int>>()
                     .ToProvider(new MoneyFlowUserManagerProvider());
             }
