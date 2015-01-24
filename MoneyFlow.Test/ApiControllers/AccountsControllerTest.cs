@@ -32,19 +32,22 @@ namespace MoneyFlow.Test.ApiControllers
 
         #endregion
 
+        #region _helpers
+
         private static IPrincipal CreatePrincipal(string name, int id, params string[] roles)
         {
             var identity = new GenericIdentity(name);
-            var principal = new GenericPrincipal(identity, roles);
+            var idClaim = new Claim(ClaimTypes.NameIdentifier, id.ToString());
 
-            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, id.ToString()));
+            // Add nameidentifier claim
+            identity.AddClaim(idClaim);
 
-            return principal;
+            return new GenericPrincipal(identity, roles);
         }
 
         private static void SignIn(Account account)
         {
-            Thread.CurrentPrincipal = 
+            Thread.CurrentPrincipal =
                 CreatePrincipal(account.UserName, id: account.Id);
         }
 
@@ -52,6 +55,8 @@ namespace MoneyFlow.Test.ApiControllers
         {
             Thread.CurrentPrincipal = null;
         }
+
+        #endregion
 
         [Test, Category("GetCurrent()")]
         public void Should_return_the_current_account_associated_with_the_request()
