@@ -10,7 +10,15 @@ describe('service: Account', function() {
         $httpBackend    = _$httpBackend_;
     }));
 
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
+
     describe('isAuthorized', function() {
+        var isAuthorizedSuccess =
+                jasmine.createSpy('success');
+
         var request;
 
         beforeEach(function() {
@@ -19,29 +27,29 @@ describe('service: Account', function() {
         });
 
         it('should return true if the response had 204 status code', function() {
-            var isAuthorized;
-
             request.respond(204);   // No Content
 
             // act
-            isAuthorized = Account.isAuthorized();
+            Account.isAuthorized()
+                .$promise.then(isAuthorizedSuccess);
+
             $httpBackend.flush();
 
             // assert
-            expect(isAuthorized).toBeTruthy();
+            expect(isAuthorizedSuccess).toHaveBeenCalledWith(true);
         });
 
         it('should return false if the response had 401 status code', function() {
-            var isAuthorized;
-
             request.respond(401);   // Unauthorized
 
             // act
-            isAuthorized = Account.isAuthorized();
+            Account.isAuthorized()
+                .$promise.then(isAuthorizedSuccess);
+
             $httpBackend.flush();
 
             // assert
-            expect(isAuthorized).toBeFalsy();
+            expect(isAuthorizedSuccess).toHaveBeenCalledWith(false);
         });
     });
 });

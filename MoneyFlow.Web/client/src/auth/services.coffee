@@ -11,3 +11,19 @@ angular.module 'mf.auth'
       config
 
     return
+
+  #
+  # Account resource
+
+  .factory 'Account', ($resource) ->
+
+    $resource '/api/accounts', null,
+
+      isAuthorized:
+        method: 'HEAD',
+        url: '/api/accounts/me'
+        interceptor:
+          response: (x) ->
+            true if x.status == 204
+          responseError: (x) ->
+            false if x.status == 401
