@@ -1,3 +1,51 @@
+describe('service: Account', function() {
+    var Account, $httpBackend;
+
+    beforeEach(module('mf.auth'));
+
+    beforeEach(inject(function(_Account_, _$httpBackend_) {
+
+        // Suite globals
+        Account         = _Account_;
+        $httpBackend    = _$httpBackend_;
+    }));
+
+    describe('isAuthorized', function() {
+        var request;
+
+        beforeEach(function() {
+            request = $httpBackend
+                .expectHEAD('/api/accounts/me');
+        });
+
+        it('should return true if the response had 204 status code', function() {
+            var isAuthorized;
+
+            request.respond(204);   // No Content
+
+            // act
+            isAuthorized = Account.isAuthorized();
+            $httpBackend.flush();
+
+            // assert
+            expect(isAuthorized).toBeTruthy();
+        });
+
+        it('should return false if the response had 401 status code', function() {
+            var isAuthorized;
+
+            request.respond(401);   // Unauthorized
+
+            // act
+            isAuthorized = Account.isAuthorized();
+            $httpBackend.flush();
+
+            // assert
+            expect(isAuthorized).toBeFalsy();
+        });
+    });
+});
+
 describe('service: authManager', function() {
     var authManager, $httpBackend, ls;
 
