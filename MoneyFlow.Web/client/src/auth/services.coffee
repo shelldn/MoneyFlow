@@ -20,10 +20,8 @@ angular.module 'mf.auth'
     $resource '/api/accounts', null,
 
       isAuthorized:
-        method: 'HEAD',
+        method: 'HEAD'
         url: '/api/accounts/me'
         interceptor:
-          response: (x) ->
-            true if x.status == 204
-          responseError: (x) ->
-            false if x.status == 401
+          response:       (x) -> true   if x.status == 204  # No Content
+          responseError:  (x) -> false  if x.status == 401  # Unauthorized
