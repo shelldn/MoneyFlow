@@ -18,6 +18,7 @@ module.exports = function(config) {
       // vendor
       'js/vendor/moment/moment.js',
       'js/vendor/jquery/dist/jquery.js',
+      'js/vendor/underscore/underscore.js',
       'js/vendor/angular/angular.js',
       'js/vendor/angular-mocks/angular-mocks.js',
       'js/vendor/angular-animate/angular-animate.js',
