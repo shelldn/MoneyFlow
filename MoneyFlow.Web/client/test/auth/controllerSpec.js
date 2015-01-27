@@ -2,46 +2,45 @@ describe('controller: AuthCtrl', function() {
     var $scope, $window,
         Account, authManager;
 
-    beforeEach(module('mf.auth'));
+    beforeEach(module('mf.auth', function($provide) {
+        var Account = jasmine
+            .createSpyObj('Account', ['isAuthorized']);
+
+        $provide.value('Account', Account);
+    }));
 
     beforeEach(inject(function($controller, $rootScope, _$window_, _Account_, _authManager_) {
 
+        // Initialize controller
         $controller('AuthCtrl', {
             $scope          : $scope          = $rootScope.$new(),
             $window         : $window         = _$window_,
             Account         : Account         = _Account_,
             authManager     : authManager     = _authManager_
         });
-
-        // Go!
-        $scope.$digest();
     }));
 
     describe('isAuthorized', function() {
 
         it('should be fetched only once on construction', function() {
 
-            spyOn(Account, 'isAuthorized')
-                .and.returnValue(false);
+            Account.isAuthorized
+                .and.callFake(function() {
+                    return new Boolean(false);
+                });
 
-            // act
-            var results = [
-                $scope.isAuthorized,    // 1st getter invoke
-                $scope.isAuthorized     // 2nd getter invoke
-            ];
-
-            // assert
-            expect(first(results)).toBe(second(results));
+            // act/assert
+            expect($scope.isAuthorized).toBe($scope.isAuthorized);
         });
 
         it('should return the current account authorization status', function() {
-            var isAuthorized = true;
+            var authorized = true;
 
-            spyOn(Account, 'isAuthorized')
-                .and.returnValue(isAuthorized);
+            Account.isAuthorized
+                .and.returnValue(authorized);
 
             // act/assert
-            expect($scope.isAuthorized).toBe(isAuthorized);
+            expect($scope.isAuthorized).toBe(authorized);
         });
     });
 
