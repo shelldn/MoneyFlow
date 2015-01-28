@@ -1,13 +1,13 @@
 ﻿<div id="account" class="right" ng-controller="AuthCtrl">
     
-    @if (Request.IsAuthenticated)
-    {
-        <span>@User.Identity.Name</span>
+    @* account info *@
+    <div ng-show="isAuthorized">
+        <span>username</span>
         <a href="javascript:;" ng-click="signOut()">out</a>
-    }
-
-    else
-    {
+    </div>
+    
+    @* authorization form *@
+    <div ng-hide="isAuthorized">
         @Html.Partial("_SignIn")
-    }
+    </div>
 </div>
