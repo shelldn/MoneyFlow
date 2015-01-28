@@ -25,3 +25,7 @@ angular.module 'mf.auth'
         interceptor:
           response:       (x) -> true   if x.status == 204  # No Content
           responseError:  (x) -> false  if x.status == 401  # Unauthorized
+
+      me:
+        method: 'GET'
+        url: '/api/accounts/me'

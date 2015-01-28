@@ -8,6 +8,10 @@ angular.module('mf.auth')
             $scope.isAuthorized = isAuthorized;
         });
 
+        $scope.$watch('isAuthorized', function(isAuthorized) {
+            if (isAuthorized) $scope.account = Account.me();
+        });
+
         $scope.signIn = function() {
             authManager.signIn({
                 userName: $scope.userName,

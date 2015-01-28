@@ -5,7 +5,7 @@ describe('controller: AuthCtrl', function() {
 
     beforeEach(module('mf.auth', function($provide) {
         var Account = jasmine
-            .createSpyObj('Account', ['isAuthorized']);
+            .createSpyObj('Account', ['isAuthorized', 'me']);
 
         $provide.value('Account', Account);
     }));
@@ -42,6 +42,24 @@ describe('controller: AuthCtrl', function() {
 
             // assert
             expect($scope.isAuthorized).toBe(true);
+        });
+    });
+
+    describe('account', function() {
+
+        it('should fetch account info only if it is authorized', function() {
+            var me = {};
+
+            Account.me.and.returnValue(me);
+
+            // act/assert
+            $scope.isAuthorized = false;
+            $scope.$digest();
+            expect($scope.account).toBeUndefined();
+
+            $scope.isAuthorized = true;
+            $scope.$digest();
+            expect($scope.account).toBe(me);
         });
     });
 
