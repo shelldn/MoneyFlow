@@ -1,12 +1,24 @@
 describe('controller: AuthCtrl', function() {
     var $scope, $window,
-        Account, authManager;
+        Account, authManager,
+        isAuthorizedDeferred;
 
     beforeEach(module('mf.auth', function($provide) {
         var Account = jasmine
             .createSpyObj('Account', ['isAuthorized']);
 
         $provide.value('Account', Account);
+    }));
+
+    beforeEach(inject(function($q, Account) {
+
+        // Mock setup
+        isAuthorizedDeferred = $q.defer();
+
+        Account.isAuthorized
+            .and.callFake(function(success) {
+                return isAuthorizedDeferred.promise.then(success);
+            });
     }));
 
     beforeEach(inject(function($controller, $rootScope, _$window_, _Account_, _authManager_) {
@@ -22,25 +34,14 @@ describe('controller: AuthCtrl', function() {
 
     describe('isAuthorized', function() {
 
-        it('should be fetched only once on construction', function() {
+        it('should fetch authorization status on init', function() {
 
-            Account.isAuthorized
-                .and.callFake(function() {
-                    return new Boolean(false);
-                });
+            // act
+            isAuthorizedDeferred.resolve(true);
+            $scope.$digest();
 
-            // act/assert
-            expect($scope.isAuthorized).toBe($scope.isAuthorized);
-        });
-
-        it('should return the current account authorization status', function() {
-            var authorized = true;
-
-            Account.isAuthorized
-                .and.returnValue(authorized);
-
-            // act/assert
-            expect($scope.isAuthorized).toBe(authorized);
+            // assert
+            expect($scope.isAuthorized).toBe(true);
         });
     });
 

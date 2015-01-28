@@ -4,15 +4,8 @@ angular.module('mf.auth')
 
     .controller('AuthCtrl', function($scope, $window, Account, authManager) {
 
-        var _isAuthorized;
-
-        Object.defineProperty($scope, 'isAuthorized', {
-            enumerable: true,
-            get: function() {
-                return _.isUndefined(_isAuthorized) ?
-                    _isAuthorized = Account.isAuthorized() :
-                    _isAuthorized;
-            }
+        Account.isAuthorized(function(isAuthorized) {
+            $scope.isAuthorized = isAuthorized;
         });
 
         $scope.signIn = function() {
