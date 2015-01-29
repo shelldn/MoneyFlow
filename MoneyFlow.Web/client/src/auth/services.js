@@ -35,5 +35,9 @@ angular.module('mf.auth')
                     response.access_token
                 );
             });
-        }
+        };
+
+        self.signOut = function() {
+            localStorageService.remove('access_token');
+        };
     });
