@@ -59,7 +59,22 @@ describe('service: authManager', function() {
 
     var MIME_URLENCODED = 'application/x-www-form-urlencoded';
 
-    beforeEach(module('mf.auth'));
+    beforeEach(module('mf.auth', function($provide) {
+
+        // Mock local storage service
+        var ls = jasmine.createSpyObj('localStorageService', ['get', 'set']);
+
+        // Provide it to app
+        $provide.value('localStorageService', ls);
+    }));
+
+    beforeEach(inject(function(localStorageService) {
+        var _store = {};
+
+        // Setup local storage service mock
+        localStorageService.get.and.callFake(function(key)       { return _store[key];  });
+        localStorageService.set.and.callFake(function(key, val)  { _store[key] = val;   });
+    }));
 
     beforeEach(inject(function(_authManager_, _$httpBackend_, localStorageService) {
         // suite globals
@@ -96,10 +111,6 @@ describe('service: authManager', function() {
         });
         
         it('should persist access token fetched from OAuth endpoint', function() {
-            var storage = {};
-
-            spyOn(ls, 'set').and.callFake(function(key, val) { storage[key] = val; });
-            spyOn(ls, 'get').and.callFake(function(key) { return storage[key]; });
 
             // act
             authManager.signIn(cred);
