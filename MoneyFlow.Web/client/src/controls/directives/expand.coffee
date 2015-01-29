@@ -5,13 +5,19 @@ angular.module 'mf.controls'
 
   .directive 'mfExpand', () ->
     transclude: true
-    scope: true
-    link: (scope, _, attrs) ->
-      scope.cap = attrs['mfExpand'];
+    scope:
+      caption: '@mfExpand'
+
+    link: (scope, element, attr, ctrl, transclude) ->
+      content = element.find '.expand-content';
 
       scope.tglExpand = () ->
         scope.isExpanded = !scope.isExpanded;
         return;
+
+      transclude scope.$parent, (clone) ->
+        content.append clone;
+
       return;
 
     templateUrl: "/tmpl/controls/expand"

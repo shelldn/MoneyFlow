@@ -7,6 +7,11 @@ namespace MoneyFlow.Web
 {
     public class WebApiConfig
     {
+        private static void ConfigureFilters(HttpConfiguration config)
+        {
+            config.Filters.Add(new AuthorizeAttribute());
+        }
+
         private static void ConfigureFormatters(HttpConfiguration config)
         {
             var formatters = config.Formatters;
@@ -50,6 +55,7 @@ namespace MoneyFlow.Web
 
         public static void Register(HttpConfiguration config)
         {
+            ConfigureFilters(config);
             ConfigureFormatters(config);
             RegisterRoutes(config);
             IocConfig.Register(config);

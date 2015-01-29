@@ -1,0 +1,13 @@
+﻿<div id="account" class="right" ng-controller="AuthCtrl">
+    
+    @* account info *@
+    <div ng-show="isAuthorized">
+        <span>{{ account.userName }}</span>
+        <a href="javascript:;" ng-click="signOut()">out</a>
+    </div>
+    
+    @* authorization form *@
+    <div ng-hide="isAuthorized">
+        @Html.Partial("_SignIn")
+    </div>
+</div>

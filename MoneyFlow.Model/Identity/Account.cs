@@ -10,6 +10,11 @@ namespace MoneyFlow.Model
             UserName = email;
         }
 
+        public Account(int id, string email) : this(email)
+        {
+            Id = id;
+        }
+
         public static Account FromLoginInfo(ExternalLoginInfo info)
         {
             return new Account { UserName = info.ExternalIdentity.Name };

@@ -30,11 +30,8 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IQueryable<Cost> GetAll()
         {
-            var accountId = User.Identity.GetUserId<int>();
-
             return Uow.Costs.GetAll()
-                .Include(c => c.Category)
-                .Where(c => c.AccountId == accountId);
+                .Include(c => c.Category);
         }
 
         //

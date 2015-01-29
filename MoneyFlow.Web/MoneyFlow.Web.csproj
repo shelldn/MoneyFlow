@@ -171,6 +171,12 @@
     <Content Include="client\js\controls.js" />
     <Content Include="client\js\data.js" />
     <Content Include="client\js\tracker.js" />
+    <Content Include="client\js\vendor\angular-animate\angular-animate.js" />
+    <Content Include="client\js\vendor\angular-animate\angular-animate.min.js" />
+    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.js" />
+    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.min.js" />
+    <Content Include="client\js\vendor\angular-messages\angular-messages.js" />
+    <Content Include="client\js\vendor\angular-messages\angular-messages.min.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js" />
     <Content Include="client\js\vendor\angular-resource\angular-resource.min.js.map" />
@@ -188,13 +194,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Shared\_SignInPartial.cshtml" />
     <Content Include="tmpl\controls\advice.cshtml" />
     <Content Include="Views\Home\_List.cshtml" />
     <None Include="Properties\PublishProfiles\mf_home.pubxml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="tmpl\controls\expand.cshtml" />
+    <Content Include="Views\Shared\_Account.cshtml" />
+    <Content Include="Views\Shared\_SignIn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,14 +215,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\AccountsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\AuthorizationServerProvider.cs" />
     <Compile Include="App_Start\NinjectModules.cs" />
     <Compile Include="App_Start\NinjectHttpResolver.cs" />
     <Compile Include="App_Start\NinjectResolver.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ApiControllers\ApiControllerBase.cs" />
     <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\CostsController.cs" />

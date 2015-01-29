@@ -27,6 +27,14 @@ input, label {
     color: @color-aux;
   }
 
+  &.ng-pristine + .validation-box {
+    display: none;
+  }
+
+  &.ng-dirty.ng-invalid {
+    border-color: @color-stop;
+  }
+
   &.text-box-large {
     height: @line-height-large;
     border-width: 3px;
@@ -39,7 +47,48 @@ input {
   .box-sizing(border-box);
 
   &[type="text"],
+  &[type="email"],
   &[type="password"] {
     .text-box;
+  }
+}
+
+.validation-box {
+  @timing: .25s ease-out;
+
+  position: relative;
+  line-height: normal;
+  font-size: @font-size-base;
+  .animate(height @timing);
+
+  &.ng-inactive {
+    height: 0;
+  }
+
+  &.ng-active {
+    height: @font-size-base;
+  }
+
+  .validation-msg {
+    padding: 0 .4em;
+    background: @color-stop;
+    color: @color-white;
+    z-index: -1;
+
+    &.ng-enter,
+    &.ng-leave {
+      position: absolute;
+      .animate(top @timing);
+    }
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+      top: -@font-size-base;
+    }
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active {
+      top: 0;
+    }
   }
 }
