@@ -86,4 +86,17 @@ describe('controller: AuthCtrl', function() {
             expect($window.location.reload).toHaveBeenCalled();
         }); 
     });
+
+    describe('signOut()', function() {
+
+        it('should reload page', function() {
+            spyOn($window.location, 'reload');
+
+            // act
+            $scope.signOut();
+
+            // assert
+            expect($window.location.reload).toHaveBeenCalled();
+        });
+    });
 });
