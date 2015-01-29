@@ -23,4 +23,9 @@ angular.module('mf.auth')
                 $window.location.reload();
             });
         };
+
+        $scope.signOut = function() {
+            authManager.signOut();
+            $window.location.reload();
+        }
     });
