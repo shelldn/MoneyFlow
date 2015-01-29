@@ -62,7 +62,7 @@ describe('service: authManager', function() {
     beforeEach(module('mf.auth', function($provide) {
 
         // Mock local storage service
-        var ls = jasmine.createSpyObj('localStorageService', ['get', 'set']);
+        var ls = jasmine.createSpyObj('localStorageService', ['get', 'set', 'remove']);
 
         // Provide it to app
         $provide.value('localStorageService', ls);
@@ -72,8 +72,9 @@ describe('service: authManager', function() {
         var _store = {};
 
         // Setup local storage service mock
-        localStorageService.get.and.callFake(function(key)       { return _store[key];  });
-        localStorageService.set.and.callFake(function(key, val)  { _store[key] = val;   });
+        localStorageService.get     .and.callFake(function(key)         { return _store[key];   });
+        localStorageService.set     .and.callFake(function(key, val)    { _store[key] = val;    });
+        localStorageService.remove  .and.callFake(function(key)         { delete _store[key];   });
     }));
 
     beforeEach(inject(function(_authManager_, _$httpBackend_, localStorageService) {
