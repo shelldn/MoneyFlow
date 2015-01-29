@@ -122,9 +122,16 @@ describe('service: authManager', function() {
     });
 
     describe('signOut()', function() {
+        var token = 'ABC123';
 
         it('should remove access token from application storage', function() {
+            ls.set('access_token', token);
 
+            // act
+            authManager.signOut();
+
+            // assert
+            expect(ls.get('access_token')).toBeUndefined();
         });
     });
 });
