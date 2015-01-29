@@ -109,6 +109,13 @@ describe('service: authManager', function() {
             expect(ls.get('access_token')).toEqual(token);
         }); 
     });
+
+    describe('signOut()', function() {
+
+        it('should remove access token from application storage', function() {
+
+        });
+    });
 });
 
 describe('service: authInterceptor', function() {
