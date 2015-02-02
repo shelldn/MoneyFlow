@@ -2,7 +2,7 @@
 
 namespace MoneyFlow.Model
 {
-    public partial class Cost
+    public partial class Cost : IPersonal
     {
         public static Cost At(int year, int month, int day)
         {

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
-using Microsoft.AspNet.Identity;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
+using MoneyFlow.Web.ModelBinding;
 
 namespace MoneyFlow.Web.ApiControllers
 {
+    // [PersonalOnly]
     [RoutePrefix("api/costs")]
     public class CostsController : ApiControllerBase
     {
@@ -47,12 +48,8 @@ namespace MoneyFlow.Web.ApiControllers
         //
         // POST: /api/costs
 
-        public IHttpActionResult Post(Cost model)
+        public IHttpActionResult Post([Personal] Cost model)
         {
-            var accountId = User.Identity.GetUserId<int>();
-
-            model.AccountId = model.Category.AccountId = accountId;
-
             Uow.Costs.Add(model);
             Uow.Commit();
 

@@ -228,9 +228,11 @@
     <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\CostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ModelBinding\PersonalAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelBinding\PersonalParameterBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Services\NinjectControllerFactory.cs" />
