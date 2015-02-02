@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
@@ -22,19 +18,6 @@ namespace MoneyFlow.Web.ApiControllers
         {
             return Uow.Categories
                 .Lookup(c => c.Words.Contains(q));
-        }
-
-        public HttpResponseMessage PostCategory(Category item)
-        {
-            Uow.Categories.Add(item);
-            Uow.Commit();
-
-            var response = Request.CreateResponse(HttpStatusCode.Created, item);
-            var uri = Url.Link("DefaultApi", new { id = item.Id });
-
-            response.Headers.Location = new Uri(uri);
-
-            return response;
         }
     }
 }
