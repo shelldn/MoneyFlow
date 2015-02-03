@@ -168,6 +168,7 @@
     </Content>
     <Content Include="client\css\style.css" />
     <Content Include="client\css\vendor\normalize.css" />
+    <Content Include="client\js\auth.js" />
     <Content Include="client\js\controls.js" />
     <Content Include="client\js\data.js" />
     <Content Include="client\js\tracker.js" />
