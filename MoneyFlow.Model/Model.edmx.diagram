@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="MoneyFlow.Model.Category" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MoneyFlow.Model.Cost" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="MoneyFlow.Model.FK__Consumpti__Categ__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Period" Width="1.5" PointX="5.5" PointY="1.125" />
       </Diagram>
       <Diagram DiagramId="8358d5f2cf1f42229c4d0bab6ab6cf21" Name="Identity" >
         <EntityTypeShape EntityType="MoneyFlow.Model.Account" Width="1.5" PointX="0.75" PointY="1.125" FillColor="ForestGreen" />

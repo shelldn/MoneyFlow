@@ -17,7 +17,7 @@ namespace MoneyFlow.Web.ApiControllers
         [Route("periods")]
         public IEnumerable<DateTime> GetPeriods()
         {
-            var dates = GetAll().Select(c => c.Date);
+            var dates = GetPersonal().Select(c => c.Date);
             var p = dates.Min().GetMonth();
 
             while (p <= dates.Max())
@@ -27,10 +27,16 @@ namespace MoneyFlow.Web.ApiControllers
             }
         }
 
-        public IQueryable<Cost> GetAll()
+        //
+        // GET: /api/costs
+
+        public IQueryable<Cost> GetPersonal()
         {
+            var accountId = User.GetId();
+
             return Uow.Costs.GetAll()
-                .Include(c => c.Category);
+                .Include(c => c.Category)
+                .Where(c => c.AccountId == accountId);
         }
 
         //
@@ -39,7 +45,7 @@ namespace MoneyFlow.Web.ApiControllers
         [Route("{period:DateTime}")]
         public IQueryable<Cost> GetByPeriod(DateTime period)
         {
-            return GetAll()
+            return GetPersonal()
                 .Where(c => c.Date.Month == period.Month && c.Date.Year == period.Year);
         }
 
@@ -48,6 +54,8 @@ namespace MoneyFlow.Web.ApiControllers
 
         public IHttpActionResult Post(Cost model)
         {
+            model.AccountId = model.Category.AccountId = User.GetId();
+
             Uow.Costs.Add(model);
             Uow.Commit();
 

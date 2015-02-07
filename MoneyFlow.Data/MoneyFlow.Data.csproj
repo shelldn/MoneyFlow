@@ -60,6 +60,7 @@
     <Compile Include="MoneyFlowDbInitializer.cs" />
     <Compile Include="_Helpers\DateTimeExtensions.cs" />
     <Compile Include="_Helpers\EnumerableExtensions.cs" />
+    <Compile Include="_Helpers\QueryableExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

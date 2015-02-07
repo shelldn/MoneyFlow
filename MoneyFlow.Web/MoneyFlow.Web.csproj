@@ -241,6 +241,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="_Helpers\DateTimeExtensions.cs" />
+    <Compile Include="_Helpers\PrincipalExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

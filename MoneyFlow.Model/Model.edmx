@@ -42,6 +42,15 @@
           <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="AccountId" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="Date" Type="datetime" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Categorie__Accou__5DCAEF64">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
           <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
@@ -97,6 +106,12 @@
           <EntitySet Name="Costs" EntityType="Self.Costs" Schema="Finance" store:Type="Tables" />
           <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="Identity" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="Identity" store:Type="Tables" />
+          <EntitySet Name="Periods" EntityType="Self.Periods" store:Type="Views" store:Schema="Finance">
+            <DefiningQuery>SELECT 
+    [Periods].[Date] AS [Date], 
+    [Periods].[AccountId] AS [AccountId]
+    FROM [Finance].[Periods] AS [Periods]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Categorie__Accou__5DCAEF64" Association="Self.FK__Categorie__Accou__5DCAEF64">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Categories" EntitySet="Categories" />
@@ -186,6 +201,7 @@
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Cost" EntitySet="Costs" />
           </AssociationSet>
+          <EntitySet Name="Periods" EntityType="MoneyFlow.Model.Period" />
         </EntityContainer>
         <EntityType Name="Login">
           <Key>
@@ -235,6 +251,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -278,6 +301,14 @@
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="MoneyFlow.Model.Period">
+              <MappingFragment StoreEntitySet="Periods">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

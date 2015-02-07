@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using MoneyFlow.Data;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
 
@@ -9,14 +10,17 @@ namespace MoneyFlow.Web.ApiControllers
         public CategoriesController(IMoneyFlowUow uow)
             : base(uow) { }
 
-        public IQueryable<Category> GetAll()
+        public IQueryable<Category> GetPersonal()
         {
-            return Uow.Categories.GetAll();
+            var accountId = User.GetId();
+
+            return Uow.Categories.GetAll()
+                .Where(c => c.AccountId == accountId);
         }
 
         public IQueryable<Category> GetByLookupQuery(string q)
         {
-            return Uow.Categories
+            return GetPersonal()
                 .Lookup(c => c.Words.Contains(q));
         }
     }
