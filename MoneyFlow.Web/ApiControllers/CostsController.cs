@@ -5,11 +5,9 @@ using System.Linq;
 using System.Web.Http;
 using MoneyFlow.Data.Contracts;
 using MoneyFlow.Model;
-using MoneyFlow.Web.ModelBinding;
 
 namespace MoneyFlow.Web.ApiControllers
 {
-    // [PersonalOnly]
     [RoutePrefix("api/costs")]
     public class CostsController : ApiControllerBase
     {
@@ -48,7 +46,7 @@ namespace MoneyFlow.Web.ApiControllers
         //
         // POST: /api/costs
 
-        public IHttpActionResult Post([Personal] Cost model)
+        public IHttpActionResult Post(Cost model)
         {
             Uow.Costs.Add(model);
             Uow.Commit();
