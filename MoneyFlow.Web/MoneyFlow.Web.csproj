@@ -166,29 +166,75 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <BrowseToURL>~/cats.xml</BrowseToURL>
     </Content>
-    <Content Include="client\css\style.css" />
-    <Content Include="client\css\vendor\normalize.css" />
-    <Content Include="client\js\auth.js" />
-    <Content Include="client\js\controls.js" />
-    <Content Include="client\js\data.js" />
-    <Content Include="client\js\tracker.js" />
-    <Content Include="client\js\vendor\angular-animate\angular-animate.js" />
-    <Content Include="client\js\vendor\angular-animate\angular-animate.min.js" />
-    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.js" />
-    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.min.js" />
-    <Content Include="client\js\vendor\angular-messages\angular-messages.js" />
-    <Content Include="client\js\vendor\angular-messages\angular-messages.min.js" />
-    <Content Include="client\js\vendor\angular-resource\angular-resource.js" />
-    <Content Include="client\js\vendor\angular-resource\angular-resource.min.js" />
-    <Content Include="client\js\vendor\angular-resource\angular-resource.min.js.map" />
-    <Content Include="client\js\vendor\angular\angular.js" />
-    <Content Include="client\js\vendor\angular\angular.min.js" />
-    <Content Include="client\js\vendor\angular\angular.min.js.map" />
-    <Content Include="client\js\vendor\jquery\dist\jquery.js" />
-    <Content Include="client\js\vendor\jquery\dist\jquery.min.js" />
-    <Content Include="client\js\vendor\jquery\dist\jquery.min.map" />
-    <Content Include="client\js\vendor\moment\moment.js" />
-    <Content Include="client\js\vendor\underscore\underscore.js" />
+    <Content Include="client\css\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\css\vendor\normalize.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\auth.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\controls.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\data.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\tracker.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-animate\angular-animate.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-animate\angular-animate.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-local-storage\dist\angular-local-storage.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-messages\angular-messages.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-messages\angular-messages.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-resource\angular-resource.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-resource\angular-resource.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular-resource\angular-resource.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular\angular.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular\angular.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\angular\angular.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\jquery\dist\jquery.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\jquery\dist\jquery.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\jquery\dist\jquery.min.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\moment\moment.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="client\js\vendor\underscore\underscore.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
