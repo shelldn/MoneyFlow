@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IDEPath>$(ProgramFiles)\Microsoft Visual Studio 12.0\Common7\IDE</IDEPath>
+  </PropertyGroup>
+  
+  <!-- T4 Templates Compilation -->
+  <Target Name="CompileTemplates">
+    <PropertyGroup>
+      <IncludesPath>"$(IDEPath)\Extensions\Microsoft\Entity Framework Tools\Templates\Includes"</IncludesPath>
+      <DirectiveProcessor>T4VSHost!Microsoft.Data.Entity.Design.VisualStudio.Directives.FallbackT4VSHostProcessor!"$(IDEPath)\Microsoft.Data.Entity.Design.dll"</DirectiveProcessor>
+    </PropertyGroup>
+
+    <!-- Items to proceed -->
+    <ItemGroup>
+      <T4Templates Include=".\*.tt" />
+    </ItemGroup>
+    
+    <!-- Go! -->
+    <Exec WorkingDirectory="$(CommonProgramFiles)\Microsoft Shared\TextTemplating\12.0"
+          Command="TextTransform.exe -I $(IncludesPath) -dp $(DirectiveProcessor) -a !!NamespaceHint!$(RootNamespace) &quot;%(T4Templates.FullPath)&quot;" />
+  </Target>
+  
+</Project>
