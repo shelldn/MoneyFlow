@@ -2,6 +2,14 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        less: {
+            compile: {
+                files: {
+                    'css/style.css': 'css/style.less'
+                }
+            }
+        },
+
         clean: {
             src: ['src/**/*.coffee.js'],
             dest: ['js/*.js']
@@ -58,6 +66,7 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-concat');
