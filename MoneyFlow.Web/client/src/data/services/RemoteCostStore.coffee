@@ -28,4 +28,4 @@ do (app = angular.module 'mf.data') ->
       @Cost.save(cost).$promise
 
 
-  app.service 'remoteCostStore', RemoteCostStore
+  app.service 'remoteCostStore', ['$resource', '$filter', RemoteCostStore]
