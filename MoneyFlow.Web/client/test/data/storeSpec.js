@@ -1,4 +1,4 @@
-describe('store-for: Cost', function() {
+describe('store-for: Cost (remote)', function() {
     var $httpBackend, costStore,
         Cost;
 
@@ -7,9 +7,9 @@ describe('store-for: Cost', function() {
 
     beforeEach(module('mf.data'));
 
-    beforeEach(inject(function(_$httpBackend_, _costStore_, _Cost_) {
+    beforeEach(inject(function(_$httpBackend_, _remoteCostStore_, _Cost_) {
         $httpBackend = _$httpBackend_;
-        costStore = _costStore_;
+        costStore = _remoteCostStore_;
         Cost = _Cost_;
 
         $httpBackend.when('GET', '/api/costs/2014-07')
