@@ -31,13 +31,15 @@ describe('store-for: Cost', function() {
         $httpBackend.expectGET(URL_COSTS_PERIODS);
 
         // act
-        var result = costStore
+        var ret = costStore
             .getPeriods();
 
         $httpBackend.flush();
 
         // assert
-        expect(result).toEqual(periods);
+        expect(ret.length).toEqual(periods.length);
+        expect(ret[0]).toEqual(periods[0]);
+        expect(ret[1]).toEqual(periods[1]);
     });
 
     it('should translate period to year-month pair', function() {
@@ -59,7 +61,8 @@ describe('store-for: Cost', function() {
         $httpBackend.flush();
 
         // assert
-        expect(ret).toEqual(['2014-07-13T14:00:00']);
+        expect(ret.length).toEqual(1);
+        expect(ret[0]).toEqual('2014-07-13T14:00:00');
     });
 
     it('should create cost and return its server represented instance', function() {
