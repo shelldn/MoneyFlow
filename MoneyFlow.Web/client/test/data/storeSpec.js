@@ -5,6 +5,8 @@ describe('store-for: Cost (remote)', function() {
     var URL_COSTS           = '/api/costs',
         URL_COSTS_PERIODS   = '/api/costs/periods';
 
+    // region suite-maintenance
+
     beforeEach(module('mf.data'));
 
     beforeEach(inject(function(_$httpBackend_, _remoteCostStore_, _Cost_) {
@@ -20,6 +22,8 @@ describe('store-for: Cost (remote)', function() {
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
+
+    // endregion
 
     it('should fetch and return all the periods for costs', function() {
         var periods = [
@@ -83,5 +87,24 @@ describe('store-for: Cost (remote)', function() {
         expect(fakeSuccess).toHaveBeenCalledWith(
             jasmine.objectContaining(serverCost)
         );
+    });
+});
+
+describe('store-for: Cost (local)', function() {
+
+    describe('getPeriods()', function() {
+        it('should return ISO 8601 date string sequence');
+        it('should have no duplicated months in output sequence');
+        it('should have no missed months in output sequence');
+        it('should return sequence sorted in ascending order');
+        it('should match 1st and last months with min and max cost dates');
+    });
+
+    describe('getByPeriod(String)', function() {
+        it('should return all the costs spent within specified month');
+    });
+
+    describe('create(Cost)', function() {
+        it('should persist Cost record in the local storage');
     });
 });
