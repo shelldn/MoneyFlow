@@ -11,8 +11,9 @@ module.exports = function(grunt) {
         },
 
         clean: {
-            src: ['src/**/*.coffee.js'],
-            dest: ['js/*.js']
+            src     : ['src/**/*.coffee.js'],
+            test    : ['test/**/*.coffee.js'],
+            dest    : ['js/*.js']
         },
 
         coffee: {

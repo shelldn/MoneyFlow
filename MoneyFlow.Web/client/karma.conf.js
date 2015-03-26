@@ -9,7 +9,8 @@ module.exports = function(config) {
     autoWatch: false,
 
     preprocessors: {
-      "../**/*.cshtml": ['ng-html2js']
+      "test/**/*.coffee"    : ['coffee'],
+      "../**/*.cshtml"      : ['ng-html2js']
     },
 
     // list of files / patterns to load in the browser
@@ -28,6 +29,10 @@ module.exports = function(config) {
 
       // templates
       '../tmpl/**/*.cshtml',
+
+      // helpers & matchers
+      'test/_helpers/*.coffee',
+      'test/jasmine-matchers/*.coffee',
 
       // app
       'js/*.js',

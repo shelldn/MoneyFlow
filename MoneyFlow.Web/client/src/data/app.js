@@ -1,4 +1,4 @@
-angular.module('mf.data', ['ngResource'])
+angular.module('mf.data', ['ngResource', 'LocalStorageModule'])
 
     // Types
 

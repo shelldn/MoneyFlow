@@ -55,8 +55,8 @@ describe('store-for: Cost (remote)', function() {
         // act
         costStore.getByPeriod(period);
         $httpBackend.flush();
-    }); 
-    
+    });
+
     it('should fetch and return all the costs for specified period', function() {
         var period = '2014-07-01T00:00:00';
 
@@ -91,11 +91,55 @@ describe('store-for: Cost (remote)', function() {
 });
 
 describe('store-for: Cost (local)', function() {
+    var ls, store;
+
+    // region suite-maintenance
+
+    beforeEach(function() {
+        jasmine.addMatchers(CustomMatchers);
+    });
+
+    beforeEach(module('mf.data'));
+
+    beforeEach(inject(function(localStorageService, localCostStore) {
+        ls      = localStorageService;
+        store   = localCostStore;
+    }));
+
+    // endregion
 
     describe('getPeriods()', function() {
-        it('should return ISO 8601 date string sequence');
-        it('should have no duplicated months in output sequence');
-        it('should have no missed months in output sequence');
+
+        it('should return ISO 8601 date string sequence', function() {
+
+            var YES = true;
+
+            ls.set('costs', costs({ /*
+
+                YEAR    Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
+                ------------------------------------------------------------------ */
+                2014: [ YES, 0,   0,   0,   0,   YES, YES, 0,   0,   0,   YES, 0,
+                        0,   0,   0,   0,   0,   YES, 0,   0,   0,   0,   YES, 0,
+                        0,   0,   0,   0,   0,   YES, 0,   0,   0,   0,   0,   0   ]
+                //                               ^^^                      ^^^
+                //                                 └----- duplicates ----┘
+            }));
+
+            var toBeDate = function(p) {
+                expect(p).toBeDate();
+            };
+
+            _(store.getPeriods()).each(toBeDate);
+        });
+
+        it('should have no duplicated months in output sequence', function() {
+            // expect(store.getPeriods()).not.toHaveDuplicates();
+        });
+
+        it('should have no missed months in output sequence', function() {
+
+        });
+
         it('should return sequence sorted in ascending order');
         it('should match 1st and last months with min and max cost dates');
     });

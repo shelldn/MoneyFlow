@@ -61,4 +61,4 @@ node_modules
 css/style.css
 /js
 !js/vendor
-src/**/*.coffee.js
+*.coffee.js
