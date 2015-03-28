@@ -91,7 +91,8 @@ describe('store-for: Cost (remote)', function() {
 });
 
 describe('store-for: Cost (local)', function() {
-    var ls, store;
+    var ls, store,
+        YES = true;
 
     // region suite-maintenance
 
@@ -106,28 +107,28 @@ describe('store-for: Cost (local)', function() {
         store   = localCostStore;
     }));
 
+    beforeEach(function() {
+        ls.set('costs', costs({ /*
+
+            YEAR    Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
+            ------------------------------------------------------------------ */
+            2014: [ YES, 0,   0,   0,   0,   YES, YES, 0,   0,   0,   YES, 0,
+                    0,   0,   0,   0,   0,   YES, 0,   0,   0,   0,   YES, 0,
+                    0,   0,   0,   0,   0,   YES, 0,   0,   0,   0,   0,   0   ]
+            //                               ^^^                      ^^^
+            //                                 └----- duplicates ----┘
+
+        }));
+    });
+
     // endregion
 
     describe('getPeriods()', function() {
 
         it('should return ISO 8601 date string sequence', function() {
-
-            var YES = true;
-
-            ls.set('costs', costs({ /*
-
-                YEAR    Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
-                ------------------------------------------------------------------ */
-                2014: [ YES, 0,   0,   0,   0,   YES, YES, 0,   0,   0,   YES, 0,
-                        0,   0,   0,   0,   0,   YES, 0,   0,   0,   0,   YES, 0,
-                        0,   0,   0,   0,   0,   YES, 0,   0,   0,   0,   0,   0   ]
-                //                               ^^^                      ^^^
-                //                                 └----- duplicates ----┘
-            }));
-
-            var toBeDate = function(p) {
+            function toBeDate(p) {
                 expect(p).toBeDate();
-            };
+            }
 
             _(store.getPeriods()).each(toBeDate);
         });
@@ -141,7 +142,15 @@ describe('store-for: Cost (local)', function() {
         });
 
         it('should return sequence sorted in ascending order');
-        it('should match 1st and last months with min and max cost dates');
+
+        it('should match 1st and last months with min and max cost dates', function() {
+            var periods = _(store.getPeriods()),
+                Jan2014 = ISODate(2014, 1),
+                Nov2014 = ISODate(2014, 11);
+
+            expect(periods.first()) .toEqual(Jan2014);
+            expect(periods.last())  .toEqual(Nov2014);
+        });
     });
 
     describe('getByPeriod(String)', function() {
