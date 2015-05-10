@@ -134,7 +134,7 @@ describe('store-for: Cost (local)', function() {
         });
 
         it('should have no duplicated months in output sequence', function() {
-            // expect(store.getPeriods()).not.toHaveDuplicates();
+            expect(store.getPeriods()).not.toHaveDuplicates();
         });
 
         it('should have no missed months in output sequence', function() {
