@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="306d0df7ed094f63ad862b3482f76410" Name="Finance">
-        <EntityTypeShape EntityType="MoneyFlow.Model.Category" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MoneyFlow.Model.Cost" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="MoneyFlow.Model.FK__Consumpti__Categ__1273C1CD" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MoneyFlow.Model.Period" Width="1.5" PointX="5.5" PointY="1.125" />
-      </Diagram>
-      <Diagram DiagramId="8358d5f2cf1f42229c4d0bab6ab6cf21" Name="Identity" >
-        <EntityTypeShape EntityType="MoneyFlow.Model.Account" Width="1.5" PointX="0.75" PointY="1.125" FillColor="ForestGreen" />
-        <EntityTypeShape EntityType="MoneyFlow.Model.Login" Width="1.5" PointX="3" PointY="1.125" FillColor="ForestGreen" IsExpanded="true" />
-        <AssociationConnector Association="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" />
+      <Diagram DiagramId="343cf310167d40539a5c1c582c0d1a2c" Name="Diagram1" DisplayType="false">
+        <EntityTypeShape EntityType="MoneyFlow.Model.Category" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Cost" Width="1.5" PointX="5.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Account" Width="1.5" PointX="0.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Login" Width="1.5" PointX="0.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyFlow.Model.Period" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="MoneyFlow.Model.FK__Categorie__Accou__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="MoneyFlow.Model.FK__Costs__CategoryI__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="MoneyFlow.Model.FK__Costs__AccountId__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="MoneyFlow.Model.FK__Logins__AccountI__1920BF5C" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
