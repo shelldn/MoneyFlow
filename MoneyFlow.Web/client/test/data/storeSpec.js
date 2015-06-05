@@ -138,10 +138,11 @@ describe('store-for: Cost (local)', function() {
         });
 
         it('should have no missed months in output sequence', function() {
-
+            var periods = store.getPeriods();
+            for (var i = 0; i < periods.length - 1; i++) {
+                expect(periods[i]).toPrecede(periods[i + 1]);
+            }
         });
-
-        it('should return sequence sorted in ascending order');
 
         it('should match 1st and last months with min and max cost dates', function() {
             var periods = _(store.getPeriods()),
