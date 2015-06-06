@@ -155,10 +155,17 @@ describe('store-for: Cost (local)', function() {
     });
 
     describe('getByPeriod(String)', function() {
-        it('should return all the costs spent within specified month');
+        it('should return all the costs spent within specified month', function() {
+            var costs = store.getByPeriod('2014-06-01T00:00:00');
+            expect(costs.length).toBe(3);
+        });
     });
 
     describe('create(Cost)', function() {
-        it('should persist Cost record in the local storage');
+        it('should persist Cost record in the local storage', function() {
+            var cost = { amount: 25 };
+            store.create(cost);
+            expect(ls.get('costs')).toContain(cost);
+        });
     });
 });
