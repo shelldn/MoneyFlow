@@ -11,8 +11,9 @@ module.exports = function(grunt) {
         },
 
         clean: {
-            src: ['src/**/*.coffee.js'],
-            dest: ['js/*.js']
+            src     : ['src/**/*.coffee.js'],
+            test    : ['test/**/*.coffee.js'],
+            dest    : ['js/*.js']
         },
 
         coffee: {
@@ -59,6 +60,10 @@ module.exports = function(grunt) {
         },
 
         watch: {
+            src: {
+                files: ['src/**/*', '!src/**/*.coffee.js'],
+                tasks: ['default']
+            },
             karma: {
                 files: ['src/**/*', 'test/**/*Spec.js'],
                 tasks: ['default', 'karma:test:run']

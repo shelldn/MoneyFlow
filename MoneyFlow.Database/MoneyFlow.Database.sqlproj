@@ -73,11 +73,9 @@
     <Build Include="Finance\Views\Periods.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MoneyFlow.Database.publish.xml" />
-    <None Include="mf_home.publish.xml" />
-    <None Include="MoneyFlow.publish.xml" />
+    <RefactorLog Include="MoneyFlow.Database.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <RefactorLog Include="MoneyFlow.Database.refactorlog" />
+    <None Include="MoneyFlow.Database.publish.xml" />
   </ItemGroup>
 </Project>

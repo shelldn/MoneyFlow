@@ -166,6 +166,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <BrowseToURL>~/cats.xml</BrowseToURL>
     </Content>
+    <Content Include="App_Data\mf_develop.mdf" />
+    <Content Include="App_Data\mf_develop_log.ldf">
+      <DependentUpon>mf_develop.mdf</DependentUpon>
+    </Content>
     <Content Include="client\css\style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

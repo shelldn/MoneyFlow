@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MoneyFlow.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MoneyFlow.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -43,7 +43,7 @@
           <Property Name="AccountId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'D:\SOURCE\MONEYFLOW\MONEYFLOW.WEB\APP_DATA\MF_DEVELOP.MDF.Finance.Periods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Periods">
           <Key>
             <PropertyRef Name="AccountId" />
@@ -51,7 +51,7 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
           <Property Name="Date" Type="datetime" />
           <Property Name="AccountId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Categorie__Accou__5DCAEF64">
+        <Association Name="FK__Categorie__Accou__182C9B23">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
           <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
           <ReferentialConstraint>
@@ -63,7 +63,7 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Costs__AccountId__5EBF139D">
+        <Association Name="FK__Costs__AccountId__173876EA">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
           <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -75,7 +75,7 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Costs__CategoryI__4D94879B">
+        <Association Name="FK__Costs__CategoryI__164452B1">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="Costs" Type="Self.Costs" Multiplicity="*" />
           <ReferentialConstraint>
@@ -87,7 +87,7 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Logins__AccountI__5CD6CB2B">
+        <Association Name="FK__Logins__AccountI__1920BF5C">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -112,24 +112,25 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
     [Periods].[AccountId] AS [AccountId]
     FROM [Finance].[Periods] AS [Periods]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Categorie__Accou__5DCAEF64" Association="Self.FK__Categorie__Accou__5DCAEF64">
+          <AssociationSet Name="FK__Categorie__Accou__182C9B23" Association="Self.FK__Categorie__Accou__182C9B23">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Categories" EntitySet="Categories" />
           </AssociationSet>
-          <AssociationSet Name="FK__Costs__AccountId__5EBF139D" Association="Self.FK__Costs__AccountId__5EBF139D">
+          <AssociationSet Name="FK__Costs__AccountId__173876EA" Association="Self.FK__Costs__AccountId__173876EA">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Costs__CategoryI__4D94879B" Association="Self.FK__Costs__CategoryI__4D94879B">
+          <AssociationSet Name="FK__Costs__CategoryI__164452B1" Association="Self.FK__Costs__CategoryI__164452B1">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Logins__AccountI__5CD6CB2B" Association="Self.FK__Logins__AccountI__5CD6CB2B">
+          <AssociationSet Name="FK__Logins__AccountI__1920BF5C" Association="Self.FK__Logins__AccountI__1920BF5C">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Logins" EntitySet="Logins" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MoneyFlow.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -138,10 +139,10 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Costs" Relationship="Self.FK__Consumpti__Categ__1273C1CD" FromRole="Categories" ToRole="Costs" />
-          <Property Name="Words" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AccountId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="MoneyFlow.Model.FK__Categorie__Accou__4CA06362" FromRole="Category" ToRole="Account" />
+          <Property Name="Words" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Categorie__Accou__182C9B23" FromRole="Categories" ToRole="Accounts" />
+          <NavigationProperty Name="Costs" Relationship="Self.FK__Costs__CategoryI__164452B1" FromRole="Categories" ToRole="Costs" />
         </EntityType>
         <EntityType Name="Cost">
           <Key>
@@ -149,11 +150,11 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="MoneyFlow.Model.FK__Consumpti__Categ__1273C1CD" FromRole="Costs" ToRole="Categories" />
-          <Property Name="AccountId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="MoneyFlow.Model.FK__Costs__AccountId__4BAC3F29" FromRole="Cost" ToRole="Account" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Costs__CategoryI__164452B1" FromRole="Costs" ToRole="Categories" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Costs__AccountId__173876EA" FromRole="Costs" ToRole="Accounts" />
         </EntityType>
         <EntityType Name="Account">
           <Key>
@@ -161,14 +162,43 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Logins" Relationship="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" FromRole="Account" ToRole="Login" />
-          <NavigationProperty Name="Categories" Relationship="MoneyFlow.Model.FK__Categorie__Accou__4CA06362" FromRole="Account" ToRole="Category" />
-          <NavigationProperty Name="Costs" Relationship="MoneyFlow.Model.FK__Costs__AccountId__4BAC3F29" FromRole="Account" ToRole="Cost" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__Accou__182C9B23" FromRole="Accounts" ToRole="Categories" />
+          <NavigationProperty Name="Costs" Relationship="Self.FK__Costs__AccountId__173876EA" FromRole="Accounts" ToRole="Costs" />
+          <NavigationProperty Name="Logins" Relationship="Self.FK__Logins__AccountI__1920BF5C" FromRole="Accounts" ToRole="Logins" />
         </EntityType>
-        <Association Name="FK__Consumpti__Categ__1273C1CD">
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Logins__AccountI__1920BF5C" FromRole="Logins" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Categorie__Accou__182C9B23">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Costs__CategoryI__164452B1">
           <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Costs" Type="Self.Cost" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,84 +210,55 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Costs__AccountId__173876EA">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Costs" Type="Self.Cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Costs">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Logins__AccountI__1920BF5C">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Logins" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Logins">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MoneyFlowDbContext" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Costs" EntityType="Self.Cost" />
           <EntitySet Name="Accounts" EntityType="Self.Account" />
-          <AssociationSet Name="FK__Consumpti__Categ__1273C1CD" Association="Self.FK__Consumpti__Categ__1273C1CD">
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Periods" EntityType="Self.Period" />
+          <AssociationSet Name="FK__Categorie__Accou__182C9B23" Association="Self.FK__Categorie__Accou__182C9B23">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Costs__CategoryI__164452B1" Association="Self.FK__Costs__CategoryI__164452B1">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
-          <EntitySet Name="Logins" EntityType="MoneyFlow.Model.Login" />
-          <AssociationSet Name="FK__Logins__AccountI__398D8EEE" Association="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Login" EntitySet="Logins" />
+          <AssociationSet Name="FK__Costs__AccountId__173876EA" Association="Self.FK__Costs__AccountId__173876EA">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Costs" EntitySet="Costs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Categorie__Accou__4CA06362" Association="MoneyFlow.Model.FK__Categorie__Accou__4CA06362">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Category" EntitySet="Categories" />
+          <AssociationSet Name="FK__Logins__AccountI__1920BF5C" Association="Self.FK__Logins__AccountI__1920BF5C">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Logins" EntitySet="Logins" />
           </AssociationSet>
-          <AssociationSet Name="FK__Costs__AccountId__4BAC3F29" Association="MoneyFlow.Model.FK__Costs__AccountId__4BAC3F29">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Cost" EntitySet="Costs" />
-          </AssociationSet>
-          <EntitySet Name="Periods" EntityType="MoneyFlow.Model.Period" />
         </EntityContainer>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="AccountId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="MoneyFlow.Model.FK__Logins__AccountI__398D8EEE" FromRole="Login" ToRole="Account" />
-        </EntityType>
-        <Association Name="FK__Logins__AccountI__398D8EEE">
-          <End Type="MoneyFlow.Model.Account" Role="Account" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MoneyFlow.Model.Login" Role="Login" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Login">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Categorie__Accou__4CA06362">
-          <End Type="MoneyFlow.Model.Account" Role="Account" Multiplicity="1" />
-          <End Type="MoneyFlow.Model.Category" Role="Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Category">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Costs__AccountId__4BAC3F29">
-          <End Type="MoneyFlow.Model.Account" Role="Account" Multiplicity="1" />
-          <End Type="MoneyFlow.Model.Cost" Role="Cost" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Cost">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Period">
-          <Key>
-            <PropertyRef Name="AccountId" />
-          </Key>
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="AccountId" Type="Int32" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -267,18 +268,18 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="MoneyFlow.Model.Category">
               <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Words" ColumnName="Words" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Costs">
             <EntityTypeMapping TypeName="MoneyFlow.Model.Cost">
               <MappingFragment StoreEntitySet="Costs">
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
@@ -287,28 +288,28 @@ warning 6002: The table/view 'MoneyFlow.Finance.Periods' does not have a primary
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="MoneyFlow.Model.Account">
               <MappingFragment StoreEntitySet="Accounts">
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logins">
             <EntityTypeMapping TypeName="MoneyFlow.Model.Login">
               <MappingFragment StoreEntitySet="Logins">
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Periods">
             <EntityTypeMapping TypeName="MoneyFlow.Model.Period">
               <MappingFragment StoreEntitySet="Periods">
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

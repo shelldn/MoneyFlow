@@ -8,8 +8,8 @@ angular.module 'mf.controls'
     scope:
       caption: '@mfExpand'
 
-    link: (scope, element, attr, ctrl, transclude) ->
-      content = element.find '.expand-content';
+    link: (scope, $0, attr, ctrl, transclude) ->
+      content = $0.find '.expand-content';
 
       scope.tglExpand = () ->
         scope.isExpanded = !scope.isExpanded;
