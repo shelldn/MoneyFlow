@@ -1,0 +1,3 @@
+[submodule "money-flow"]
+	path = money-flow
+	url = ./money-flow

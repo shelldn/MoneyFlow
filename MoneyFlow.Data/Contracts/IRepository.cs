@@ -1,19 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using MongoDB.Bson;
 
-namespace MoneyFlow.Data.Contracts
+namespace MoneyFlow.Data
 {
     public interface IRepository<T>
-        where T : class
     {
-        IQueryable<T> GetAll();
-        IQueryable<T> GetRange(int skipCount, int takeCount);
-        IQueryable<T> Lookup(Expression<Func<T, bool>> lookupPredicate);
-        T GetById(int id);
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        void Delete(int id);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> GetAsync(ObjectId id);
+        Task CreateAsync(T obj);
+        Task UpdateAsync(T obj);
+        Task DeleteAsync(ObjectId id);
     }
 }
